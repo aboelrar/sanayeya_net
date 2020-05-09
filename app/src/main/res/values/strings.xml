@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">sanayeya_net</string>
+    <string name="language">Language</string>
+    <string name="apply">Apply</string>
+    <string name="user">User</string>
+    <string name="winch_owner">Winch Owner</string>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="how_we_can_help_you_today">HOW WE CAN HELP YOU TODAY?</string>
+    <string name="winch">Winch</string>
+    <string name="_24_7">24/7</string>
+    <string name="home_service">Home \nService</string>
+</resources>

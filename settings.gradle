@@ -1,0 +1,2 @@
+rootProject.name='sanayeya_net'
+include ':app'

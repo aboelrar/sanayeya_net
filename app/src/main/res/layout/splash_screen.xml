@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|bottom"
+    android:background="@drawable/app_bg"
+    tools:context=".view.Scenario_splash_screen.controller.splash_screen">
+  <ImageView
+      android:layout_width="@dimen/_150sdp"
+      android:layout_height="@dimen/_150sdp"
+      android:id="@+id/ssss"
+      android:layout_marginBottom="@dimen/_50sdp"
+      android:src="@drawable/app_logo"/>
+</LinearLayout>
