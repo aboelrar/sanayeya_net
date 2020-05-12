@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_login.Controller.login">
+    tools:context=".view.welcome_screens.Scenario_login.Controller.login">
 
     <RelativeLayout
         android:layout_width="match_parent"

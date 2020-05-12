@@ -1,4 +1,4 @@
-package www.dm.sanayeya.net.view.Scenario_splash_screen.controller;
+package www.dm.sanayeya.net.view.welcome_screens.Scenario_splash_screen.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils;
-import www.dm.sanayeya.net.view.Scenario_choose_language.controller.choose_language;
+import www.dm.sanayeya.net.view.welcome_screens.Scenario_choose_language.controller.choose_language;
 
 public class splash_screen extends AppCompatActivity {
 

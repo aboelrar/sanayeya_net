@@ -1,4 +1,4 @@
-package www.dm.sanayeya.net.view.Scenario_signup.controller;
+package www.dm.sanayeya.net.view.welcome_screens.Scenario_signup.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_login.Controller.login;
 import www.dm.sanayeya.net.view.Scenario_main_screen.Controller.MainActivity;
 
 public class signup extends AppCompatActivity implements View.OnClickListener {
@@ -44,7 +43,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
         }
         else if(view.getId() == R.id.login)
         {
-            startActivity(new Intent(signup.this, www.dm.sanayeya.net.view.Scenario_login.Controller.login.class));
+            startActivity(new Intent(signup.this, www.dm.sanayeya.net.view.welcome_screens.Scenario_login.Controller.login.class));
         }
         else if(view.getId() == R.id.signup)
         {

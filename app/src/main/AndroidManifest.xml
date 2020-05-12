@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="www.dm.sanayeya.net">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Scenario_signup.controller.signup"></activity>
-        <activity android:name=".view.Scenario_login.Controller.login" />
-        <activity android:name=".view.Scenario_choose_login.controller.choose_login" />
-        <activity android:name=".view.Scenario_choose_language.controller.choose_language" />
-        <activity android:name=".view.Scenario_splash_screen.controller.splash_screen">
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.workshop_details"></activity>
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location" />
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating" />
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location" />
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price" />
+        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location" />
+        <activity android:name=".view.welcome_screens.Scenario_signup.controller.signup" />
+        <activity android:name=".view.welcome_screens.Scenario_login.Controller.login" />
+        <activity android:name=".view.welcome_screens.Scenario_choose_login.controller.choose_login" />
+        <activity android:name=".view.welcome_screens.Scenario_choose_language.controller.choose_language" />
+        <activity android:name=".view.welcome_screens.Scenario_splash_screen.controller.splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,6 +34,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.Scenario_main_screen.Controller.MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAFZWqZ7it3SPq_vuGpWM7qPx1ZrLAYB74" />
     </application>
 
 </manifest>

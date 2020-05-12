@@ -7,14 +7,14 @@
     android:orientation="vertical"
     tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.categories">
 
-    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/tool_bar"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
+        android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@android:color/black"
         android:textSize="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/how_we_can_help_you_today" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +30,7 @@
             <RelativeLayout
                 android:layout_weight=".5"
                 android:layout_width="0dp"
+                android:id="@+id/winch"
                 android:layout_height="match_parent">
                 <ImageView
                     android:layout_width="match_parent"
@@ -60,11 +61,12 @@
             <RelativeLayout
                 android:layout_weight=".5"
                 android:layout_width="0dp"
+                android:id="@+id/twentyfour"
                 android:layout_height="match_parent">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/twentyfour"
+                    android:id="@+id/twentyfour_image"
                     android:scaleType="fitXY"
                     android:src="@drawable/twentyfour"/>
                 <ImageView
@@ -74,7 +76,7 @@
                     android:textSize="@dimen/_15sdp"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="@dimen/_90sdp"
-                    android:layout_alignBottom="@+id/twentyfour"/>
+                    android:layout_alignBottom="@+id/twentyfour_image"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,7 +86,7 @@
                     android:textStyle="bold"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="@dimen/_60sdp"
-                    android:layout_alignBottom="@+id/twentyfour"/>
+                    android:layout_alignBottom="@+id/twentyfour_image"/>
 
             </RelativeLayout>
         </LinearLayout>

@@ -1,4 +1,4 @@
-package www.dm.sanayeya.net.view.Scenario_choose_login.controller;
+package www.dm.sanayeya.net.view.welcome_screens.Scenario_choose_login.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_login.Controller.login;
+import www.dm.sanayeya.net.view.welcome_screens.Scenario_login.Controller.login;
 
 public class choose_login extends AppCompatActivity implements View.OnClickListener {
 

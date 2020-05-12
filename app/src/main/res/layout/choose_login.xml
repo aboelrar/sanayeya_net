@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_choose_login.controller.choose_login">
+    tools:context=".view.welcome_screens.Scenario_choose_login.controller.choose_login">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

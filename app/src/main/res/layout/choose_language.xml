@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@android:color/white"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_choose_language.controller.choose_language">
+    tools:context=".view.welcome_screens.Scenario_choose_language.controller.choose_language">
     <ImageView
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_400sdp"

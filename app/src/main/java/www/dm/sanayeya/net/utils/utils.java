@@ -12,11 +12,21 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.animation.Animation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Locale;
+
+import www.dm.sanayeya.net.R;
 
 
 public class utils {
@@ -100,17 +110,21 @@ public class utils {
     }
 
     /**
-     * SET PROGRESS DIALOG
+     * WAVE MARKER LOCATION
      */
 
-//    public void set_dialog(Context context)
-//    {
-//        String loading =  context.getResources().getString(R.string.loading_c);
-//
-//        pd = new ProgressDialog(context);
-//        pd.setMessage(loading);
-//        pd.show();
-//    }
+    public void marker_animation(double lat, double lng, View view, GoogleMap mGoogleMap)
+    {
+
+        GroundOverlay groundOverlay = mGoogleMap.addGroundOverlay(new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.auth_logo))
+                .position(new LatLng(lat, lng), 1000.0f,1000.0f));
+        RadiusAnimation groundAnimation = new RadiusAnimation(groundOverlay);
+        groundAnimation.setRepeatCount(Animation.INFINITE);
+        groundAnimation.setRepeatMode(Animation.RESTART);
+        groundAnimation.setDuration(2000);
+        view.startAnimation(groundAnimation); // MapView where i show my map
+    }
 
     /**
      * SET PROGRESS DIALOG DISMISS
@@ -147,6 +161,8 @@ public class utils {
         }
         return result;
     }
+
+
 
 
 }

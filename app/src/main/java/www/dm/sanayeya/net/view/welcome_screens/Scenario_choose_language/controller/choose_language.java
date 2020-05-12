@@ -1,4 +1,4 @@
-package www.dm.sanayeya.net.view.Scenario_choose_language.controller;
+package www.dm.sanayeya.net.view.welcome_screens.Scenario_choose_language.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_choose_login.controller.choose_login;
+import www.dm.sanayeya.net.view.welcome_screens.Scenario_choose_login.controller.choose_login;
 
 public class choose_language extends AppCompatActivity implements View.OnClickListener {
 

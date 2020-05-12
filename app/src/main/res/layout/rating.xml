@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp">
+
+        <ImageView
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/rate"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_16sdp" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_weight=".65"
+        app:cardElevation="@dimen/_3sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight=".45"
+                android:scaleType="fitXY"
+                android:src="@drawable/driver" />
+            <TextView
+                android:layout_weight=".1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@android:color/black"
+                android:text="Ahmed Mohamed"
+                />
+            <TextView
+                android:layout_weight=".07"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/your_rate"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".15"
+                android:gravity="center"
+                android:orientation="vertical">
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:isIndicator="false"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:scaleX="2.8"
+                    android:scaleY="2.8"
+                    android:layout_gravity="center"
+                    android:stepSize="1.2"
+                    android:layout_height="wrap_content"
+                    android:progressTint="@color/f_color"
+                    android:progressBackgroundTint="#000000"
+                    android:secondaryProgressTint="#ffffff"
+                    android:numStars="5"
+                    android:rating="0" />
+            </LinearLayout>
+            <TextView
+                android:layout_weight=".08"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="@string/write_your_feedback"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+            <EditText
+                android:layout_weight=".12"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:gravity="center|left"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                android:hint="@string/write_your_feedback"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".09"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/submit"
+        android:textSize="@dimen/_14sdp"
+        android:textAllCaps="false"
+        android:id="@+id/submit"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:background="@drawable/button_1_bg"/>
+</LinearLayout>
