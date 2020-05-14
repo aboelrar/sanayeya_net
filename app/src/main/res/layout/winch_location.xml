@@ -6,27 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location">
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-         android:paddingLeft="@dimen/_10sdp"
-         android:gravity="center"
-         android:orientation="horizontal"
-         android:layout_weight=".15">
-         <ImageView
-             android:layout_width="@dimen/_15sdp"
-             android:layout_height="@dimen/_15sdp"
-             android:src="@drawable/back"/>
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="@string/winch"
-             android:textAllCaps="true"
-             android:textColor="@android:color/black"
-             android:textSize="@dimen/_20sdp"
-             android:gravity="center"/>
-     </LinearLayout>
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location">
+     <include layout="@layout/categories_bar"/>
      <RelativeLayout
          android:layout_width="match_parent"
          android:layout_height="0dp"

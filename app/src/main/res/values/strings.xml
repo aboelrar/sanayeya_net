@@ -36,4 +36,27 @@
     <string name="show_more">Show More</string>
     <string name="show_less">Show Less</string>
     <string name="reviews">Reviews</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="sms">SMS</string>
+    <string name="old_password">Old Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="reytype_new_password">Reytype New Password</string>
+    <string name="change_password">CHANGE PASSWORD</string>
+    <string name="choose_the_service_type">Choose the service type</string>
+    <string name="home_ser_title">Home Service</string>
+    <string name="choose_your_province">Choose your province</string>
+    <string name="choose_the_car_model">Choose the car model</string>
+    <string name="choose_the_workshop_type">Choose the workshop type</string>
+    <string name="industerial_ser">INDUSTRIAL SERVICES</string>
+    <string name="request_info">Request info</string>
+    <string name="start">Start</string>
+    <string name="to">to</string>
+    <string name="reject">REJECT</string>
+    <string name="logout">Logout</string>
+    <string name="myhome">Home</string>
+    <string name="help">Help</string>
+    <string name="terms">Terms and conditions</string>
+    <string name="winch_request">Winch Request</string>
+    <string name="drawer_open">Menu opened</string>
+    <string name="drawer_close">Menu closed</string>
 </resources>

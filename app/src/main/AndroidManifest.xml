@@ -16,24 +16,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.workshop_details"></activity>
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location" />
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating" />
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location" />
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price" />
-        <activity android:name=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location" />
-        <activity android:name=".view.welcome_screens.Scenario_signup.controller.signup" />
-        <activity android:name=".view.welcome_screens.Scenario_login.Controller.login" />
-        <activity android:name=".view.welcome_screens.Scenario_choose_login.controller.choose_login" />
-        <activity android:name=".view.welcome_screens.Scenario_choose_language.controller.choose_language" />
-        <activity android:name=".view.welcome_screens.Scenario_splash_screen.controller.splash_screen">
+        <activity android:name=".view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen"></activity>
+        <activity android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_login.controller.winch_login" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_list.controller.industerial_list" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.controller.home_services_compaines" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.controller.home_services" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location" />
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_signup.controller.signup" />
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_login.Controller.login" />
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login" />
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_choose_language.controller.choose_language" />
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_splash_screen.controller.splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.Scenario_main_screen.Controller.MainActivity" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

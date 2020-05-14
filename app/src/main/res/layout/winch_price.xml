@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price">
  <ImageView
      android:layout_width="match_parent"
      android:layout_height="@dimen/_300sdp"

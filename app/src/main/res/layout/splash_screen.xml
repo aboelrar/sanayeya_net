@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center|bottom"
     android:background="@drawable/app_bg"
-    tools:context=".view.welcome_screens.Scenario_splash_screen.controller.splash_screen">
+    tools:context=".view.Scenario_client.welcome_screens.Scenario_splash_screen.controller.splash_screen">
   <ImageView
       android:layout_width="@dimen/_150sdp"
       android:layout_height="@dimen/_150sdp"

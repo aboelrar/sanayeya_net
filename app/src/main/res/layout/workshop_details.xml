@@ -4,96 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.workshop_details">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_170sdp"
-                android:scaleType="fitXY"
-                android:src="@drawable/driver" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text="Ahmed Mohamed"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp"
-                android:textStyle="bold" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:gravity="center|left"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/_10sdp"
-                android:weightSum="1">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_170sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/driver" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:text="Ahmed Mohamed"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".4">
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:gravity="center|left"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:weightSum="1">
 
-                    <RatingBar
-                        android:id="@+id/ratings"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_13sdp"
-                        android:clickable="false"
-                        android:focusable="false"
-                        android:isIndicator="false"
-                        android:numStars="5"
-                        android:progressBackgroundTint="#000000"
-                        android:progressTint="@color/f_color"
-                        android:rating="5"
-                        android:scaleX="1.5"
-                        android:scaleY="1.5"
-                        android:secondaryProgressTint="#ffffff"
-                        android:stepSize=".3" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4">
+
+                        <RatingBar
+                            android:id="@+id/ratings"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:progressBackgroundTint="#000000"
+                            android:progressTint="@color/f_color"
+                            android:rating="5"
+                            android:scaleX="1.7"
+                            android:scaleY="1.7"
+                            android:secondaryProgressTint="#ffffff"
+                            android:stepSize=".3" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/review_num"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:text="Based on 25 review" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/review_num"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:gravity="center"
-                    android:text="Based on 25 review" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="@string/descripition"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
 
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:text="@string/descripition"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp"
-                android:textStyle="bold" />
-
-            <com.borjabravo.readmoretextview.ReadMoreTextView
-                android:id="@+id/doc_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:gravity="center|left"
-                android:justificationMode="inter_word"
-                android:paddingLeft="@dimen/_10sdp"
-                android:paddingRight="@dimen/_10sdp"
-                android:text="orst ranking differentials.
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/doc_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center|left"
+                    android:justificationMode="inter_word"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:text="orst ranking differentials.
 Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
 Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
 Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
@@ -104,56 +108,135 @@ Including social media links or support contact information were both negatively
 Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
 Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
 Including social media links or support contact information were both negatively correlated with rank."
-                android:textSize="@dimen/_10sdp"
-                app:trimCollapsedText="@string/show_more"
-                app:trimExpandedText="@string/show_less"
-                app:trimLength="100"
-                app:trimMode="trimModeLength" />
+                    android:textSize="@dimen/_10sdp"
+                    app:trimCollapsedText="@string/show_more"
+                    app:trimExpandedText="@string/show_less"
+                    app:trimLength="100"
+                    app:trimMode="trimModeLength" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_weight=".08"
-                android:gravity="center"
-                android:text="@string/write_your_feedback"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_weight=".08"
+                    android:gravity="center"
+                    android:text="@string/write_your_feedback"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_weight=".12"
-                android:gravity="center|left"
-                android:hint="@string/write_your_feedback"
-                android:paddingLeft="@dimen/_5sdp"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_14sdp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_weight=".12"
+                    android:backgroundTint="@color/s_color"
+                    android:gravity="center|left"
+                    android:hint="@string/write_your_feedback"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_14sdp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/reviews"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_15sdp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/reviews"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/reviews_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp" />
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviews_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_150sdp"
+                app:cardCornerRadius="@dimen/_25sdp"
+                app:cardElevation="@dimen/_5sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4995"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
+                            android:src="@drawable/whatsapp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/whatsapp"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight=".01"
+                        android:src="@android:color/black" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4995"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
+                            android:src="@drawable/sms" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/sms"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/back"
+                android:tint="@android:color/white" />
+
+        </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 
 </RelativeLayout>

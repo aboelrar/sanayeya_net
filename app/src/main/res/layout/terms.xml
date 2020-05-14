@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_main_screen.Controller.Scenario_terms.terms">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Scenario_terms.terms">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.core.widget.NestedScrollView

@@ -6,31 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context=".view.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".15"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/_10sdp"
-        android:paddingTop="@dimen/_10sdp">
-
-        <ImageView
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
-            android:src="@drawable/back" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/rate"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_16sdp" />
-    </LinearLayout>
+    <include layout="@layout/categories_bar"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -111,6 +89,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:paddingLeft="@dimen/_5sdp"
                 android:gravity="center|left"
+                android:backgroundTint="@color/line_color"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14sdp"

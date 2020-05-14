@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_main_screen.Controller.MainActivity">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.MainActivity">
 
-  <FrameLayout
-      android:layout_height="match_parent"
+  <LinearLayout
       android:layout_width="match_parent"
-      android:id="@+id/frag"
-      />
+      android:layout_height="match_parent"
+      android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/tool_bar" />
+
+    <FrameLayout
+        android:id="@+id/frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+  </LinearLayout>
+
+  <www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.ScrimInsetsFrameLayout
+      android:id="@+id/scrimInsetsFrameLayout"
+      android:layout_width="@dimen/_210sdp"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      android:elevation="10dp"
+      android:fitsSystemWindows="true"
+      app:insetForeground="#4000">
+
+    <fragment
+        android:id="@+id/fragment_drawer"
+        android:name="www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.NavigationDrawerFragment"
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout="@layout/fragment_navigation_drawer" />
+
+  </www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.ScrimInsetsFrameLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
