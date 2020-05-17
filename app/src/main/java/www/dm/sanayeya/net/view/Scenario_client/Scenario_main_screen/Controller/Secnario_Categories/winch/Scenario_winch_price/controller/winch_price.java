@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_payment.controller.payment_method;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating;
 
 public class winch_price extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +32,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
        if(view.getId() == R.id.confirm)
        {
-           startActivity(new Intent(winch_price.this, rating.class));
+           startActivity(new Intent(winch_price.this, payment_method.class));
        }
     }
 }

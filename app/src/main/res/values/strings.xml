@@ -59,4 +59,10 @@
     <string name="winch_request">Winch Request</string>
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="send">Send</string>
+    <string name="new_pass">New Password</string>
+    <string name="verfication_code">Verfication Code</string>
+    <string name="cash">Cash</string>
 </resources>

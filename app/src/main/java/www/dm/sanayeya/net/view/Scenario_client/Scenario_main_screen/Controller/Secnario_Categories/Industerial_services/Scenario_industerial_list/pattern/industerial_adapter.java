@@ -49,6 +49,7 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
 
         //SET ON CLICK LISTNERS
         holder.service_item.setOnClickListener(this);
+        holder.service_list.setOnClickListener(this);
 
     }
 
@@ -60,6 +61,10 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
     @Override
     public void onClick(View view) {
          if(view.getId() == R.id.service_item)
+         {
+             context.startActivity(new Intent(context, industerial_details.class));
+         }
+         else if(view.getId() == R.id.service_list)
          {
              context.startActivity(new Intent(context, industerial_details.class));
          }

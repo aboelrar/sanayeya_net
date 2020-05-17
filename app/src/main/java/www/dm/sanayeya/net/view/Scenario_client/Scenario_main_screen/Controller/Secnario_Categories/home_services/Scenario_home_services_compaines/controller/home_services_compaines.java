@@ -1,6 +1,8 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.controller;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +17,14 @@ import www.dm.sanayeya.net.utils.utils_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.companies_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.pattern.compaines_adapter;
 
-public class home_services_compaines extends AppCompatActivity {
+public class home_services_compaines extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.companies_list)
     RecyclerView companiesList;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,12 @@ public class home_services_compaines extends AppCompatActivity {
         //SET TITLE NAME
         title.setText(R.string.home_ser_title);
 
+        //SET ON CLICK LISTNERS
+        back.setOnClickListener(this);
+
         //GET DATA
         getData();
+
     }
 
     //GET DATA
@@ -46,5 +54,13 @@ public class home_services_compaines extends AppCompatActivity {
 
 
         new utils_adapter().Adapter(companiesList, new compaines_adapter(this, arrayList), this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.back)
+        {
+            finish();
+        }
     }
 }

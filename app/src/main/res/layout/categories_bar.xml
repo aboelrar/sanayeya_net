@@ -11,23 +11,24 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight=".2"
-        android:padding="@dimen/_28sdp"
-        android:src="@drawable/back" />
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:padding="@dimen/_28sdp"
+            android:src="@drawable/back" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:id="@+id/title"
-        android:textStyle="bold"
         android:text="@string/places_cancel"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/_15sdp" />
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

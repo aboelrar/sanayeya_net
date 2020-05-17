@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils_adapter;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.companies_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.service_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details;
@@ -49,6 +50,7 @@ public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.vi
 
         //SET ON CLICK LISTNERS
         holder.service_item.setOnClickListener(this);
+        holder.service_list.setOnClickListener(this);
 
     }
 
@@ -62,6 +64,10 @@ public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.vi
          if(view.getId() == R.id.service_item)
          {
              context.startActivity(new Intent(context, home_service_details.class));
+         }
+         else if(view.getId() == R.id.service_list)
+         {
+             context.startActivity(new Intent(context, industerial_details.class));
          }
     }
 

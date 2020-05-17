@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,10 @@ public class rating extends AppCompatActivity implements View.OnClickListener {
     RatingBar rating;
     @BindView(R.id.submit)
     Button submit;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +33,21 @@ public class rating extends AppCompatActivity implements View.OnClickListener {
         ButterKnife.bind(this);
 
         //SET ON CLICK LISTNERS
-         submit.setOnClickListener(this);
+        submit.setOnClickListener(this);
+        back.setOnClickListener(this);
+
+        //SET TITLE TEXT
+        title.setText(getResources().getString(R.string.rate));
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.submit)
-        {
+        if (view.getId() == R.id.submit) {
             startActivity(new Intent(rating.this, MainActivity.class));
+        }
+        else if(view.getId() ==R.id.back)
+        {
+            finish();
         }
     }
 }

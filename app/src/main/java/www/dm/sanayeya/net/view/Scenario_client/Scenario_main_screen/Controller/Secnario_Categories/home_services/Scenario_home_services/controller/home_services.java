@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class home_services extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.find)
     Button find;
     TextView title;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,13 @@ public class home_services extends AppCompatActivity implements View.OnClickList
 
         //SET ON CLICK LISTNERS
         find.setOnClickListener(this);
+        back.setOnClickListener(this);
 
 
     }
 
     //ADD DATA TO SPINNER
-    void add_spinner_data()
-    {
+    void add_spinner_data() {
         //ADD DATA TO LIST
         List<String> arraylist = new ArrayList<>();
         arraylist.add("Car electration");
@@ -62,9 +65,12 @@ public class home_services extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.find)
+        if (view.getId() == R.id.find) {
+            startActivity(new Intent(home_services.this, home_services_compaines.class));
+        }
+        else if(view.getId() == R.id.back)
         {
-          startActivity(new Intent(home_services.this, home_services_compaines.class));
+            finish();
         }
     }
 }

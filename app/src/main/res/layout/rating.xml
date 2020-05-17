@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp"
-        android:layout_weight=".65"
+        android:layout_weight=".75"
         app:cardElevation="@dimen/_3sdp">
 
         <LinearLayout
@@ -83,7 +83,7 @@
                 android:text="@string/write_your_feedback"
                 android:layout_marginLeft="@dimen/_10sdp"/>
             <EditText
-                android:layout_weight=".12"
+                android:layout_weight=".13"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/_5sdp"

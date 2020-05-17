@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,6 +31,8 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
     Spinner chooseTheWorkshopType;
     @BindView(R.id.find)
     Button find;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
 
         //SET ON CLICK LISTNERS
         find.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
 
@@ -89,9 +93,12 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.find)
-        {
+        if (view.getId() == R.id.find) {
             startActivity(new Intent(this, industerial_list.class));
+        }
+        else if(view.getId() == R.id.back)
+        {
+            finish();
         }
     }
 }

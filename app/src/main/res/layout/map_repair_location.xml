@@ -22,6 +22,15 @@
         android:src="@drawable/map_marker"
         android:layout_marginRight="@dimen/_30sdp"/>
 
+    <ImageView
+        android:tint="@color/f_color"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/map_marker"
+        android:layout_marginTop="@dimen/_340sdp"
+        android:layout_marginRight="@dimen/_70sdp"/>
+
      <androidx.recyclerview.widget.RecyclerView
          android:layout_width="match_parent"
          android:layout_height="@dimen/_180sdp"

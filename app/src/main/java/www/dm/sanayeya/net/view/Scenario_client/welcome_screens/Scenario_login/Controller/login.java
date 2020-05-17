@@ -13,6 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_forget_password.controller.forget_password;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
 
 public class login extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +24,8 @@ public class login extends AppCompatActivity implements View.OnClickListener {
     Button login;
     @BindView(R.id.signup)
     TextView signup;
+    @BindView(R.id.forget_pass)
+    TextView forgetPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +37,26 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         back.setOnClickListener(this);
         signup.setOnClickListener(this);
         login.setOnClickListener(this);
+        forgetPass.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-       if(view.getId() == R.id.back)
-       {
-           finish();
-       }
-       else if(view.getId() == R.id.signup)
-       {
-           startActivity(new Intent(login.this, www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup.class));
-       }
-       else if(view.getId() == R.id.login)
-       {
-           startActivity(new Intent(login.this, MainActivity.class));
-       }
+        if (view.getId() == R.id.back) {
+            finish();
+        } else if (view.getId() == R.id.signup) {
+            startActivity(new Intent(login.this, www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup.class));
+        } else if (view.getId() == R.id.login) {
+            startActivity(new Intent(login.this, MainActivity.class));
+        }else if(view.getId() == R.id.forget_pass) {
+            startActivity(new Intent(login.this, forget_password.class));
+        }
     }
+
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
 }

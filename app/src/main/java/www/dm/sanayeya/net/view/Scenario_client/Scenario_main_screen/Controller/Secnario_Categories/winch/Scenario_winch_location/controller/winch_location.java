@@ -24,6 +24,8 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
     TextView carLocation;
     @BindView(R.id.car_destination)
     TextView carDestination;
+    @BindView(R.id.title)
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +37,19 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
         find.setOnClickListener(this);
         carLocation.setOnClickListener(this);
         carDestination.setOnClickListener(this);
+
+        //SET TITLE TEXT
+        title.setText(getResources().getString(R.string.winch_request));
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.find) {
             startActivity(new Intent(winch_location.this, winch_price.class));
-        }
-        else if(view.getId() == R.id.car_location)
-        {
-            startActivityForResult(new Intent(this, choose_map_location.class),1);
-        }
-        else if(view.getId() == R.id.car_destination)
-        {
-            startActivityForResult(new Intent(this, choose_map_location.class),2);
+        } else if (view.getId() == R.id.car_location) {
+            startActivityForResult(new Intent(this, choose_map_location.class), 1);
+        } else if (view.getId() == R.id.car_destination) {
+            startActivityForResult(new Intent(this, choose_map_location.class), 2);
         }
     }
 
@@ -56,12 +57,12 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
                 carLocation.setText(result);
             }
-        } else  if (requestCode == 2) {
-            if(resultCode == Activity.RESULT_OK){
+        } else if (requestCode == 2) {
+            if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
                 carDestination.setText(result);
             }
