@@ -62,6 +62,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -80,6 +81,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -87,15 +89,16 @@
                     android:inputType="textPassword"
                     android:paddingLeft="@dimen/_5sdp"
                     android:paddingRight="@dimen/_5sdp" />
+
                 <TextView
                     android:id="@+id/forget_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:textSize="@dimen/_13sdp"
-                    android:textColor="@color/f_color"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/forget_password"/>
+                    android:text="@string/forget_password"
+                    android:textColor="@color/f_color"
+                    android:textSize="@dimen/_13sdp" />
 
                 <Button
                     android:id="@+id/login"
@@ -122,11 +125,11 @@
                         android:textSize="@dimen/_13sdp" />
 
                     <TextView
+                        android:id="@+id/signup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:text="@string/sign_up"
-                        android:id="@+id/signup"
                         android:textColor="@color/f_color"
                         android:textSize="@dimen/_13sdp" />
                 </LinearLayout>

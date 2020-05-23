@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".view.Scenario_client.welcome_screens.Scenario_verifcation_code.controller.verifcation_code">
+    tools:context=".view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account">
 
     <ImageView
         android:layout_width="@dimen/_200sdp"
@@ -68,33 +68,25 @@
                 android:hint="@string/verfication_code"
                 android:paddingLeft="@dimen/_10sdp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="@string/new_pass"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:hint="@string/new_pass"
-                android:paddingLeft="@dimen/_5sdp" />
-
             <Button
-                android:id="@+id/apply"
+                android:id="@+id/active"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:background="@drawable/button_1_bg"
-                android:text="@string/send"
+                android:text="@string/active"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/resend_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/resend_code"
+                android:textColor="@color/f_color"
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
     </LinearLayout>

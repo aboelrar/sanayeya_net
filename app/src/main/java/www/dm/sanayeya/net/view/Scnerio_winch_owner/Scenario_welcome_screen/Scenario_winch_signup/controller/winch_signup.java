@@ -1,4 +1,4 @@
-package www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_login.controller;
+package www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,30 +12,28 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
-import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen;
-import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_login.controller.winch_login;
 
-public class winch_login extends AppCompatActivity implements View.OnClickListener {
+public class winch_signup extends AppCompatActivity  implements View.OnClickListener {
 
     @BindView(R.id.back)
     ImageView back;
-    @BindView(R.id.login)
-    Button login;
     @BindView(R.id.signup)
-    TextView signup;
+    Button signup;
+    @BindView(R.id.login)
+    TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.winch_login);
+        setContentView(R.layout.winch_signup);
         ButterKnife.bind(this);
 
         //SET ON CLICK LISTNER
         back.setOnClickListener(this);
-        signup.setOnClickListener(this);
         login.setOnClickListener(this);
+        signup.setOnClickListener(this);
     }
 
     @Override
@@ -44,18 +42,18 @@ public class winch_login extends AppCompatActivity implements View.OnClickListen
         {
             finish();
         }
-        else if(view.getId() == R.id.signup)
-        {
-            startActivity(new Intent(winch_login.this, winch_signup.class));
-        }
         else if(view.getId() == R.id.login)
         {
-            startActivity(new Intent(winch_login.this, winch_main_screen.class));
+            startActivity(new Intent(winch_signup.this, winch_login.class));
+        }
+        else if(view.getId() == R.id.signup)
+        {
+            startActivity(new Intent(winch_signup.this, winch_main_screen.class));
         }
     }
 
     @Override
     public void onBackPressed() {
-        moveTaskToBack(true);
+        startActivity(new Intent(this, winch_login.class));
     }
 }

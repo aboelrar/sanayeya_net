@@ -18,6 +18,8 @@ import android.view.animation.Animation;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.GroundOverlay;
@@ -127,6 +129,19 @@ public class utils {
     }
 
     /**
+     * SET PROGRESS DIALOG
+     */
+
+    public void set_dialog(Context context)
+    {
+        String loading =  context.getResources().getString(R.string.loading_c);
+
+        pd = new ProgressDialog(context);
+        pd.setMessage(loading);
+        pd.show();
+    }
+
+    /**
      * SET PROGRESS DIALOG DISMISS
      */
 
@@ -161,6 +176,17 @@ public class utils {
         }
         return result;
     }
+
+    /**
+     * YOYO LIBRARY
+     */
+    public static void yoyo(int id, View v) {
+        YoYo.with(Techniques.Shake)
+                .duration(700)
+                .repeat(1)
+                .playOn(v.findViewById(id));
+    }
+
 
 
 

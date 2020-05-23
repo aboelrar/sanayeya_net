@@ -16,10 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_payment.controller.payment_method"></activity>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_track_location.cotroller.track_winch_location">
-
-        </activity>
+        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account"></activity>
+        <activity android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_payment.controller.payment_method" />
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_track_location.cotroller.track_winch_location" />
         <activity android:name=".view.Scenario_client.welcome_screens.Scenario_verifcation_code.controller.verifcation_code" />
         <activity android:name=".view.Scenario_client.welcome_screens.Scenario_forget_password.controller.forget_password" />
         <activity android:name=".view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen" />

@@ -137,7 +137,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
 
         items.add(new NavigationItem(getResources().getString(R.string.myhome)));
-        items.add(new NavigationItem(getResources().getString(R.string.winch_request)));
         items.add(new NavigationItem(getResources().getString(R.string.change_password)));
         items.add(new NavigationItem(getResources().getString(R.string.help)));
         items.add(new NavigationItem(getResources().getString(R.string.terms)));

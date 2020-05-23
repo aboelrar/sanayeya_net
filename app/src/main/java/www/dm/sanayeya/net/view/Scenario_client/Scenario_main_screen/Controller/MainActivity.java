@@ -50,12 +50,10 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         if (position == 0) {
             new utils().Replace_Fragment(new categories(), R.id.frag, this); //MAIN SCREEN
         } else if (position == 1) {
-            startActivity(new Intent(this, winch_location.class)); //WINCH
-        } else if (position == 2) {
             new utils().Replace_Fragment(new change_pass(), R.id.frag, this); //CHANGE PASSWORD
-        } else if (position == 3) {
+        } else if (position == 2) {
             new utils().Replace_Fragment(new help(), R.id.frag, this); //HELP
-        } else if (position == 4) {
+        } else if (position == 3) {
             new utils().Replace_Fragment(new terms(), R.id.frag, this); //HELP
         }
     }

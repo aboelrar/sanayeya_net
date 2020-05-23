@@ -14,7 +14,7 @@
         android:layout_height="@dimen/_50sdp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/_20sdp"
+        android:paddingLeft="@dimen/_30sdp"
         android:paddingRight="@dimen/_20sdp"
         android:weightSum="3">
 
@@ -30,60 +30,73 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/f_color"
-            android:text="@string/cash" />
+            android:text="@string/visa" />
 
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/f_color"
-            android:text="@string/cash" />
+            android:text="Knet" />
     </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:hint="@string/total_cost"
-        android:textSize="@dimen/_13sdp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:text="245 $"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/_13sdp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:hint="@string/pick_up_amp_drop_off_location"
-        android:textSize="@dimen/_13sdp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:text="Road El Nasr st"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/_13sdp" />
-
-    <Button
-        android:id="@+id/confirm"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_height="@dimen/_250sdp"
         android:layout_marginRight="@dimen/_20sdp"
-        android:background="@drawable/button_1_bg"
-        android:text="@string/confirm"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/_13sdp"
-        android:textStyle="bold" />
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/total_cost"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="245 $"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/pick_up_amp_drop_off_location"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Road El Nasr st"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <Button
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/button_1_bg"
+                android:text="@string/confirm"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

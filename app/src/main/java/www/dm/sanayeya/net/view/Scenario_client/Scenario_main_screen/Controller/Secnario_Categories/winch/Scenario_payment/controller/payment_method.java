@@ -32,6 +32,9 @@ public class payment_method extends AppCompatActivity implements View.OnClickLis
         //SET ON CLICK LISTNERS
         confirm.setOnClickListener(this);
         back.setOnClickListener(this);
+
+        //SET TITLE TEXT
+        title.setText(getResources().getString(R.string.payment));
     }
 
     @Override

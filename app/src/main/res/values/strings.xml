@@ -64,5 +64,17 @@
     <string name="send">Send</string>
     <string name="new_pass">New Password</string>
     <string name="verfication_code">Verfication Code</string>
+    <string name="resend_code">Resend Code</string>
     <string name="cash">Cash</string>
+    <string name="payment">Payment</string>
+    <string name="visa">Visa</string>
+    <string name="loading_c">Loading...</string>
+    <string name="logged_in_successfully">Logged In Successfully...</string>
+    <string name="user_val">Username is too short!</string>
+    <string name="ver_code_val">Verification Code is too short!</string>
+    <string name="email_val">Email is too short!</string>
+    <string name="password_val">Password is too short!</string>
+    <string name="password_d_match">Password didnt match!</string>
+    <string name="phone_val">Phone is too short!</string>
+    <string name="active">Active</string>
 </resources>
