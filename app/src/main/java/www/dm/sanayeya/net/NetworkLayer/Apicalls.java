@@ -85,7 +85,7 @@ public class Apicalls {
      * @func RESET PASSWORD
      */
 
-    public void reset_pass(final String password, final String code)  {
+    public void reset_pass(final String password, final String code) {
 
         apiRouter.performRequest(Apiclient.RESET_PASS.getURL(), Apiclient.RESET_PASS.getParams(), Arrays.asList(password, code), Request.Method.POST, 2);
     }
@@ -97,7 +97,7 @@ public class Apicalls {
      * @func ACTIVE ACCOUNT
      */
 
-    public void active_account(String code)  {
+    public void active_account(String code) {
 
         try {
             apiRouter.makeAdvancedRequest(Apiclient.ACTIVE_ACCOUNT.getURL(), Request.Method.POST, Apiclient.ACTIVE_ACCOUNT.getParams(), Arrays.asList(code), null);
@@ -127,12 +127,16 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Make Complaint
+     * @func EDIT PROFILE
      */
 
-    public void make_complaint(String type_id, String message, String consultation_id) throws JSONException {
+    public void edit_profile(String username, String phone, String email, String lat, String lng) {
 
-        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message, consultation_id), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.EDIT_PROFILE.getURL(), Request.Method.POST, Apiclient.EDIT_PROFILE.getParams(), Arrays.asList(username, phone, email, lat, lng), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

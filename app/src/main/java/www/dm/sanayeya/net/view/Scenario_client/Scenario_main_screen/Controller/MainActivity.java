@@ -18,6 +18,7 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_terms.terms;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.categories;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_edit_profile.controller.edit_profile;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener {
@@ -52,8 +53,10 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         } else if (position == 1) {
             new utils().Replace_Fragment(new change_pass(), R.id.frag, this); //CHANGE PASSWORD
         } else if (position == 2) {
-            new utils().Replace_Fragment(new help(), R.id.frag, this); //HELP
+            new utils().Replace_Fragment(new edit_profile(), R.id.frag, this); //HELP
         } else if (position == 3) {
+            new utils().Replace_Fragment(new help(), R.id.frag, this); //HELP
+        } else if (position == 4) {
             new utils().Replace_Fragment(new terms(), R.id.frag, this); //HELP
         }
     }

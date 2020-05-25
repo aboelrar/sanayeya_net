@@ -37,6 +37,7 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.resend_code)
     TextView resendCode;
     active_accountRootClass active_accountRootClass;
+    boolean resend_code = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         }
         else if(view.getId() == R.id.resend_code){
 
+            resend_code = true; //SET CHECK TRUE
+
             //CALL API
             new Apicalls(this, this).resend_code();
         }
@@ -79,20 +82,38 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         //DISMISS DIALOG
         new utils().dismiss_dialog(this);
 
-        //GET DATA
-        Gson gson =  new Gson();
-        active_accountRootClass = gson.fromJson(""+model.getJsonObject(),active_accountRootClass.class);
+        if(resend_code == false)
+        {
+            //GET DATA
+            Gson gson =  new Gson();
+            active_accountRootClass = gson.fromJson(""+model.getJsonObject(),active_accountRootClass.class);
 
-        //CHECK IF EMAIL EXIST TO SEND CODE
-        if(active_accountRootClass.getStatus() == 0)
-        {
-            Toasty.error(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+            //CHECK IF EMAIL EXIST TO SEND CODE
+            if(active_accountRootClass.getStatus() == 0)
+            {
+                Toasty.error(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+            }
+            else if(active_accountRootClass.getStatus() == 1)
+            {
+                Toasty.success(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+                startActivity(new Intent(this, MainActivity.class));  //GO TO RESET PASSWORD
+            }
         }
-        else if(active_accountRootClass.getStatus() == 1)
-        {
-            Toasty.success(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
-            startActivity(new Intent(this, MainActivity.class));  //GO TO RESET PASSWORD
+
+        //RECENT CODE
+        else if(resend_code == true) {
+            if(active_accountRootClass.getStatus() == 0)
+            {
+                Toasty.error(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+            }
+            else if(active_accountRootClass.getStatus() == 1)
+            {
+                Toasty.success(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+            }
+            resend_code = false;
         }
+
+
 
     }
 
@@ -104,7 +125,7 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
     //ACTIVE ACCOUNT VAILDATION
     void active_account_validation() {
 
-        if (verifcationCode.getText().toString().length() < 5)  //VALIDATION ON USERNAME
+        if (verifcationCode.getText().toString().length() < 4)  //VALIDATION ON USERNAME
         {
             String ver_code_val = getResources().getString(R.string.ver_code_val);
             verifcationCode.setError(ver_code_val);

@@ -42,6 +42,7 @@
     <string name="enter_new_password">Enter New Password</string>
     <string name="reytype_new_password">Reytype New Password</string>
     <string name="change_password">CHANGE PASSWORD</string>
+    <string name="editprofile">EDIT PROFILE</string>
     <string name="choose_the_service_type">Choose the service type</string>
     <string name="home_ser_title">Home Service</string>
     <string name="choose_your_province">Choose your province</string>

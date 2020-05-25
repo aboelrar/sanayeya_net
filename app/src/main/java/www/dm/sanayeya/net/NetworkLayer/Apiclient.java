@@ -23,7 +23,7 @@ public enum Apiclient {
     RESET_PASS("Auth_general/reset_password",Arrays.asList("password","code")),
     ACTIVE_ACCOUNT("Auth_private/check_code", Arrays.asList("code")),
     RESEND_CODE("Auth_private/resend_code", null),
-    ADD_CONSULTATION("add-consultation", Arrays.asList("title","details","doctor_id","images","files")),
+    EDIT_PROFILE("Auth_private/edit_profile", Arrays.asList("username","phone","email","lat","lng")),
     SEND_MSG("send-message", Arrays.asList("consultation_id","message")),
     APPOIENMENTS("get-date", Arrays.asList("doctor_id","date")),
     UPDATE_USER_INFO("update-user-info", Arrays.asList("name","phone","email","password","image_url","medical_history")),

@@ -28,6 +28,13 @@ public class saved_data {
         return email;
     }
 
+    //GET EMAIL
+    public String get_phone(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        String email = sharedPreferences.getString("phone", "0");
+        return email;
+    }
+
     //GET PHONE
     public String get_token(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
