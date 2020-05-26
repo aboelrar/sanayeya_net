@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 
 public class choose_language extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,7 +55,7 @@ public class choose_language extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if(view.getId()==R.id.apply)
         {
-          startActivity(new Intent(choose_language.this, choose_login.class));
+          startActivity(new Intent(choose_language.this, login.class));
         }
     }
 }

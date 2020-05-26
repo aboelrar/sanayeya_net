@@ -23,6 +23,7 @@ import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_active_account.model.active_accountRootClass;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen;
 
 import static www.dm.sanayeya.net.utils.utils.yoyo;
 
@@ -38,12 +39,14 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
     TextView resendCode;
     active_accountRootClass active_accountRootClass;
     boolean resend_code = false;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_account);
         ButterKnife.bind(this);
+
 
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
@@ -64,7 +67,11 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         }
         else if(view.getId() == R.id.resend_code){
 
-            resend_code = true; //SET CHECK TRUE
+            //SET CHECK TRUE
+            resend_code = true;
+
+            //CALL PROGRESS DIALOG
+            new utils().set_dialog(this);
 
             //CALL API
             new Apicalls(this, this).resend_code();
@@ -82,6 +89,10 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         //DISMISS DIALOG
         new utils().dismiss_dialog(this);
 
+        //GET TYPE
+        type = getIntent().getStringExtra("type");
+
+
         if(resend_code == false)
         {
             //GET DATA
@@ -96,7 +107,14 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
             else if(active_accountRootClass.getStatus() == 1)
             {
                 Toasty.success(active_account.this, active_accountRootClass.getMessage(), Toasty.LENGTH_LONG).show();
-                startActivity(new Intent(this, MainActivity.class));  //GO TO RESET PASSWORD
+
+               if(type.equals("user"))
+               {
+                   startActivity(new Intent(this, MainActivity.class));  //GO TO USER
+               }
+               else {
+                   startActivity(new Intent(this, winch_main_screen.class));  //GO TO WINCH
+               }
             }
         }
 

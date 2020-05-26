@@ -20,17 +20,17 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/com_name"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_170sdp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/driver" />
+                    android:layout_height="207dp"
+                    android:scaleType="fitXY" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
                     android:paddingLeft="@dimen/_10sdp"
-                    android:text="Ahmed Mohamed"
+                    android:id="@+id/name"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_18sdp"
                     android:textStyle="bold" />
@@ -61,7 +61,7 @@
                             android:numStars="5"
                             android:progressBackgroundTint="#000000"
                             android:progressTint="@color/f_color"
-                            android:rating="5"
+                            android:rating="0"
                             android:scaleX="1.7"
                             android:scaleY="1.7"
                             android:secondaryProgressTint="#ffffff"
@@ -89,7 +89,7 @@
                     android:textStyle="bold" />
 
                 <com.borjabravo.readmoretextview.ReadMoreTextView
-                    android:id="@+id/doc_desc"
+                    android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
@@ -97,48 +97,15 @@
                     android:justificationMode="inter_word"
                     android:paddingLeft="@dimen/_10sdp"
                     android:paddingRight="@dimen/_10sdp"
-                    android:text="orst ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rankt ranking differentials.
-Including social media links or support contact information were both negatively correlated with rank."
                     android:textSize="@dimen/_10sdp"
                     app:trimCollapsedText="@string/show_more"
                     app:trimExpandedText="@string/show_less"
                     app:trimLength="100"
                     app:trimMode="trimModeLength" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_weight=".08"
-                    android:gravity="center"
-                    android:text="@string/write_your_feedback"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_13sdp"
-                    android:textStyle="bold" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_weight=".12"
-                    android:backgroundTint="@color/s_color"
-                    android:gravity="center|left"
-                    android:hint="@string/write_your_feedback"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_14sdp" />
+
+
 
                 <TextView
                     android:layout_width="wrap_content"

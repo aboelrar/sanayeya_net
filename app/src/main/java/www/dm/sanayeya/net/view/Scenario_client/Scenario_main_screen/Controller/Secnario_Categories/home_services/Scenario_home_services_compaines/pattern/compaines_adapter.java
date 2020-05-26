@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -12,19 +13,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.utils.utils_adapter;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.companies_list;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.service_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details;
 
 public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.view_holder> implements View.OnClickListener {
 
     Context context;
     ArrayList<companies_list> mylist;
+    int pos;
 
     public compaines_adapter(Context context, ArrayList<companies_list> mylist) {
         this.context = context;
@@ -44,13 +45,12 @@ public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.vi
         holder.name.setText(mylist.get(position).getName());
         holder.reviews.setText(mylist.get(position).getReviews());
         holder.ratingBar.setRating(mylist.get(position).getRating());
-
-        //SET DATA IN RECYCLERVIEW
-        servies_list(holder.service_list);
+        Glide.with(context).load(mylist.get(position).getImage()).into(holder.service_image);
+        holder.description.setText(mylist.get(position).getDescripition());
 
         //SET ON CLICK LISTNERS
+        this.pos = position;
         holder.service_item.setOnClickListener(this);
-        holder.service_list.setOnClickListener(this);
 
     }
 
@@ -61,41 +61,29 @@ public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.vi
 
     @Override
     public void onClick(View view) {
-         if(view.getId() == R.id.service_item)
-         {
-             context.startActivity(new Intent(context, home_service_details.class));
-         }
-         else if(view.getId() == R.id.service_list)
-         {
-             context.startActivity(new Intent(context, industerial_details.class));
-         }
+        if (view.getId() == R.id.service_item) {
+            Intent intent = new Intent(context, home_service_details.class);
+            intent.putExtra("company_id", "" + mylist.get(pos).getId());
+            context.startActivity(intent);
+        }
     }
 
     class view_holder extends RecyclerView.ViewHolder {
         TextView name, reviews;
         RatingBar ratingBar;
-        RecyclerView service_list;
+        TextView description;
         LinearLayout service_item;
+        ImageView service_image;
+
         public view_holder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.com_name);
             reviews = itemView.findViewById(R.id.review_num);
             ratingBar = itemView.findViewById(R.id.ratings);
-            service_list = itemView.findViewById(R.id.service_list);
+            description = itemView.findViewById(R.id.description);
             service_item = itemView.findViewById(R.id.service_item);
+            service_image = itemView.findViewById(R.id.home_img);
         }
-    }
-
-    void servies_list(RecyclerView services_list)
-    {
-        ArrayList<service_list> arrayList = new ArrayList<>();
-
-        arrayList.add(new service_list("1","Car electration"));
-        arrayList.add(new service_list("1","Car wash"));
-        arrayList.add(new service_list("1","The switch"));
-
-        new utils_adapter().Horozintal(services_list, new service_adapter(context, arrayList), context);
-
     }
 
 }

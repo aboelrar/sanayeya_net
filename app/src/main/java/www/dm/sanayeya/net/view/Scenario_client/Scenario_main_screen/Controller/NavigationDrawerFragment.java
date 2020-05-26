@@ -1,5 +1,6 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
@@ -19,11 +20,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.VolleyError;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import www.dm.sanayeya.net.NetworkLayer.Apicalls;
+import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
+import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_login.controller.winch_login;
+import www.dm.sanayeya.net.utils.utils;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 
 
 /**
@@ -31,7 +38,7 @@ import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scen
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks, View.OnClickListener {
+public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
 
     /**
      * Remember the position of the selected item.
@@ -246,12 +253,38 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.logout) {
-            getActivity().startActivity(new Intent(getActivity(), winch_login.class));
-            getActivity().finish();
+
+            //CALL PROGRESS DIALOG
+            new utils().set_dialog(getContext());
+
+            //CALL API
+            new Apicalls(getContext(), NavigationDrawerFragment.this).logout();
 
         }
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+        //CALL DISMISS DIALOG
+        new utils().dismiss_dialog(getContext());
+
+        getActivity().startActivity(new Intent(getActivity(), login.class));
+        getActivity().finish();
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
     }
 }

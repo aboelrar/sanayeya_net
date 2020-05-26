@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services;
@@ -21,6 +24,11 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 public class categories extends Fragment implements View.OnClickListener {
 
     View view;
+    ImageView winch_img;
+    ImageView twenty_four_img;
+    ImageView home_service_img;
+    ImageView industerial_service_img;
+
 
     public categories() {
         // Required empty public constructor
@@ -32,6 +40,24 @@ public class categories extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.categories, container, false);
+
+        //SET WINCH IMAGE IN GLIDE
+        winch_img = view.findViewById(R.id.winch_img);
+        Glide.with(getContext()).load(R.drawable.winch).into(winch_img);
+
+        //SET TWENTY FOUR IN GLIDE
+        twenty_four_img = view.findViewById(R.id.twentyfour_image);
+        Glide.with(getContext()).load(R.drawable.twentyfour).into(twenty_four_img);
+
+        //SET HOME SERVICES FOUR IN GLIDE
+        home_service_img = view.findViewById(R.id.home);
+        Glide.with(getContext()).load(R.drawable.home_service).into(home_service_img);
+
+        //SET HOME SERVICES FOUR IN GLIDE
+        industerial_service_img = view.findViewById(R.id.industerial);
+        Glide.with(getContext()).load(R.drawable.industerial_service).into(industerial_service_img);
+
+
 
         //GO TO WINCH PAGE
         RelativeLayout winch = view.findViewById(R.id.winch);

@@ -33,6 +33,7 @@ import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_forget_password.controller.forget_password;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.model.Datum;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.model.login_model;
@@ -75,7 +76,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         if (view.getId() == R.id.back) {
             finish();
         } else if (view.getId() == R.id.signup) {
-            startActivity(new Intent(login.this, www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup.class));
+            startActivity(new Intent(login.this, choose_login.class));
         } else if (view.getId() == R.id.login) {
             login_validation();  //LOGIN VALIDATION
         } else if (view.getId() == R.id.forget_pass) {
@@ -116,7 +117,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
             //OPEN DIALOG
             loading loading = new loading();
-            loading.dialog(login.this, R.layout.successful_login, .80);
+            loading.dialog(login.this, R.layout.successful_login, .80,data.getType());
 
         }
     }

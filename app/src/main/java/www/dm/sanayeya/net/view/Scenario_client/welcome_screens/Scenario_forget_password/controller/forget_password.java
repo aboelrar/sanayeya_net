@@ -83,8 +83,8 @@ public class forget_password extends AppCompatActivity implements View.OnClickLi
         {
 
             //SUCCESSFUL DIALOG
-            loading loading = new loading();
-            loading.dialog(forget_password.this, R.layout.successful_login, .80);
+            Toasty.success(forget_password.this, forget_passRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+            startActivity(new Intent(this,verifcation_code.class));
 
         }
 

@@ -1,0 +1,27 @@
+package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.model;
+
+public class home_service_list  {
+    String id;
+    String name;
+
+    public home_service_list(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

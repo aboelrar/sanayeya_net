@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".45"
+            android:layout_weight=".4"
             android:gravity="center">
 
             <ImageView
@@ -42,18 +42,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".55"
+            android:layout_weight=".6"
             android:gravity="top|center"
             android:orientation="vertical"
             android:paddingLeft="@dimen/_20sdp"
-            android:paddingTop="@dimen/_20sdp"
             android:paddingRight="@dimen/_20sdp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="center"
+                android:text="The activation code has been sent to your\n email, Please write it here"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
                 android:text="@string/verfication_code"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
@@ -63,10 +73,17 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="left|center"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:background="@drawable/verfication_code"
                 android:hint="@string/verfication_code"
                 android:paddingLeft="@dimen/_10sdp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:src="@color/line_color"
+                />
 
             <Button
                 android:id="@+id/active"
@@ -76,6 +93,7 @@
                 android:text="@string/active"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:textStyle="bold" />
 
             <TextView

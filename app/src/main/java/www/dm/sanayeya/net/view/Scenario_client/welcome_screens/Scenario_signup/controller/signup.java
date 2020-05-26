@@ -111,7 +111,10 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
             save_local_data();
 
             //GO TO ACTIVE CODE
-            startActivity(new Intent(this, active_account.class));
+            Intent intent = new Intent(this, active_account.class);
+            intent.putExtra("type",signupDatum.getType());
+            startActivity(intent);
+
 
         }
     }

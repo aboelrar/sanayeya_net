@@ -145,12 +145,16 @@ public class Apicalls {
 
 
     /**
-     * @func MY_CONSULTATIONS
+     * @func LOGOUT
      */
 
-    public void my_consultations() throws JSONException {
+    public void logout() {
 
-        apiRouter.makeAdvancedRequest(Apiclient.MY_CONSULTATIONS.getURL(), Request.Method.GET, Apiclient.MY_CONSULTATIONS.getParams(), null, null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.LOGOUT.getURL(), Request.Method.POST, Apiclient.LOGOUT.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -159,25 +163,51 @@ public class Apicalls {
 
 
     /**
-     * @func CONFIRM_CONSULTATION
+     * @func CHOOSE HOME SERVICES
      */
 
-    public void confirm_consultation(String consultation_id, String payment_status) throws JSONException {
+    public void choose_home_service() {
 
-        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONSULTATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONSULTATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.CHOOSE_HOME_SERVICES.getURL(), Request.Method.GET, Apiclient.CHOOSE_HOME_SERVICES.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     //----------------------------------------------------------------------------------------------
 
+
     /**
-     * @func RESERVE_CONVERSATION
+     * @func HOME SERVICES DATA
      */
 
-    public void reserve_conversation(String doctor_id, String appointment_id) throws JSONException {
+    public void home_service_data(String id) {
 
-        apiRouter.makeAdvancedRequest(Apiclient.RESERVE_CONVERSATION.getURL(), Request.Method.POST, Apiclient.RESERVE_CONVERSATION.getParams(), Arrays.asList(doctor_id, appointment_id), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.HOME_SERVICES_DATA.getURL() + id, Request.Method.GET, Apiclient.HOME_SERVICES_DATA.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+
+    /**
+     * @func HOME SERVICES DATA
+     */
+
+    public void home_service_details(String id) {
+
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.HOME_SERVICE_DETAILS.getURL() + id, Request.Method.GET, Apiclient.HOME_SERVICE_DETAILS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

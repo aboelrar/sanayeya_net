@@ -44,8 +44,6 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
         holder.reviews.setText(mylist.get(position).getReviews());
         holder.ratingBar.setRating(mylist.get(position).getRating());
 
-        //SET DATA IN RECYCLERVIEW
-        servies_list(holder.service_list);
 
         //SET ON CLICK LISTNERS
         holder.service_item.setOnClickListener(this);
@@ -64,10 +62,6 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
          {
              context.startActivity(new Intent(context, industerial_details.class));
          }
-         else if(view.getId() == R.id.service_list)
-         {
-             context.startActivity(new Intent(context, industerial_details.class));
-         }
     }
 
     class view_holder extends RecyclerView.ViewHolder {
@@ -80,21 +74,10 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
             name = itemView.findViewById(R.id.com_name);
             reviews = itemView.findViewById(R.id.review_num);
             ratingBar = itemView.findViewById(R.id.ratings);
-            service_list = itemView.findViewById(R.id.service_list);
             service_item = itemView.findViewById(R.id.service_item);
         }
     }
 
-    void servies_list(RecyclerView services_list)
-    {
-        ArrayList<service_list> arrayList = new ArrayList<>();
 
-        arrayList.add(new service_list("1","Car electration"));
-        arrayList.add(new service_list("1","Car wash"));
-        arrayList.add(new service_list("1","The switch"));
-
-        new utils_adapter().Horozintal(services_list, new service_adapter(context, arrayList), context);
-
-    }
 
 }

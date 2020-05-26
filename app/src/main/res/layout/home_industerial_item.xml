@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/service_item"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_100sdp"
     android:layout_marginBottom="@dimen/_20sdp"
-    android:id="@+id/service_item"
     android:orientation="vertical"
     android:paddingLeft="@dimen/_20sdp"
     android:paddingRight="@dimen/_20sdp"
@@ -23,6 +23,7 @@
             app:cardCornerRadius="@dimen/_5sdp">
 
             <ImageView
+                android:id="@+id/home_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="center"
@@ -48,9 +49,13 @@
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_15sdp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/service_list"
+            <TextView
+                android:id="@+id/description"
                 android:layout_width="match_parent"
+                android:gravity="left|center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/_11sdp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
@@ -94,8 +99,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight=".4"
                     android:gravity="center"
-                    android:textSize="@dimen/_11sdp"
-                    android:text="25 review" />
+                    android:text="25 review"
+                    android:textSize="@dimen/_11sdp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

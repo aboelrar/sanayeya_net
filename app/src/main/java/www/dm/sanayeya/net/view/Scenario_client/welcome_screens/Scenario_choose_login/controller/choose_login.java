@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
-import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_login.controller.winch_login;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
 
 public class choose_login extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,11 +43,11 @@ public class choose_login extends AppCompatActivity implements View.OnClickListe
         }
         else if(view.getId()==R.id.user)
         {
-            startActivity(new Intent(choose_login.this, login.class));
+            startActivity(new Intent(choose_login.this, signup.class));
         }
         else if(view.getId() == R.id.winch_owner)
         {
-            startActivity(new Intent(choose_login.this, winch_login.class));
+            startActivity(new Intent(choose_login.this, winch_signup.class));
         }
     }
 }
