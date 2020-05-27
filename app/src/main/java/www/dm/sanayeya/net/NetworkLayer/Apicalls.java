@@ -215,11 +215,15 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Confirm Conversation
+     * @func PROVINCE
      */
 
-    public void confirm_conversation(final String consultation_id, final String payment_status) throws JSONException {
-        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONVERSATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONVERSATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
+    public void province() {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.PROVINCE.getURL(), Request.Method.GET, Apiclient.PROVINCE.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -227,24 +231,32 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func FAQ
+     * @func CAR MODELS
      */
 
-    public void faq() throws JSONException {
+    public void car_models() {
 
-        apiRouter.makeAdvancedRequest(Apiclient.FAQ.getURL(), Request.Method.GET, Apiclient.FAQ.getParams(), null, null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.CAR_MODELS.getURL(), Request.Method.GET, Apiclient.CAR_MODELS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func GET MESSAGES
+     * @func WORK SHOP TYPES
      */
 
-    public void get_all_msg(final String consultation_id) throws JSONException {
+    public void work_shops_types() {
 
-        apiRouter.makeAdvancedRequest(Apiclient.GET_ALL_MSG.getURL(), Request.Method.POST, Apiclient.GET_ALL_MSG.getParams(), Arrays.asList(consultation_id), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.WORK_SHOPS.getURL(), Request.Method.GET, Apiclient.WORK_SHOPS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -252,11 +264,15 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Download Files
+     * @func INDUSTERIAL SERVICES LIST
      */
 
-    public void download_file(final String consultation_id) throws JSONException {
-        apiRouter.makeAdvancedRequest(Apiclient.DOWNLOAD_REPORT.getURL(), Request.Method.POST, Apiclient.DOWNLOAD_REPORT.getParams(), Arrays.asList(consultation_id), null);
+    public void industerial_services_list(final String car_model_id, final String workShop_id, final String province_id) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.INDUSTERIAL_SERVICES.getURL() + "?car_model_id=" + car_model_id + "&workShop_id=" + workShop_id + "&province_id=" + province_id, Request.Method.GET, null, null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -264,12 +280,16 @@ public class Apicalls {
 
 
     /**
-     * @func CONSULTATION_FILES
+     * @func INDUSTERIAL DETAILS
      */
 
-    public void consultation_files(final String consultation_id) throws JSONException {
+    public void industerial_details(final String id) {
 
-        apiRouter.makeAdvancedRequest(Apiclient.CONSULTATION_FILES.getURL(), Request.Method.POST, Apiclient.CONSULTATION_FILES.getParams(), Arrays.asList(consultation_id), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.INDUSTERIAL_SERVICES_DETAILS.getURL() + "/" + id, Request.Method.GET, Apiclient.INDUSTERIAL_SERVICES_DETAILS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

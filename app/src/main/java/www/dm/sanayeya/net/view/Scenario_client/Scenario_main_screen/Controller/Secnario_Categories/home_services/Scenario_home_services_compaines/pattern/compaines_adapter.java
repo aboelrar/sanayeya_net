@@ -21,7 +21,7 @@ import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.model.companies_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details;
 
-public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.view_holder> implements View.OnClickListener {
+public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.view_holder> {
 
     Context context;
     ArrayList<companies_list> mylist;
@@ -49,23 +49,20 @@ public class compaines_adapter extends RecyclerView.Adapter<compaines_adapter.vi
         holder.description.setText(mylist.get(position).getDescripition());
 
         //SET ON CLICK LISTNERS
-        this.pos = position;
-        holder.service_item.setOnClickListener(this);
+        holder.service_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, home_service_details.class);
+                intent.putExtra("company_id", "" + mylist.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return mylist.size();
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.service_item) {
-            Intent intent = new Intent(context, home_service_details.class);
-            intent.putExtra("company_id", "" + mylist.get(pos).getId());
-            context.startActivity(intent);
-        }
     }
 
     class view_holder extends RecyclerView.ViewHolder {

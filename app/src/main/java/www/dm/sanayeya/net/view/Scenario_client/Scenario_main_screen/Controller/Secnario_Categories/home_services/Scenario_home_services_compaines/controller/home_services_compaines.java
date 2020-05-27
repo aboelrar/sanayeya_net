@@ -70,7 +70,6 @@ public class home_services_compaines extends AppCompatActivity implements View.O
     @Override
     public void OnResponse(ResponseModel model) {
 
-        Toast.makeText(this, "" + model.getJsonObject(), Toast.LENGTH_SHORT).show();
 
         Gson gson = new Gson();
         home_service_dataRootClass = gson.fromJson("" + model.getJsonObject(), home_service_dataRootClass.class);
