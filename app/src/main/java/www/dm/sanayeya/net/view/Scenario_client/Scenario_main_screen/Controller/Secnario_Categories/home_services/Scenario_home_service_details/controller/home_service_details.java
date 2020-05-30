@@ -1,11 +1,15 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +32,7 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.model.home_service_detailsRateUser;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.model.home_service_detailsRootClass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.pattern.reviews_adapter;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_rate.controller.home_services_rate;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.review_list;
 
 
@@ -50,6 +55,10 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     TextView name;
     @BindView(R.id.desc)
     ReadMoreTextView desc;
+    @BindView(R.id.check_review)
+    TextView checkReview;
+    @BindView(R.id.go_rate)
+    TextView goRate;
 
 
     @Override
@@ -57,8 +66,6 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_service_details);
         ButterKnife.bind(this);
-
-        new Apicalls(this, this).home_service_details(getIntent().getStringExtra("company_id"));
 
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
@@ -69,6 +76,12 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         if (view.getId() == R.id.back) {
             finish();
+        }  else if (view.getId() == R.id.go_rate) {
+            Intent intent = new Intent(home_service_details.this, home_services_rate.class);
+            intent.putExtra("shop_id", getIntent().getStringExtra("company_id"));
+            intent.putExtra("name", data.getName());
+            intent.putExtra("image", data.getImage());
+            startActivity(intent);
         }
     }
 
@@ -77,6 +90,7 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void OnResponse(ResponseModel model) {
 
@@ -94,7 +108,10 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
             name.setText(data.getName());
             desc.setText(data.getDesc());
             ratings.setRating(data.getRate());
-            reviewNum.setText("" + data.getRatesCount());
+
+            String reviews = "<font color=#808080>Based on " + data.getRatesCount() + " </font> <font color=#F8971C> Reviews</font>"; //SET TEXT COLOR
+            reviewNum.setText(Html.fromHtml(reviews, Html.FROM_HTML_MODE_LEGACY));
+
             Glide.with(this).load(data.getImage()).into(com_image);
 
             //GET RATE
@@ -102,21 +119,39 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
             home_service_detailsRateUsers = data.getRateUsers();
 
 
-            for (int index = 0; index < home_service_detailsRateUsers.length; index++) {
-                rate_List.add(new review_list("" + home_service_detailsRateUsers[index].getId(),
-                        home_service_detailsRateUsers[index].getName(),
-                        home_service_detailsRateUsers[index].getComment(),
-                        home_service_detailsRateUsers[index].getCreatedAt(),
-                        home_service_detailsRateUsers[index].getRate()));
+            if (home_service_detailsRateUsers.length != 0) {
+
+                for (int index = 0; index < home_service_detailsRateUsers.length; index++) {
+                    rate_List.add(new review_list("" + home_service_detailsRateUsers[index].getId(),
+                            home_service_detailsRateUsers[index].getName(),
+                            home_service_detailsRateUsers[index].getComment(),
+                            home_service_detailsRateUsers[index].getCreatedAt(),
+                            home_service_detailsRateUsers[index].getRate()));
+                }
+
+                new utils_adapter().Adapter(reviewsList, new reviews_adapter(this, rate_List), this);
+            } else {
+                checkReview.setVisibility(View.VISIBLE); //SET VISBILITY
             }
 
-            new utils_adapter().Adapter(reviewsList,new reviews_adapter(this,rate_List),this);
+            //SET ON CLICK
+            goRate.setOnClickListener(this);
+
 
         }
     }
 
     @Override
     public void OnError(VolleyError error) {
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //CALL API
+        new Apicalls(this, this).home_service_details(getIntent().getStringExtra("company_id"));
 
     }
 }

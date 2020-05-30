@@ -1,6 +1,8 @@
 package www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_choose_language.controller;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,11 @@ public class choose_language extends AppCompatActivity implements View.OnClickLi
     Spinner language;
     @BindView(R.id.apply)
     Button apply;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    Boolean mLocationPermissionsGranted = false;
+
 
 
     @Override
@@ -30,6 +39,8 @@ public class choose_language extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_language);
         ButterKnife.bind(this);
+
+        getLocationPermission(); //Location Permission
 
         add_spinner_data();  //SPINNER DATA
 
@@ -56,6 +67,28 @@ public class choose_language extends AppCompatActivity implements View.OnClickLi
         if(view.getId()==R.id.apply)
         {
           startActivity(new Intent(choose_language.this, login.class));
+        }
+    }
+
+    //GET PREMISSION IF YES OR NO
+    private void getLocationPermission() {
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION};
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                    COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionsGranted = true;
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        permissions,
+                        LOCATION_PERMISSION_REQUEST_CODE);
+            }
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    permissions,
+                    LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
 }

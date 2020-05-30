@@ -26,11 +26,11 @@
                     android:scaleType="fitXY" />
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
                     android:paddingLeft="@dimen/_10sdp"
-                    android:id="@+id/name"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_18sdp"
                     android:textStyle="bold" />
@@ -103,9 +103,24 @@
                     app:trimLength="100"
                     app:trimMode="trimModeLength" />
 
+                <TextView
+                    android:id="@+id/go_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/add_your_feedback_and_rate"
+                    android:textColor="@color/f_color"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
 
-
-
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:src="@color/line_color" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,22 +132,40 @@
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/reviews_list"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp" />
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/check_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="@string/there_is_no_review"
+                        android:textSize="@dimen/_13sdp"
+                        android:visibility="gone" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/reviews_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp" />
+
+                </RelativeLayout>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_180sdp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_150sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 app:cardCornerRadius="@dimen/_25sdp"
                 app:cardElevation="@dimen/_5sdp">
 
@@ -140,12 +173,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="3">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight=".4995"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_height="@dimen/_17sdp"
+                            android:src="@drawable/phone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="@string/call"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight=".01"
+                        android:src="@android:color/black" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -173,7 +234,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight=".4995"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 

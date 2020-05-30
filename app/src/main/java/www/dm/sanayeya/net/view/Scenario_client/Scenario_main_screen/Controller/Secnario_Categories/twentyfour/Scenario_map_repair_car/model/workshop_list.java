@@ -1,15 +1,16 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.model;
 
 public class workshop_list {
-    String id,name,address,review;
+    String id, name, address, review, image;
     int num;
 
-    public workshop_list(String id, String name, String address, int num, String review) {
+    public workshop_list(String id, String name, String address, int num, String review, String image) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.num = num;
         this.review = review;
+        this.image = image;
     }
 
     public String getId() {
@@ -50,5 +51,13 @@ public class workshop_list {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

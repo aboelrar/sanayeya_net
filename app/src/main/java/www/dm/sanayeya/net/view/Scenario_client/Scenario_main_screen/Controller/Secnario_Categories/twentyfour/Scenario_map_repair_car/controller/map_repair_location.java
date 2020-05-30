@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.VolleyError;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,18 +23,28 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
+import www.dm.sanayeya.net.NetworkLayer.Apicalls;
+import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
+import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.utils.utils_adapter;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.model.twenty_fourDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.model.workshop_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.pattern.workshop_adapter;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.model.twenty_fourRootClass;
 
-public class map_repair_location extends AppCompatActivity implements OnMapReadyCallback, OnCompleteListener {
+public class map_repair_location extends AppCompatActivity implements OnMapReadyCallback, OnCompleteListener, NetworkInterface {
 
     GoogleMap mGoogleMap;
     @BindView(R.id.workshop_list)
@@ -42,6 +54,8 @@ public class map_repair_location extends AppCompatActivity implements OnMapReady
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    twenty_fourRootClass twenty_fourRootClass;
+    twenty_fourDatum[] data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +70,6 @@ public class map_repair_location extends AppCompatActivity implements OnMapReady
         //LOCATION PREMISSION
         getLocationPermission();
 
-        //GET DATA
-        getData();
 
     }
 
@@ -108,6 +120,9 @@ public class map_repair_location extends AppCompatActivity implements OnMapReady
             View map = findViewById(R.id.map);
             new utils().marker_animation(current_lat, current_lng, map, mGoogleMap);
 
+            //CALL API
+            new Apicalls(this, this).twenty_four("112.3333333", "12.26548488");
+
         }
     }
 
@@ -135,15 +150,50 @@ public class map_repair_location extends AppCompatActivity implements OnMapReady
     }
 
     //GET DATA
-    void  getData()
-    {
-        ArrayList<workshop_list> arrayList = new ArrayList<>();
-        arrayList.add(new workshop_list("1","ahmed mohamed","42 el kalefa almamoun",5,"25 review"));
-        arrayList.add(new workshop_list("1","ibraheem mohamed","42 el kalefa almamoun",3,"21 review"));
-        arrayList.add(new workshop_list("1","ahmed othman","42 el kalefa almamoun",1,"40 review"));
+    void getData(JSONObject jsonObject) {
 
-        new utils_adapter().Horozintal(workshopList,new workshop_adapter(map_repair_location.this,arrayList),map_repair_location.this);
+        ArrayList<workshop_list> arrayList = new ArrayList<>();
+
+        Gson gson = new Gson();
+        twenty_fourRootClass = gson.fromJson("" + jsonObject, twenty_fourRootClass.class);
+
+        if (twenty_fourRootClass.getStatus() == 0) {
+            Toasty.error(map_repair_location.this, twenty_fourRootClass.getMessage(), Toasty.LENGTH_LONG).show();
+        } else {
+            data = twenty_fourRootClass.getData();
+            for (int index = 0; index < data.length; index++) {
+                arrayList.add(new workshop_list("" + data[index].getId(),
+                        data[index].getName(), "el oubor st",
+                        data[index].getRate(), "" + data[index].getRatesCount()+" review",
+                        data[index].getImage()));
+            }
+
+            new utils_adapter().Horozintal(workshopList, new workshop_adapter(map_repair_location.this, arrayList), map_repair_location.this);
+
+        }
     }
 
 
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+        getData(model.getJsonObject());
+
+        //CHECK IF DATA IS NULL
+        if(data.length == 0)
+        {
+            Toasty.warning(map_repair_location.this, getString(R.string.no_work_shop_nearby), Toasty.LENGTH_LONG).show();
+        }
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
+    }
 }

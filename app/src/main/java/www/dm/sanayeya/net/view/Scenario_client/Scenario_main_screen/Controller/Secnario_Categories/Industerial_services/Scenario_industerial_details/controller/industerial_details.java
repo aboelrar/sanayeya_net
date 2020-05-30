@@ -1,11 +1,15 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 import www.dm.sanayeya.net.NetworkLayer.Apicalls;
-import www.dm.sanayeya.net.NetworkLayer.Apiclient;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
@@ -32,7 +35,9 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.model.industerial_service_detailsRootClass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.model.review_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.pattern.reviews_adapter;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.controller.home_services;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_rate.controller.industerial_rate;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_rate.controller.workshop_rate;
 
 public class industerial_details extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
 
@@ -53,6 +58,10 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
     industerial_service_detailsRootClass industerial_service_detailsRootClass;
     industerial_service_detailsDatum industerial_service_detailsData;
     industerial_service_detailsRateUser[] industerial_service_detailsRateUsers;
+    @BindView(R.id.check_review)
+    TextView checkReview;
+    @BindView(R.id.go_rate)
+    TextView goRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +72,6 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
 
-        //CALL API
-        new Apicalls(this, this).industerial_details(getIntent().getStringExtra("industerial_id"));
 
     }
 
@@ -73,6 +80,12 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         if (view.getId() == R.id.back) {
             finish();
+        } else if (view.getId() == R.id.go_rate) {
+            Intent intent = new Intent(industerial_details.this, industerial_rate.class);
+            intent.putExtra("shop_id", getIntent().getStringExtra("industerial_id"));
+            intent.putExtra("name", industerial_service_detailsData.getName());
+            intent.putExtra("image", industerial_service_detailsData.getImage());
+            startActivity(intent);
         }
     }
 
@@ -81,9 +94,14 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void OnResponse(ResponseModel model) {
+
         set_data(model.getJsonObject());
+
+        //GO TO RATE
+        goRate.setOnClickListener(this);
 
     }
 
@@ -92,6 +110,7 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     void set_data(JSONObject jsonObject) {
         Gson gson = new Gson();
         industerial_service_detailsRootClass = gson.fromJson("" + jsonObject, industerial_service_detailsRootClass.class);
@@ -101,11 +120,15 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
         } else {
             industerial_service_detailsData = industerial_service_detailsRootClass.getData();
 
+
             //SET DATA
             name.setText("" + industerial_service_detailsData.getName());
             desc.setText("" + industerial_service_detailsData.getDesc());
             ratings.setRating(industerial_service_detailsData.getRate());
-            reviewNum.setText("" + industerial_service_detailsData.getRatesCount() + " reviews");
+
+            String reviews = "<font color=#808080>Based on " + industerial_service_detailsData.getRatesCount() + " </font> <font color=#F8971C> Reviews</font>"; //SET TEXT COLOR
+            reviewNum.setText(Html.fromHtml(reviews, Html.FROM_HTML_MODE_LEGACY));
+
             Glide.with(this).load(industerial_service_detailsData.getImage()).into(industerialImg);
 
 
@@ -113,18 +136,32 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
             ArrayList<review_list> rate_List = new ArrayList<>();
             industerial_service_detailsRateUsers = industerial_service_detailsData.getRateUsers();
 
+            if (industerial_service_detailsRateUsers.length != 0) {
 
-            for (int index = 0; index < industerial_service_detailsRateUsers.length; index++) {
-                rate_List.add(new review_list("" + industerial_service_detailsRateUsers[index].getId(),
-                        industerial_service_detailsRateUsers[index].getName(),
-                        industerial_service_detailsRateUsers[index].getComment(),
-                        industerial_service_detailsRateUsers[index].getCreatedAt(),
-                        industerial_service_detailsRateUsers[index].getRate()));
+                for (int index = 0; index < industerial_service_detailsRateUsers.length; index++) {
+                    rate_List.add(new review_list("" + industerial_service_detailsRateUsers[index].getId(),
+                            industerial_service_detailsRateUsers[index].getName(),
+                            industerial_service_detailsRateUsers[index].getComment(),
+                            industerial_service_detailsRateUsers[index].getCreatedAt(),
+                            industerial_service_detailsRateUsers[index].getRate()));
+                }
+
+                new utils_adapter().Adapter(reviewsList, new reviews_adapter(this, rate_List), this);
+            } else {
+                checkReview.setVisibility(View.VISIBLE); //SET VISBILITY
             }
 
-            new utils_adapter().Adapter(reviewsList, new reviews_adapter(this, rate_List), this);
 
         }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //CALL API
+        new Apicalls(this, this).industerial_details(getIntent().getStringExtra("industerial_id"));
 
     }
 }

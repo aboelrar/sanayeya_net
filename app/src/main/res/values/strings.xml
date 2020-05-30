@@ -80,4 +80,10 @@
     <string name="address_val">Address is too short!</string>
     <string name="active">Active</string>
     <string name="address">Address</string>
+    <string name="no_work_shop_nearby">There is no companies near by you</string>
+    <string name="there_is_no_review">There is any review</string>
+    <string name="add_your_feedback_and_rate">Add your feedback and rate</string>
+    <string name="please_rate">You must rate</string>
+    <string name="feedback">Feedback</string>
+    <string name="call">Call</string>
 </resources>

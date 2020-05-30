@@ -6,6 +6,7 @@ import com.android.volley.Request;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -297,12 +298,16 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func CHECK OUT
+     * @func TWINTY FOUR
      */
 
-    public void check_out(String amount) throws JSONException {
+    public void twenty_four(final String lat, final String lng) {
 
-        apiRouter.makeAdvancedRequest(Apiclient.CHECK_OUT.getURL(), Request.Method.POST, Apiclient.CHECK_OUT.getParams(), Arrays.asList(amount), null);
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.TWENTY_FOUR.getURL() + "?lat=" + lat + "&lng=" + lng, Request.Method.GET, Apiclient.INDUSTERIAL_SERVICES_DETAILS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -310,49 +315,61 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Get Orders Data
+     * @func Twenty four details
      */
 
-    public void Get_order_data() {
+    public void twenty_four_details(final String id) {
 
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.TWENTY_FOUR_DETAILS.getURL() + "/" + id, Request.Method.GET, Apiclient.TWENTY_FOUR_DETAILS.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Get Offer Data
+     * @func WORKSHOP RATE
      */
 
-    public void Get_myOrder() {
-
+    public void workshop_rate(final String id, final String rate, final String comment) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.WORKSHOP_RATE.getURL() + "/" + id, Request.Method.POST, Apiclient.WORKSHOP_RATE.getParams(), Arrays.asList(rate, comment), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Set Complaint
+     * @func Industerial Rate
      */
 
-    public void set_complaint(String order_id, String complaint_type_id, String complaint) {
-
-//        try {
-//            apiRouter.makeAdvancedRequest(Apiclient.SET_COMPLAINT.getURL(), Request.Method.POST,Apiclient.SET_COMPLAINT.getParams(),Arrays.asList(order_id,complaint_type_id,complaint),null);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+    public void industerial_rate(final String id, final String rate, final String comment) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.INDUSTERIAL_RATE.getURL() + "/" + id, Request.Method.POST, Apiclient.INDUSTERIAL_RATE.getParams(), Arrays.asList(rate, comment), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Cancel Order
+     * @func HOME SERVICES RATE
      */
 
-    public void cancel_order(String order_id) {
-
+    public void home_services_rate(final String id, final String rate, final String comment) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.HOMESERVICES_RATE.getURL() + "/" + id, Request.Method.POST, Apiclient.HOMESERVICES_RATE.getParams(), Arrays.asList(rate, comment), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
