@@ -1,11 +1,13 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -59,6 +61,12 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     TextView checkReview;
     @BindView(R.id.go_rate)
     TextView goRate;
+    @BindView(R.id.call)
+    LinearLayout call;
+    @BindView(R.id.whatsapp)
+    LinearLayout whatsapp;
+    @BindView(R.id.sms)
+    LinearLayout sms;
 
 
     @Override
@@ -69,6 +77,9 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
 
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
+        call.setOnClickListener(this);
+        sms.setOnClickListener(this);
+        whatsapp.setOnClickListener(this);
 
     }
 
@@ -76,12 +87,22 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         if (view.getId() == R.id.back) {
             finish();
-        }  else if (view.getId() == R.id.go_rate) {
+        } else if (view.getId() == R.id.go_rate) {
             Intent intent = new Intent(home_service_details.this, home_services_rate.class);
             intent.putExtra("shop_id", getIntent().getStringExtra("company_id"));
             intent.putExtra("name", data.getName());
             intent.putExtra("image", data.getImage());
             startActivity(intent);
+        } else if (view.getId() == R.id.call) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", data.getPhone(), null)));
+        } else if (view.getId() == R.id.sms) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
+                    + data.getPhone())));
+        } else if (view.getId() == R.id.whatsapp) {
+            Uri uri = Uri.parse("smsto:" + data.getPhone());
+            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+            i.setPackage("com.whatsapp");
+            startActivity(Intent.createChooser(i, ""));
         }
     }
 

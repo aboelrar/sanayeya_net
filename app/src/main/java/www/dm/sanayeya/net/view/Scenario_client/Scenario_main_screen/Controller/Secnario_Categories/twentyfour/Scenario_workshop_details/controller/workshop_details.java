@@ -1,11 +1,13 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -28,7 +30,6 @@ import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils_adapter;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.review_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.twenty_four_detailsDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.twenty_four_detailsRateUser;
@@ -59,6 +60,12 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
     TextView checkReview;
     @BindView(R.id.go_rate)
     TextView goRate;
+    @BindView(R.id.call)
+    LinearLayout call;
+    @BindView(R.id.whatsapp)
+    LinearLayout whatsapp;
+    @BindView(R.id.sms)
+    LinearLayout sms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,9 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
 
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
+        call.setOnClickListener(this);
+        sms.setOnClickListener(this);
+        whatsapp.setOnClickListener(this);
 
     }
 
@@ -82,6 +92,17 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
             intent.putExtra("name", twenty_four_detailsDatum.getName());
             intent.putExtra("image", twenty_four_detailsDatum.getImage());
             startActivity(intent);
+        } else if (view.getId() == R.id.call) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", twenty_four_detailsDatum.getPhone(), null)));
+        } else if (view.getId() == R.id.sms) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
+                    + twenty_four_detailsDatum.getPhone())));
+        } else if(view.getId() == R.id.whatsapp)
+        {
+            Uri uri = Uri.parse("smsto:" + twenty_four_detailsDatum.getPhone());
+            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+            i.setPackage("com.whatsapp");
+            startActivity(Intent.createChooser(i, ""));
         }
     }
 

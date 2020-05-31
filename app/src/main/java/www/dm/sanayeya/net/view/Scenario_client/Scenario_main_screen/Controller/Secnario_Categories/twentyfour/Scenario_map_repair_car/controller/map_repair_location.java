@@ -163,7 +163,7 @@ public class map_repair_location extends AppCompatActivity implements OnMapReady
             data = twenty_fourRootClass.getData();
             for (int index = 0; index < data.length; index++) {
                 arrayList.add(new workshop_list("" + data[index].getId(),
-                        data[index].getName(), "el oubor st",
+                        data[index].getName(), data[index].getAddress(),
                         data[index].getRate(), "" + data[index].getRatesCount()+" review",
                         data[index].getImage()));
             }

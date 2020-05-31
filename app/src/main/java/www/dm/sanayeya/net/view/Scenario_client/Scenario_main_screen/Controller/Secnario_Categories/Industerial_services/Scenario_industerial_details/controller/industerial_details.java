@@ -1,11 +1,13 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -36,8 +38,6 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.model.review_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.pattern.reviews_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_rate.controller.industerial_rate;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_rate.controller.workshop_rate;
 
 public class industerial_details extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
 
@@ -62,6 +62,12 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
     TextView checkReview;
     @BindView(R.id.go_rate)
     TextView goRate;
+    @BindView(R.id.call)
+    LinearLayout call;
+    @BindView(R.id.whatsapp)
+    LinearLayout whatsapp;
+    @BindView(R.id.sms)
+    LinearLayout sms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,9 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
 
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
+        call.setOnClickListener(this);
+        sms.setOnClickListener(this);
+        whatsapp.setOnClickListener(this);
 
 
     }
@@ -86,6 +95,16 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
             intent.putExtra("name", industerial_service_detailsData.getName());
             intent.putExtra("image", industerial_service_detailsData.getImage());
             startActivity(intent);
+        } else if (view.getId() == R.id.call) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", industerial_service_detailsData.getPhone(), null)));
+        } else if (view.getId() == R.id.sms) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
+                    + industerial_service_detailsData.getPhone())));
+        } else if (view.getId() == R.id.whatsapp) {
+            Uri uri = Uri.parse("smsto:" + industerial_service_detailsData.getPhone());
+            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+            i.setPackage("com.whatsapp");
+            startActivity(Intent.createChooser(i, ""));
         }
     }
 

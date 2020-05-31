@@ -34,6 +34,8 @@ public class twenty_fourDatum{
 	private String sms;
 	@SerializedName("whatsapp")
 	private String whatsapp;
+	@SerializedName("address")
+	private String address;
 
 	public void setDesc(Object desc){
 		this.desc = desc;
@@ -108,6 +110,14 @@ public class twenty_fourDatum{
 		return this.whatsapp;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
 	 */
@@ -119,6 +129,7 @@ public class twenty_fourDatum{
 		lat = jsonObject.optString("lat");
 		lng = jsonObject.optString("lng");
 		name = jsonObject.optString("name");
+		name = jsonObject.optString("address");
 		phone = jsonObject.optString("phone");
 		sms = jsonObject.optString("sms");
 		whatsapp = jsonObject.optString("whatsapp");
@@ -152,6 +163,7 @@ public class twenty_fourDatum{
 			jsonObject.put("name", name);
 			jsonObject.put("phone", phone);
 			jsonObject.put("rate", rate);
+			jsonObject.put("address", address);
 			jsonObject.put("rates_count", ratesCount);
 			jsonObject.put("sms", sms);
 			jsonObject.put("whatsapp", whatsapp);
