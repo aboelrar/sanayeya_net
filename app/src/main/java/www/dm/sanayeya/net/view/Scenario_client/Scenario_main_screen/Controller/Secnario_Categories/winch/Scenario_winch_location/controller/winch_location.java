@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price;
@@ -26,6 +27,10 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
     TextView carDestination;
     @BindView(R.id.title)
     TextView title;
+    String location_lat, location_lng;
+    String destination_lat, destination_lng;
+    String first_result;
+    String second_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.find) {
-            startActivity(new Intent(winch_location.this, winch_price.class));
+            go_to_winch();
         } else if (view.getId() == R.id.car_location) {
             startActivityForResult(new Intent(this, choose_map_location.class), 1);
         } else if (view.getId() == R.id.car_destination) {
@@ -58,14 +63,35 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
-                String result = data.getStringExtra("result");
-                carLocation.setText(result);
+                first_result = data.getStringExtra("result");
+                location_lat = data.getStringExtra("lat");
+                location_lng = data.getStringExtra("lng");
+                carLocation.setText(first_result);
             }
         } else if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
-                String result = data.getStringExtra("result");
-                carDestination.setText(result);
+                second_result = data.getStringExtra("result");
+                destination_lat = data.getStringExtra("lat");
+                destination_lng = data.getStringExtra("lng");
+                carDestination.setText(second_result);
             }
+        }
+    }
+
+    //GO TO WINCH PRICE
+    void go_to_winch() {
+        if ((location_lng == null) && (location_lat == null) && (first_result == null) && (destination_lat == null) && (destination_lng == null) && (second_result == null)) {
+            Toasty.warning(this, getResources().getString(R.string.complete_all_info), Toasty.LENGTH_LONG).show();
+        } else {
+
+            Intent intent = new Intent(winch_location.this, winch_price.class);
+            intent.putExtra("location_lat", location_lat);
+            intent.putExtra("location_lng", location_lng);
+            intent.putExtra("first_result", first_result);
+            intent.putExtra("destination_lat", destination_lat);
+            intent.putExtra("destination_lng", destination_lng);
+            intent.putExtra("second_result", second_result);
+            startActivity(intent);
         }
     }
 }

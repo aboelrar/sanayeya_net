@@ -38,7 +38,7 @@ public enum Apiclient {
     WORKSHOP_RATE("live_services/rate", Arrays.asList("rate","comment")),
     INDUSTERIAL_RATE("industrial/rate", Arrays.asList("rate","comment")),
     HOMESERVICES_RATE("home_service/rate", Arrays.asList("rate","comment")),
-    ADD_PHONE("add-phone", Collections.singletonList("phone")),
+    REQUEST_WENCH("wench/looking_for_wench", Arrays.asList("location_lat","location_lng","location_address","destination_lat","destination_lng","destination_address")),
     CHANGE_PHOTO("update-personal-image", Collections.singletonList("image_url")),
     ADD_PROMO_CODE("add-promocode", Collections.singletonList("promo_code")),
     BILL_AMOUNT("finish-order", Arrays.asList("order_id","bill_amount")),

@@ -92,12 +92,14 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         //GET TYPE
         type = getIntent().getStringExtra("type");
 
+        //GET DATA
+        Gson gson =  new Gson();
+        active_accountRootClass = gson.fromJson(""+model.getJsonObject(),active_accountRootClass.class);
+
 
         if(resend_code == false)
         {
-            //GET DATA
-            Gson gson =  new Gson();
-            active_accountRootClass = gson.fromJson(""+model.getJsonObject(),active_accountRootClass.class);
+
 
             //CHECK IF EMAIL EXIST TO SEND CODE
             if(active_accountRootClass.getStatus() == 0)

@@ -380,8 +380,12 @@ public class Apicalls {
      * @func Get notifcation Data
      */
 
-    public void Get_notifcation_data() {
-
+    public void request_winch(String location_lat, String location_lng, String location_address, String destination_lat, String destination_lng, String destination_address) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.REQUEST_WENCH.getURL(), Request.Method.POST, Apiclient.REQUEST_WENCH.getParams(), Arrays.asList(location_lat, location_lng, location_address, destination_lat, destination_lng, destination_address), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     //----------------------------------------------------------------------------------------------
@@ -408,11 +412,6 @@ public class Apicalls {
 
     public void add_phone(final String phone) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.ADD_PHONE.getURL(), Request.Method.PATCH, Apiclient.ADD_PHONE.getParams(), Collections.singletonList(phone), null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
     //----------------------------------------------------------------------------------------------

@@ -57,6 +57,9 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     String place_name;
+    String lat_result;
+    String lng_result;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,7 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
         //GET DEVICE LOCATION
         getloca();
 
+
         //SET ON CLICK LISTNERS
         mGoogleMap.setOnCameraChangeListener(this);
 
@@ -113,6 +117,8 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
 
         LatLng latLng = place.getLatLng();
         place_name = place.getName();
+        lat_result = "" + latLng.latitude;
+        place_name = "" + latLng.longitude;
 
         //MOVE CAMERA
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -166,6 +172,9 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
             double current_lat = currentLocation.getLatitude();
             double current_lng = currentLocation.getLongitude();
 
+            lat_result = "" + current_lat;
+            lng_result = "" + current_lng;
+
             //MOVE CAMERA
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(current_lat, current_lng)));
             mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -207,6 +216,8 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
         if (view.getId() == R.id.confirm) {
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", place_name);
+            returnIntent.putExtra("lat", lat_result);
+            returnIntent.putExtra("lng", lng_result);
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
