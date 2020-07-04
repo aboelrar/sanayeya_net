@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -34,7 +35,7 @@ public class industerial_list extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.industerial_list)
-    RecyclerView industerialList;
+    ShimmerRecyclerView industerialList;
     @BindView(R.id.back)
     ImageView back;
     industerial_serviceRootClass industerial_serviceRootClass;

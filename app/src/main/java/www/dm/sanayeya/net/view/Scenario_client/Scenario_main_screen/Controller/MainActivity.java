@@ -1,10 +1,12 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,12 +14,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_chnage_password.controller.change_pass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_help.controller.help;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_terms.terms;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.categories;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_edit_profile.controller.edit_profile;
 
 
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         //SET UP DRAWER
         mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, drawer);
@@ -42,8 +47,17 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         //SET ON CLICK LISTNER
         menu.setOnClickListener(this);
 
-        //ADD ALL CATEGORIES
-        new utils().Replace_Fragment(new categories(), R.id.frag, this);
+        if(new saved_data().order_id(MainActivity.this).equals("0"))
+        {
+            //ADD ALL CATEGORIES
+            new utils().Replace_Fragment(new categories(), R.id.frag, this);
+        }
+        else {
+            startActivity(new Intent(MainActivity.this,track_winch_location.class));
+        }
+
+
+
     }
 
     @Override

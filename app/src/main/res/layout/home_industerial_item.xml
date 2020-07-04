@@ -16,20 +16,28 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <androidx.cardview.widget.CardView
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".3"
-            app:cardCornerRadius="@dimen/_5sdp">
+            android:layout_weight=".3">
 
-            <ImageView
-                android:id="@+id/home_img"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="center"
-                android:src="@drawable/home_service" />
+                app:cardCornerRadius="@dimen/_5sdp">
 
-        </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/home_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="center"
+                    android:src="@drawable/home_service" />
+
+            </androidx.cardview.widget.CardView>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -52,12 +60,12 @@
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
                 android:gravity="left|center"
                 android:maxLines="2"
-                android:ellipsize="end"
-                android:textSize="@dimen/_11sdp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:textSize="@dimen/_11sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

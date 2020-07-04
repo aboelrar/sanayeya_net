@@ -7,15 +7,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
@@ -34,7 +33,6 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.model.cars_modelRootClass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.model.provinceDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.model.provinceRootClass;
-import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
 
 public class industerial_services extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
 
@@ -58,6 +56,8 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
     String car_model_id_is = "x";
     String workshop_id_is = "x";
     int check_api = 0;
+    @BindView(R.id.loading)
+    ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +124,9 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
             //GET WORK SHOPS
             get_work_shops(gson, model.getJsonObject());
 
+            //STOP PROGRES BAR
+            loading.setVisibility(View.GONE);
+
         }
 
 
@@ -131,7 +134,8 @@ public class industerial_services extends AppCompatActivity implements View.OnCl
 
     @Override
     public void OnError(VolleyError error) {
-
+        //STOP PROGRES BAR
+        loading.setVisibility(View.GONE);
     }
 
     //GET PROVINCE DATA

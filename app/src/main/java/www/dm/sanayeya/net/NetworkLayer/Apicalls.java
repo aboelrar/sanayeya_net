@@ -29,9 +29,9 @@ public class Apicalls {
      * @func User Login
      */
 
-    public void loginUser(final String email, final String pass) {
+    public void loginUser(final String email, final String pass, final String firebase_token) {
 
-        apiRouter.performRequest(Apiclient.LOGIN_USER.getURL(), Apiclient.LOGIN_USER.getParams(), Arrays.asList(email, pass), Request.Method.POST, 0);
+        apiRouter.performRequest(Apiclient.LOGIN_USER.getURL(), Apiclient.LOGIN_USER.getParams(), Arrays.asList(email, pass, firebase_token), Request.Method.POST, 0);
 
     }
 
@@ -58,9 +58,9 @@ public class Apicalls {
      * @func User Registration
      */
 
-    public void insertUser(final String name, final String type, final String phone, final String email, final String lat, final String lng, final String password) {
+    public void insertUser(final String name, final String type, final String phone, final String email, final String lat, final String lng, final String password, final String firebase_token, String whatsapp) {
 
-        apiRouter.performRequest(Apiclient.INSERT_USER.getURL(), Apiclient.INSERT_USER.getParams(), Arrays.asList(name, type, phone, email, lat, lng, password), Request.Method.POST, 2);
+        apiRouter.performRequest(Apiclient.INSERT_USER.getURL(), Apiclient.INSERT_USER.getParams(), Arrays.asList(name, type, phone, email, lat, lng, password, firebase_token, whatsapp), Request.Method.POST, 2);
 
     }
 
@@ -392,13 +392,13 @@ public class Apicalls {
 
 
     /**
-     * @func Reject Offer
+     * @func My Orders
      */
 
-    public void change_password(final String password, final String password_confirmation) {
+    public void my_orders() {
 
         try {
-            apiRouter.makeAdvancedRequest(Apiclient.CHANGE_PASS.getURL(), Request.Method.PATCH, Apiclient.CHANGE_PASS.getParams(), Arrays.asList(password, password_confirmation), null);
+            apiRouter.makeAdvancedRequest(Apiclient.MY_ORDERS.getURL(), Request.Method.GET, Apiclient.MY_ORDERS.getParams(), null, null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -407,27 +407,30 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Reject Offer
+     * @func Confirm Order
      */
 
-    public void add_phone(final String phone) {
+    public void confirm_order(final String order_id) {
 
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_ORDER.getURL() + "/" + order_id, Request.Method.POST, Apiclient.CONFIRM_ORDER.getParams(), null, null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Reject Offer
+     * @func Accept Reject Request
      */
 
-    public void change_photo(final String image) {
-
+    public void accept_reject_request(final String request_id, String status) {
         try {
-            apiRouter.makeAdvancedRequest(Apiclient.CHANGE_PHOTO.getURL(), Request.Method.PATCH, Apiclient.CHANGE_PHOTO.getParams(), Collections.singletonList(image), null);
+            apiRouter.makeAdvancedRequest(Apiclient.ACCEPT_REJECT_REQUEST.getURL() + "/" + request_id, Request.Method.POST, Apiclient.ACCEPT_REJECT_REQUEST.getParams(), Arrays.asList(status), null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
     //----------------------------------------------------------------------------------------------
 
@@ -446,12 +449,6 @@ public class Apicalls {
 
     public void bill_amount(final String order_id, final String bill_amount) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.BILL_AMOUNT.getURL(), Request.Method.PATCH, Apiclient.BILL_AMOUNT.getParams(), Arrays.asList(order_id, bill_amount), null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
@@ -464,11 +461,7 @@ public class Apicalls {
 
     public void promoCode(final String promo_code) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.ADD_PROMO_CODE.getURL(), Request.Method.POST, Apiclient.ADD_PROMO_CODE.getParams(), Arrays.asList(promo_code), null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
     }
     //----------------------------------------------------------------------------------------------
 

@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="The activation code has been sent to your\n email, Please write it here"
+                android:text="@string/the_activation_code_has_been_sent_to_your_n_whats_app_please_write_it_here"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />

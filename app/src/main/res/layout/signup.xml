@@ -116,6 +116,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/whats_app"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/whatsapp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:hint="@string/whats_app"
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:text="@string/password"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_13sdp"

@@ -2,6 +2,7 @@ package www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -27,12 +31,11 @@ import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.utils.utils;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account;
-import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.loading;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupDatum;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupRootClass;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
 
 import static www.dm.sanayeya.net.utils.utils.yoyo;
 
@@ -54,6 +57,9 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
     EditText password;
     signupRootClass signupRootClass;
     signupDatum signupDatum;
+    String token;
+    @BindView(R.id.whatsapp)
+    EditText whatsapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,9 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
         back.setOnClickListener(this);
         login.setOnClickListener(this);
         signup.setOnClickListener(this);
+
+        //FIREBASE TOKEN
+        firebase_token();
     }
 
     @Override
@@ -101,8 +110,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
         if (signupRootClass.getStatus() == 0) {
 
             Toasty.error(signup.this, signupRootClass.getMessage(), Toasty.LENGTH_LONG).show();
-        }
-        else if (signupRootClass.getStatus() == 1) {
+        } else if (signupRootClass.getStatus() == 1) {
 
             //GET SERVER DATA
             signupDatum = signupRootClass.getData();
@@ -112,7 +120,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
 
             //GO TO ACTIVE CODE
             Intent intent = new Intent(this, active_account.class);
-            intent.putExtra("type",signupDatum.getType());
+            intent.putExtra("type", signupDatum.getType());
             startActivity(intent);
 
 
@@ -147,7 +155,13 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
             String pass_val = getResources().getString(R.string.password_val);
             password.setError(pass_val);
             yoyo(R.id.password, password);
-        } else {
+        }  else if (whatsapp.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
+        {
+            String whats_val = getResources().getString(R.string.whatsapp_val);
+            whatsapp.setError(whats_val);
+            yoyo(R.id.whatsapp, whatsapp);
+        }
+        else {
 
             //CALL PROGRESS DIALOG
             new utils().set_dialog(signup.this);
@@ -155,7 +169,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
             //CALL API
             new Apicalls(signup.this, this).insertUser(username.getText().toString(),
                     "user", phone.getText().toString(), email.getText().toString(),
-                    "2156.01", "78545.55", password.getText().toString());
+                    "2156.01", "78545.55", password.getText().toString(), firebase_token(), whatsapp.getText().toString());
         }
     }
 
@@ -168,6 +182,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
         arrayList.add(signupDatum.getEmail());
         arrayList.add(signupDatum.getPhone());
         arrayList.add(signupDatum.getToken());
+        arrayList.add(signupDatum.getType());
+
 
         Observable.fromArray(arrayList).
                 observeOn(Schedulers.computation()).subscribe(new Consumer<ArrayList<String>>() {
@@ -179,7 +195,23 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
                 send_data.send_email(signup.this, arrayList.get(1)); //ADD Email
                 send_data.send_phone(signup.this, arrayList.get(2)); //ADD PHONE
                 send_data.send_token(signup.this, arrayList.get(3)); //ADD TOKEN
+                send_data.send_type(signup.this, arrayList.get(4)); //ADD TYPE
+                send_data.login_status(signup.this, true); //ADD STATUS
+
+
             }
         });
+    }
+
+    public String firebase_token() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                token = instanceIdResult.getToken();
+                Log.e("token_is", token);
+                // send it to server
+            }
+        });
+        return token;
     }
 }

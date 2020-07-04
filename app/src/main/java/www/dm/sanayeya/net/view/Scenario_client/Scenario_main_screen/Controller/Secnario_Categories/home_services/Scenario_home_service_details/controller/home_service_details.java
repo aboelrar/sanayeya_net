@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -67,6 +68,8 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     LinearLayout whatsapp;
     @BindView(R.id.sms)
     LinearLayout sms;
+    @BindView(R.id.loading)
+    ProgressBar loading;
 
 
     @Override
@@ -115,6 +118,8 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     @Override
     public void OnResponse(ResponseModel model) {
 
+        loading.setVisibility(View.GONE);
+
         Gson gson = new Gson();
         home_service_detailsRootClass = gson.fromJson("" + model.getJsonObject(), home_service_detailsRootClass.class);
 
@@ -141,6 +146,8 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
 
 
             if (home_service_detailsRateUsers.length != 0) {
+
+                checkReview.setVisibility(View.GONE); //SET VISBILITY
 
                 for (int index = 0; index < home_service_detailsRateUsers.length; index++) {
                     rate_List.add(new review_list("" + home_service_detailsRateUsers[index].getId(),

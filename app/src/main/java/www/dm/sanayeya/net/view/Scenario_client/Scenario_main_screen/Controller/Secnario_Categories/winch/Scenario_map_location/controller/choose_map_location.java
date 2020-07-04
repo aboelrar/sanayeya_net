@@ -8,6 +8,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,9 +38,17 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableEmitter;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.utils.utils;
 
@@ -88,6 +97,7 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         this.mGoogleMap = googleMap;
 
+
         //MAP PREMISSION OPEN SETTINGS
         getLocationPermission();
 
@@ -103,12 +113,12 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
     void setAutoCompleteSupportFragment() {
         autoCompleteSupportFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         autoCompleteSupportFragment.setHint("search place");
-        autoCompleteSupportFragment.setPlaceFields(fields);
         autoCompleteSupportFragment.setCountry("EG");
         autoCompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG));
 
         //PLACE SELECTED
-        autoCompleteSupportFragment.setOnPlaceSelectedListener(this);
+        autoCompleteSupportFragment.setOnPlaceSelectedListener(choose_map_location.this);
+
 
     }
 
@@ -118,7 +128,7 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
         LatLng latLng = place.getLatLng();
         place_name = place.getName();
         lat_result = "" + latLng.latitude;
-        place_name = "" + latLng.longitude;
+        lng_result = "" + latLng.longitude;
 
         //MOVE CAMERA
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -126,10 +136,6 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
 
         //GET PLACE NAME
         getAddress(latLng.latitude, latLng.longitude);
-
-        //MARKER ANIMATION
-        View map = findViewById(R.id.map);
-        new utils().marker_animation(latLng.latitude, latLng.longitude, map, mGoogleMap);
 
 
     }
@@ -146,8 +152,7 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            mGoogleMap.setMyLocationEnabled(true);
-            mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);
+
         }
     }
 
@@ -214,6 +219,8 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.confirm) {
+            Log.e("lattt", lat_result + "..." + lng_result);
+
             Intent returnIntent = new Intent();
             returnIntent.putExtra("result", place_name);
             returnIntent.putExtra("lat", lat_result);
@@ -233,7 +240,19 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
                 Address obj = addresses.get(0);
                 String address_name = obj.getAddressLine(0);
 
-                autoCompleteSupportFragment.setText(address_name);
+                Observable.just(address_name).doOnNext(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+
+                    }
+                }).observeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).
+                        debounce(4, TimeUnit.SECONDS).subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        autoCompleteSupportFragment.setText(s);
+                    }
+                });
+
                 place_name = address_name;
 
             }
@@ -248,7 +267,9 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
     public void onCameraChange(CameraPosition cameraPosition) {
         double lat = cameraPosition.target.latitude;
         double lng = cameraPosition.target.longitude;
-        getAddress(cameraPosition.target.latitude, cameraPosition.target.longitude);
+        lat_result = "" + lat;
+        lng_result = "" + lng;
+        getAddress(lat, lng);
     }
 
 

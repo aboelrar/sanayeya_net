@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "322199235127",
+    "firebase_url": "https://industrial-691c8.firebaseio.com",
+    "project_id": "industrial-691c8",
+    "storage_bucket": "industrial-691c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322199235127:android:e34895d889f9c06fdbadb2",
+        "android_client_info": {
+          "package_name": "www.dm.sanayeya.net"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322199235127-qbme9hk86c7tskfot13kh9lr79blhcev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "www.dm.sanayeya.net",
+            "certificate_hash": "4cfc2c84c800fbac169ff251e1bbb3104e033db5"
+          }
+        },
+        {
+          "client_id": "322199235127-1j34n4a8v515t74v1asejpati6kbdgtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB2elEmS7is00Jxj3FmbJhnES7IZ_H_wA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322199235127-1j34n4a8v515t74v1asejpati6kbdgtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

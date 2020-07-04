@@ -3,6 +3,7 @@ package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -80,9 +81,11 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
 
     //GO TO WINCH PRICE
     void go_to_winch() {
-        if ((location_lng == null) && (location_lat == null) && (first_result == null) && (destination_lat == null) && (destination_lng == null) && (second_result == null)) {
+        if ((location_lng == null) || (location_lat == null) || (first_result == null) || (destination_lat == null) || (destination_lng == null) || (second_result == null)) {
             Toasty.warning(this, getResources().getString(R.string.complete_all_info), Toasty.LENGTH_LONG).show();
         } else {
+
+            Log.e("lat_is", location_lat + "..." + location_lng);
 
             Intent intent = new Intent(winch_location.this, winch_price.class);
             intent.putExtra("location_lat", location_lat);

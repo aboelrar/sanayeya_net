@@ -3,6 +3,7 @@ package www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Sce
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -31,6 +35,7 @@ import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupDatum;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupRootClass;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_address_map.controller.address_map;
 
@@ -58,6 +63,9 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
     String lng;
     www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupRootClass signupRootClass;
     www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.model.signupDatum signupDatum;
+    String token;
+    @BindView(R.id.whatsapp)
+    EditText whatsapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +78,9 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
         login.setOnClickListener(this);
         signup.setOnClickListener(this);
         address.setOnClickListener(this);
+
+        //FIRBASE TOKEN
+        firebase_token();
     }
 
     @Override
@@ -80,8 +91,7 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(winch_signup.this, www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login.class));
         } else if (view.getId() == R.id.signup) {
             signup_validation();
-        } else if(view.getId() == R.id.address)
-        {
+        } else if (view.getId() == R.id.address) {
             startActivityForResult(new Intent(this, address_map.class), 1);
         }
     }
@@ -110,8 +120,7 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
         if (signupRootClass.getStatus() == 0) {
 
             Toasty.error(winch_signup.this, signupRootClass.getMessage(), Toasty.LENGTH_LONG).show();
-        }
-        else if (signupRootClass.getStatus() == 1) {
+        } else if (signupRootClass.getStatus() == 1) {
 
             //GET SERVER DATA
             signupDatum = signupRootClass.getData();
@@ -120,9 +129,12 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
             save_local_data();
 
             //GO TO ACTIVE CODE
-           Intent intent = new Intent(this, active_account.class);
-           intent.putExtra("type",signupDatum.getType());
-           startActivity(intent);
+            Intent intent = new Intent(this, active_account.class);
+            intent.putExtra("type", signupDatum.getType());
+            startActivity(intent);
+
+            //FIREBASE TOKEN
+            firebase_token();
 
 
         }
@@ -181,6 +193,11 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
             String pass_val = getResources().getString(R.string.password_val);
             password.setError(pass_val);
             yoyo(R.id.password, password);
+        } else if (whatsapp.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
+        {
+            String whats_val = getResources().getString(R.string.whatsapp_val);
+            whatsapp.setError(whats_val);
+            yoyo(R.id.whatsapp, whatsapp);
         } else {
 
             //CALL PROGRESS DIALOG
@@ -189,7 +206,7 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
             //CALL API
             new Apicalls(winch_signup.this, this).insertUser(username.getText().toString(),
                     "winch", phone.getText().toString(), email.getText().toString(),
-                    lat, lng, password.getText().toString());
+                    lat, lng, password.getText().toString(), firebase_token(), whatsapp.getText().toString());
         }
     }
 
@@ -202,6 +219,7 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
         arrayList.add(signupDatum.getEmail());
         arrayList.add(signupDatum.getPhone());
         arrayList.add(signupDatum.getToken());
+        arrayList.add(signupDatum.getType());
 
         Observable.fromArray(arrayList).
                 observeOn(Schedulers.computation()).subscribe(new Consumer<ArrayList<String>>() {
@@ -213,7 +231,22 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
                 send_data.send_email(winch_signup.this, arrayList.get(1)); //ADD Email
                 send_data.send_phone(winch_signup.this, arrayList.get(2)); //ADD PHONE
                 send_data.send_token(winch_signup.this, arrayList.get(3)); //ADD TOKEN
+                send_data.send_type(winch_signup.this, arrayList.get(4)); //ADD TYPE
+                send_data.login_status(winch_signup.this, true); //ADD STATUS
+
             }
         });
+    }
+
+    public String firebase_token() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                token = instanceIdResult.getToken();
+                Log.e("token_is", token);
+                // send it to server
+            }
+        });
+        return token;
     }
 }

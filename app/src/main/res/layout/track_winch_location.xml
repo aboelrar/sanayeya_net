@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_track_location.cotroller.track_winch_location">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -16,4 +16,20 @@
         android:layout_height="match_parent"
         tools:context="com.carsyalla.admin.mapss.MapsActivity" />
 
-</LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        android:id="@+id/call"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:text="@string/call_winch"
+        android:background="@color/t_color"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

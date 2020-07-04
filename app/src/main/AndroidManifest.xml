@@ -17,61 +17,93 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_rate.controller.workshop_rate"
-            android:screenOrientation="portrait" ></activity>
-        <activity android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_address_map.controller.address_map"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_payment.controller.payment_method"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_track_location.cotroller.track_winch_location"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_verifcation_code.controller.verifcation_code"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_forget_password.controller.forget_password"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_list.controller.industerial_list"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_rate.controller.industerial_rate"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.controller.home_services_compaines"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.controller.home_services"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_rate.controller.home_services_rate"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_signup.controller.signup"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_login.Controller.login"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_choose_language.controller.choose_language"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.Scenario_client.welcome_screens.Scenario_splash_screen.controller.splash_screen"
+        <activity android:name=".test_navigation">
+
+        </activity>
+        <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_rate.controller.workshop_rate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_address_map.controller.address_map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_payment.controller.payment_method"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scnerio_winch_owner.Scenario_track_user_location.cotroller.track_user_location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_verifcation_code.controller.verifcation_code"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_forget_password.controller.forget_password"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_list.controller.industerial_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_rate.controller.industerial_rate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.controller.home_service_details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.controller.home_services_compaines"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.controller.home_services"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_rate.controller.home_services_rate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_rating.controller.rating"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller.winch_price"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_signup.controller.signup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_login.Controller.login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_choose_language.controller.choose_language"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.Scenario_client.welcome_screens.Scenario_splash_screen.controller.splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,11 +118,26 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAFZWqZ7it3SPq_vuGpWM7qPx1ZrLAYB74" />
+            android:value="AIzaSyAO-t7QFPoXpT27RJPn-FMn1I6gRHHYYPM" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <service
+            android:name=".notifcations.Custom_Fcmlistner"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="default_notification_channel_id" />
     </application>
 
 </manifest>

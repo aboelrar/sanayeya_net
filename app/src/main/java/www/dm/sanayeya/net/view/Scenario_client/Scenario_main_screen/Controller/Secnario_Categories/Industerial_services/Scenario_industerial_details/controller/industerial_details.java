@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -68,6 +69,8 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
     LinearLayout whatsapp;
     @BindView(R.id.sms)
     LinearLayout sms;
+    @BindView(R.id.loading)
+    ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,11 +125,15 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
         //GO TO RATE
         goRate.setOnClickListener(this);
 
+        //DISMISS DIALOG
+        loading.setVisibility(View.GONE);
+
     }
 
     @Override
     public void OnError(VolleyError error) {
-
+        //DISMISS DIALOG
+        loading.setVisibility(View.GONE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -156,6 +163,8 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
             industerial_service_detailsRateUsers = industerial_service_detailsData.getRateUsers();
 
             if (industerial_service_detailsRateUsers.length != 0) {
+
+                checkReview.setVisibility(View.GONE); //SET VISBILITY
 
                 for (int index = 0; index < industerial_service_detailsRateUsers.length; index++) {
                     rate_List.add(new review_list("" + industerial_service_detailsRateUsers[index].getId(),

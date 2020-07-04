@@ -29,6 +29,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 
@@ -257,6 +258,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.logout) {
+
+            send_data.login_status(getContext(), false); //ADD STATUS
+
 
             //CALL PROGRESS DIALOG
             new utils().set_dialog(getContext());

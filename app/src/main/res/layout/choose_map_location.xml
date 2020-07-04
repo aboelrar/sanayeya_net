@@ -39,6 +39,12 @@
             />
     </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/auth_logo"
+        android:layout_centerInParent="true"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"

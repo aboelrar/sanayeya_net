@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
-import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_track_location.cotroller.track_winch_location;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_track_user_location.cotroller.track_user_location;
 
 public class payment_method extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,7 +41,7 @@ public class payment_method extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         if(view.getId() == R.id.confirm)
         {
-           startActivity(new Intent(this, track_winch_location.class));
+           startActivity(new Intent(this, track_user_location.class));
         }
         else if(view.getId() == R.id.back)
         {

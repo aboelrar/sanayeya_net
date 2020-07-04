@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class home_services_compaines extends AppCompatActivity implements View.O
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.companies_list)
-    RecyclerView companiesList;
+    ShimmerRecyclerView companiesList;
     @BindView(R.id.back)
     ImageView back;
     home_service_dataRootClass home_service_dataRootClass;

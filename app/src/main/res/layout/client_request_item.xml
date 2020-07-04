@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_180sdp"
+    android:layout_height="@dimen/_170sdp"
     android:orientation="vertical">
 
     <ImageView
@@ -9,14 +9,7 @@
         android:layout_height="@dimen/_1sdp"
         android:src="@color/line_color" />
 
-    <TextView
-        android:id="@+id/request_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="Request id : 51887876"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/_15sdp" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +19,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:gravity="center|left"
         android:orientation="horizontal"
@@ -35,7 +28,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".445"
+            android:layout_weight=".435"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -50,25 +43,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Road 45,30:00 Am"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
 
-        <ImageView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="@dimen/_32sdp"
-            android:layout_weight=".11"
+            android:gravity="center"
+            android:layout_weight=".13">
+        <ImageView
+            android:id="@+id/go_map"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:background="@drawable/arrow_next"
             android:padding="@dimen/_10sdp"
+            android:visibility="gone"
             android:src="@drawable/arrow"
             android:tint="@android:color/white" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".445"
+            android:layout_weight=".44"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_8sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,6 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Road 45,30:00 Am"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
@@ -94,6 +99,7 @@
         android:weightSum="1">
 
         <Button
+            android:id="@+id/apply"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".47"
@@ -108,6 +114,7 @@
             android:layout_weight=".06" />
 
         <Button
+            android:id="@+id/reject"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".47"

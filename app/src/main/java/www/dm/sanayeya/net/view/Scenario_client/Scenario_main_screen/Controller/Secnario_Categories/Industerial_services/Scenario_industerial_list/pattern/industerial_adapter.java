@@ -2,6 +2,7 @@ package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -48,8 +55,24 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
         holder.reviews.setText(mylist.get(position).getReviews());
         holder.ratingBar.setRating(mylist.get(position).getRating());
         holder.desc.setText(mylist.get(position).getDesc());
-        Glide.with(context).load(mylist.get(position).getImg()).into(holder.service_image);
 
+        //SHIMMER FOR IMAGES
+        Glide.with(context)
+                .load(mylist.get(position).getImg())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.container.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(holder.service_image);
 
 
         //SET ON CLICK LISTNERS
@@ -78,6 +101,7 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
         TextView desc;
         LinearLayout service_item;
         ImageView service_image;
+        ShimmerFrameLayout container;
 
         public view_holder(@NonNull View itemView) {
             super(itemView);
@@ -87,6 +111,9 @@ public class industerial_adapter extends RecyclerView.Adapter<industerial_adapte
             service_item = itemView.findViewById(R.id.service_item);
             desc = itemView.findViewById(R.id.description);
             service_image = itemView.findViewById(R.id.home_img);
+
+            container = itemView.findViewById(R.id.shimmer_view_container);
+            container.startShimmerAnimation();
 
         }
     }

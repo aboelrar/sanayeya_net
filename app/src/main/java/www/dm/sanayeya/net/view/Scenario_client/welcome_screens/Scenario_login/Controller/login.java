@@ -8,10 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -30,6 +34,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
@@ -38,6 +43,7 @@ import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_forget_
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.model.Datum;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.model.login_model;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
+import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
 
 import static www.dm.sanayeya.net.utils.utils.yoyo;
 
@@ -57,6 +63,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     EditText password;
     login_model login_model;
     Datum data;
+    String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         signup.setOnClickListener(this);
         login.setOnClickListener(this);
         forgetPass.setOnClickListener(this);
+
+        //GET FIREBASE TOKEN
+        firebase_token();
     }
 
     @Override
@@ -110,14 +121,18 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         } else if (login_model.getStatus() == 1) {
 
+
             data = login_model.getData();
+
+            Toast.makeText(this, "" + data.getType(), Toast.LENGTH_SHORT).show();
+
 
             //SAVE LOCAL DATA IN BACKGROUND
             save_local_data();
 
             //OPEN DIALOG
             loading loading = new loading();
-            loading.dialog(login.this, R.layout.successful_login, .80,data.getType());
+            loading.dialog(login.this, R.layout.successful_login, .80, data.getType());
 
         }
     }
@@ -146,7 +161,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             new utils().set_dialog(this);
 
             //CALL API
-            new Apicalls(this, this).loginUser(username.getText().toString(), password.getText().toString());
+            new Apicalls(this, this).loginUser(username.getText().toString(), password.getText().toString(), firebase_token());
         }
     }
 
@@ -159,6 +174,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         arrayList.add(data.getEmail());
         arrayList.add(data.getPhone());
         arrayList.add(data.getToken());
+        arrayList.add(data.getType());
 
         Observable.fromArray(arrayList).
                 observeOn(Schedulers.computation()).subscribe(new Consumer<ArrayList<String>>() {
@@ -170,7 +186,24 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 send_data.send_email(login.this, arrayList.get(1)); //ADD Email
                 send_data.send_phone(login.this, arrayList.get(2)); //ADD PHONE
                 send_data.send_token(login.this, arrayList.get(3)); //ADD TOKEN
+                send_data.send_type(login.this, arrayList.get(4)); //ADD TYPE
+                send_data.login_status(login.this, true); //ADD STATUS
+
             }
         });
     }
+
+    public String firebase_token() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                token = instanceIdResult.getToken();
+                Log.e("token_is", token);
+                // send it to server
+            }
+        });
+        return token;
+    }
+
+
 }
