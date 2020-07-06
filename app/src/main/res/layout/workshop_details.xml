@@ -157,7 +157,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
@@ -171,7 +171,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:gravity="center"
+                    android:weightSum="2">
 
                     <LinearLayout
                         android:id="@+id/call"
@@ -201,27 +202,6 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_weight=".01"
                         android:src="@android:color/black" />
-
-                    <LinearLayout
-                        android:id="@+id/whatsapp"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/_17sdp"
-                            android:layout_height="@dimen/_17sdp"
-                            android:src="@drawable/whatsapp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:text="@string/whatsapp"
-                            android:textSize="@dimen/_12sdp" />
-                    </LinearLayout>
 
                     <ImageView
                         android:layout_width="0dp"
@@ -267,5 +247,5 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
+    <include layout="@layout/connection_txt" />
 </RelativeLayout>

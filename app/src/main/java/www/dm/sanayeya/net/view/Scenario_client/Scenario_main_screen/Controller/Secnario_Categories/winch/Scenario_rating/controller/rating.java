@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 
 public class rating extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +39,9 @@ public class rating extends AppCompatActivity implements View.OnClickListener {
 
         //SET TITLE TEXT
         title.setText(getResources().getString(R.string.rate));
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(rating.this);
     }
 
     @Override

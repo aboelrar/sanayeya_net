@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_chnage_password.controller.change_pass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_help.controller.help;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         //SET ON CLICK LISTNER
         menu.setOnClickListener(this);
 
-        if(new saved_data().order_id(MainActivity.this).equals("0"))
+        if(new saved_data().notifcation_status(MainActivity.this).equals("0"))
         {
             //ADD ALL CATEGORIES
             new utils().Replace_Fragment(new categories(), R.id.frag, this);
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         else {
             startActivity(new Intent(MainActivity.this,track_winch_location.class));
         }
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(MainActivity.this);
 
 
 

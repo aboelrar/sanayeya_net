@@ -26,6 +26,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.model.home_serviceDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.model.home_serviceRootClass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services_compaines.controller.home_services_compaines;
@@ -42,7 +43,7 @@ public class home_services extends AppCompatActivity implements View.OnClickList
     ImageView back;
     home_serviceRootClass home_serviceRootClass;
     home_serviceDatum[] data;
-    String home_service_id;
+    String home_service_id = "0";
 
 
     @Override
@@ -62,6 +63,9 @@ public class home_services extends AppCompatActivity implements View.OnClickList
         find.setOnClickListener(this);
         back.setOnClickListener(this);
 
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(home_services.this);
+
 
     }
 
@@ -70,9 +74,11 @@ public class home_services extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.find) {
 
-            Intent intent = new Intent(home_services.this, home_services_compaines.class);
-            intent.putExtra("service_id", home_service_id);
-            startActivity(intent);
+            if (!home_service_id.equals("0")) {
+                Intent intent = new Intent(home_services.this, home_services_compaines.class);
+                intent.putExtra("service_id", home_service_id);
+                startActivity(intent);
+            }
 
         } else if (view.getId() == R.id.back) {
             finish();

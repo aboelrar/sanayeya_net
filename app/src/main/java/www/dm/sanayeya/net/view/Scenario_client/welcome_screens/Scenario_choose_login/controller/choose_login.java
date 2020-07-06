@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
 
@@ -33,6 +34,9 @@ public class choose_login extends AppCompatActivity implements View.OnClickListe
         back.setOnClickListener(this);
         user.setOnClickListener(this);
         winchOwner.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(choose_login.this);
     }
 
     @Override

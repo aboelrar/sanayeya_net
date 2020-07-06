@@ -32,6 +32,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.model.industerial_service_detailsDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.model.industerial_service_detailsRateUser;
@@ -82,7 +83,9 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
         back.setOnClickListener(this);
         call.setOnClickListener(this);
         sms.setOnClickListener(this);
-        whatsapp.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(industerial_details.this);
 
 
     }
@@ -103,12 +106,13 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
         } else if (view.getId() == R.id.sms) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
                     + industerial_service_detailsData.getPhone())));
-        } else if (view.getId() == R.id.whatsapp) {
-            Uri uri = Uri.parse("smsto:" + industerial_service_detailsData.getPhone());
-            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-            i.setPackage("com.whatsapp");
-            startActivity(Intent.createChooser(i, ""));
         }
+//        } else if (view.getId() == R.id.whatsapp) {
+//            Uri uri = Uri.parse("smsto:" + industerial_service_detailsData.getPhone());
+//            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+//            i.setPackage("com.whatsapp");
+//            startActivity(Intent.createChooser(i, ""));
+//        }
     }
 
     @Override

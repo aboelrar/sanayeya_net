@@ -29,6 +29,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.review_list;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.model.twenty_four_detailsDatum;
@@ -77,7 +78,9 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
         back.setOnClickListener(this);
         call.setOnClickListener(this);
         sms.setOnClickListener(this);
-        whatsapp.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(workshop_details.this);
 
     }
 
@@ -97,12 +100,6 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
         } else if (view.getId() == R.id.sms) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
                     + twenty_four_detailsDatum.getPhone())));
-        } else if(view.getId() == R.id.whatsapp)
-        {
-            Uri uri = Uri.parse("smsto:" + twenty_four_detailsDatum.getPhone());
-            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-            i.setPackage("com.whatsapp");
-            startActivity(Intent.createChooser(i, ""));
         }
     }
 

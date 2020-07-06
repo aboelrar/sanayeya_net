@@ -55,6 +55,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.local_data.send_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen;
 
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
@@ -102,6 +103,8 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
 
         on_changed_location();
 
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(test_navigation.this);
 
     }
 

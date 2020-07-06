@@ -81,6 +81,16 @@ public class send_data {
         editor.commit();
     }
 
+
+   //SET ORDER ID
+    public static void set_notifcation_status(Context context, String status) {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("status", status);
+        editor.commit();
+    }
+
     //SET ORDER LAT
     public static void set_order_lat(Context context, double lat) {
         //SAVE LANGUAGE STATUS

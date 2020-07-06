@@ -64,6 +64,13 @@ public class saved_data {
         return type;
     }
 
+    //GET NOTIFCATION STATUS
+    public String notifcation_status(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
+        String type = sharedPreferences.getString("status", "0");
+        return type;
+    }
+
     //GET ORDER LAT
     public Double order_lat(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);

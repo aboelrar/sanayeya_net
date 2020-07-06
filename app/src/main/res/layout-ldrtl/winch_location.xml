@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location">
+
+    <include layout="@layout/connection_txt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <include layout="@layout/categories_bar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".85"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_400sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="-250dp"
+                android:src="@drawable/auth_curve" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|bottom"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_50sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/select_your_location"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_20sdp" />
+
+                <TextView
+                    android:id="@+id/car_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_55sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/location_text_bg"
+                    android:gravity="center|right"
+                    android:hint="@string/locate_your_car_location_on_map"
+                    android:paddingRight="@dimen/_12sdp"
+                    android:textSize="@dimen/_13sdp" />
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:src="@drawable/menu"
+                    android:tint="@color/s_color" />
+
+                <TextView
+                    android:id="@+id/car_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_55sdp"
+                    android:background="@drawable/location_text_bg"
+                    android:gravity="center|right"
+                    android:hint="@string/locate_your_car_destination_on_the_map"
+                    android:paddingRight="@dimen/_12sdp"
+                    android:textSize="@dimen/_13sdp" />
+
+                <Button
+                    android:id="@+id/find"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/button_1_bg"
+                    android:text="@string/find"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

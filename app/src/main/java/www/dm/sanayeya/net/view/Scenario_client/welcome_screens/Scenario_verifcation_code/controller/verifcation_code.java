@@ -19,6 +19,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_signup.controller.signup;
@@ -47,6 +48,9 @@ public class verifcation_code extends AppCompatActivity implements View.OnClickL
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
         apply.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(verifcation_code.this);
     }
 
 

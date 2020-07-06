@@ -22,6 +22,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 
 public class home_services_rate extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
@@ -65,6 +66,9 @@ public class home_services_rate extends AppCompatActivity implements View.OnClic
         //SET ON CLICK LISTNERS
         submit.setOnClickListener(this);
         back.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(home_services_rate.this);
 
 
     }

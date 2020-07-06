@@ -36,6 +36,7 @@ import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.local_data.send_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_choose_login.controller.choose_login;
@@ -80,6 +81,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         //GET FIREBASE TOKEN
         firebase_token();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(login.this);
     }
 
     @Override
@@ -139,7 +143,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
     @Override
     public void OnError(VolleyError error) {
-
+        new utils().dismiss_dialog(login.this);  //DISMISS PROGRESS DIALOG
     }
 
     //LOGIN VAILDATION

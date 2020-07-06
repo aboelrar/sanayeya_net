@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".view.Scenario_client.welcome_screens.Scenario_choose_language.controller.choose_language">
+
+
     <ImageView
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_400sdp"
-        android:src="@drawable/auth_curve"/>
+        android:src="@drawable/auth_curve" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1"
         android:orientation="vertical"
-        >
+        android:weightSum="1">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -25,47 +28,52 @@
             <ImageView
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_120sdp"
-                android:src="@drawable/auth_logo"
                 android:layout_gravity="center"
-                />
+                android:src="@drawable/auth_logo" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".55"
             android:gravity="top|center"
-            android:paddingTop="@dimen/_60sdp"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp"
-            android:orientation="vertical">
+            android:paddingTop="@dimen/_60sdp"
+            android:paddingRight="@dimen/_20sdp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/language"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:layout_gravity="left"
-                />
+                android:text="@string/language"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
             <Spinner
+                android:id="@+id/language"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_30sdp"
-                android:theme="@style/ThemeSpinner"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:backgroundTint="#d3d3d3"
-                android:id="@+id/language"/>
+                android:theme="@style/ThemeSpinner" />
+
             <Button
+                android:id="@+id/apply"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:textStyle="bold"
+                android:background="@drawable/button_1_bg"
                 android:text="@string/apply"
-                android:id="@+id/apply"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_13sdp"
-                android:background="@drawable/button_1_bg"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>
+
+    <include layout="@layout/connection_txt" />
+
 </RelativeLayout>

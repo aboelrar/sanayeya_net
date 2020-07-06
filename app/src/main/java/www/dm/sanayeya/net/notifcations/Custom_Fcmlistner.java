@@ -31,6 +31,7 @@ import java.util.Random;
 import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
+import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen;
@@ -108,6 +109,7 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             if(new saved_data().get_user_type(getBaseContext()).equals("user"))
             {
+                send_data.set_notifcation_status(getBaseContext(),"1");
                 intent2 = new Intent(this, track_winch_location.class);
             }
             else {

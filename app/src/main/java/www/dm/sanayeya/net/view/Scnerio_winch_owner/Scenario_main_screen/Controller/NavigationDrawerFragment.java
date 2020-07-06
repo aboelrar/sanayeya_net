@@ -104,9 +104,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawerList.setHasFixedSize(true);
 
 
-
         final List<NavigationItem> navigationItems = getMenu();
-        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems,getActivity());
+        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems, getActivity());
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
         selectItem(mCurrentSelectedPosition);
@@ -117,8 +116,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
         //SET ON CLICK LISTNERS
         logout.setOnClickListener(this);
-
-
 
 
         return view;
@@ -259,14 +256,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     public void onClick(View v) {
         if (v.getId() == R.id.logout) {
 
-            //SET FALSE
-            send_data.login_status(getContext(), false);
-
             //CALL PROGRESS DIALOG
             new utils().set_dialog(getContext());
 
             //CALL API
-            new Apicalls(getContext(),NavigationDrawerFragment.this).logout();
+            new Apicalls(getContext(), NavigationDrawerFragment.this).logout();
 
 
         }
@@ -280,6 +274,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @SuppressLint("NewApi")
     @Override
     public void OnResponse(ResponseModel model) {
+        //SET FALSE
+        send_data.login_status(getContext(), false);
 
         //CALL DISMISS DIALOG
         new utils().dismiss_dialog(getContext());
@@ -290,6 +286,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     @Override
     public void OnError(VolleyError error) {
-
+        //CALL DISMISS DIALOG
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            new utils().dismiss_dialog(getContext());
+        }
     }
 }

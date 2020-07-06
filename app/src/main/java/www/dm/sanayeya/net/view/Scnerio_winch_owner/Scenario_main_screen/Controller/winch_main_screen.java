@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.test_navigation;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_chnage_password.controller.change_pass;
@@ -50,6 +51,9 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
            //GO TO MAP
              startActivity(new Intent(this, test_navigation.class));
         }
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(winch_main_screen.this);
     }
 
     @Override

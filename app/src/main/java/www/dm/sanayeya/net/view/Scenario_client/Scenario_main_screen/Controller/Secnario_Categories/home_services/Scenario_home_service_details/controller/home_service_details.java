@@ -30,6 +30,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.model.home_service_detailsDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_service_details.model.home_service_detailsRateUser;
@@ -82,7 +83,9 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
         back.setOnClickListener(this);
         call.setOnClickListener(this);
         sms.setOnClickListener(this);
-        whatsapp.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(home_service_details.this);
 
     }
 
@@ -101,11 +104,6 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
         } else if (view.getId() == R.id.sms) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
                     + data.getPhone())));
-        } else if (view.getId() == R.id.whatsapp) {
-            Uri uri = Uri.parse("smsto:" + data.getPhone());
-            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-            i.setPackage("com.whatsapp");
-            startActivity(Intent.createChooser(i, ""));
         }
     }
 

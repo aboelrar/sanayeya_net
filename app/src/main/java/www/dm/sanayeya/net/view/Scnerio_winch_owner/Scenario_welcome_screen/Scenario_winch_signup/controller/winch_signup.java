@@ -32,6 +32,7 @@ import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.send_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_active_account.controller.active_account;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
@@ -81,6 +82,9 @@ public class winch_signup extends AppCompatActivity implements View.OnClickListe
 
         //FIRBASE TOKEN
         firebase_token();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(winch_signup.this);
     }
 
     @Override

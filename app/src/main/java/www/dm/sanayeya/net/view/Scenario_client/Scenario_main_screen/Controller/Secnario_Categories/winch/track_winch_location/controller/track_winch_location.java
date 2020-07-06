@@ -38,6 +38,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.directionhelpers.FetchURL;
 import www.dm.sanayeya.net.utils.directionhelpers.TaskLoadedCallback;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_track_user_location.cotroller.track_user_location;
@@ -71,6 +72,9 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
         //ALL FUNCTIONS DONE HERE
         all_finc();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(track_winch_location.this);
 
 
     }

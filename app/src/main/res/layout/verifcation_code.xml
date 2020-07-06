@@ -7,6 +7,8 @@
     android:background="@android:color/white"
     tools:context=".view.Scenario_client.welcome_screens.Scenario_verifcation_code.controller.verifcation_code">
 
+    <include layout="@layout/connection_txt" />
+
     <ImageView
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_400sdp"
@@ -63,11 +65,11 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:textSize="@dimen/_11sdp"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:background="@drawable/verfication_code"
                 android:hint="@string/verfication_code"
-                android:paddingLeft="@dimen/_10sdp" />
+                android:paddingLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_11sdp" />
 
             <TextView
                 android:layout_width="wrap_content"

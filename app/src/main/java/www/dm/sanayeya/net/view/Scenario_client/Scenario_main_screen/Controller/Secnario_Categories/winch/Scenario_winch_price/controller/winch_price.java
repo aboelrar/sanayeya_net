@@ -21,6 +21,7 @@ import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.send_data;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.model.winch_detailsDatum;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.model.winch_detailsRootClass;
@@ -64,6 +65,9 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
         //CALL API
         new Apicalls(this, this).request_winch(location_lat, location_lng, first_result,
                 destination_lat, destination_lng, second_result);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(winch_price.this);
     }
 
     @Override
@@ -103,6 +107,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void OnError(VolleyError error) {
+        loading.setVisibility(View.GONE);
 
     }
 

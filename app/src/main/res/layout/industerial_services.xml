@@ -7,101 +7,108 @@
     android:orientation="vertical"
     tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services">
 
-    <include layout="@layout/categories_bar" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-     <ImageView
-         android:layout_width="@dimen/_200sdp"
-         android:layout_height="@dimen/_400sdp"
-         android:layout_alignParentBottom="true"
-         android:src="@drawable/auth_curve" />
+        <include layout="@layout/connection_txt" />
 
-        <LinearLayout
+        <include layout="@layout/categories_bar" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="@string/choose_your_province"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_400sdp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/auth_curve" />
 
-            <Spinner
-                android:id="@+id/choose_your_province"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:backgroundTint="#d3d3d3"
-                android:theme="@style/ThemeSpinner" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_20sdp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="@string/choose_the_car_model"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/choose_your_province"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/choose_the_car_model"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:backgroundTint="#d3d3d3"
-                android:theme="@style/ThemeSpinner" />
+                <Spinner
+                    android:id="@+id/choose_your_province"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:backgroundTint="#d3d3d3"
+                    android:theme="@style/ThemeSpinner" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="@string/choose_the_workshop_type"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/choose_the_car_model"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/choose_the_workshop_type"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:backgroundTint="#d3d3d3"
-                android:theme="@style/ThemeSpinner" />
+                <Spinner
+                    android:id="@+id/choose_the_car_model"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:backgroundTint="#d3d3d3"
+                    android:theme="@style/ThemeSpinner" />
 
-            <Button
-                android:id="@+id/find"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:background="@drawable/button_1_bg"
-                android:text="@string/find"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/choose_the_workshop_type"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
 
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/f_color" />
+                <Spinner
+                    android:id="@+id/choose_the_workshop_type"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:backgroundTint="#d3d3d3"
+                    android:theme="@style/ThemeSpinner" />
 
+                <Button
+                    android:id="@+id/find"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:background="@drawable/button_1_bg"
+                    android:text="@string/find"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/f_color" />
+
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

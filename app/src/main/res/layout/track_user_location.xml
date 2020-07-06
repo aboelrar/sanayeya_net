@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".view.Scnerio_winch_owner.Scenario_track_user_location.cotroller.track_user_location">
 
+    <include layout="@layout/connection_txt" />
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

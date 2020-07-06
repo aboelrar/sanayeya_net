@@ -20,6 +20,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_forget_password.model.forget_passRootClass;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.loading;
@@ -47,6 +48,9 @@ public class forget_password extends AppCompatActivity implements View.OnClickLi
         //SET ON CLICK LISTNERS
         back.setOnClickListener(this);
         apply.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(forget_password.this);
     }
 
     @Override

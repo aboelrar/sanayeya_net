@@ -50,6 +50,7 @@ import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 
 
@@ -89,6 +90,9 @@ public class choose_map_location extends AppCompatActivity implements OnMapReady
 
         //SET ON CLICK LISTNERS
         confirm.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(choose_map_location.this);
 
 
     }

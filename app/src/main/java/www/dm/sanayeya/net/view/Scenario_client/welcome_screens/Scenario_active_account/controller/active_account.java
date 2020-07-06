@@ -20,6 +20,7 @@ import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.utils.utils;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_active_account.model.active_accountRootClass;
@@ -52,6 +53,9 @@ public class active_account extends AppCompatActivity implements View.OnClickLis
         back.setOnClickListener(this);
         active.setOnClickListener(this);
         resendCode.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(active_account.this);
     }
 
     @Override

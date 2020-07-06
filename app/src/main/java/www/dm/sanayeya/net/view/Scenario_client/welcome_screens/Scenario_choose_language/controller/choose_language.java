@@ -19,6 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_login.Controller.login;
 
 public class choose_language extends AppCompatActivity implements View.OnClickListener {
@@ -46,6 +47,9 @@ public class choose_language extends AppCompatActivity implements View.OnClickLi
 
         //SET ON CLICK ITEM
         apply.setOnClickListener(this);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(choose_language.this);
     }
 
     //ADD DATA TO SPINNER
