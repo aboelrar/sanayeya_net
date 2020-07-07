@@ -41,6 +41,8 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.pattern.reviews_adapter;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_rate.controller.industerial_rate;
 
+import static www.dm.sanayeya.net.R2.attr.font;
+
 public class industerial_details extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
 
     @BindView(R.id.ratings)
@@ -66,8 +68,6 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
     TextView goRate;
     @BindView(R.id.call)
     LinearLayout call;
-    @BindView(R.id.whatsapp)
-    LinearLayout whatsapp;
     @BindView(R.id.sms)
     LinearLayout sms;
     @BindView(R.id.loading)
@@ -156,7 +156,8 @@ public class industerial_details extends AppCompatActivity implements View.OnCli
             desc.setText("" + industerial_service_detailsData.getDesc());
             ratings.setRating(industerial_service_detailsData.getRate());
 
-            String reviews = "<font color=#808080>Based on " + industerial_service_detailsData.getRatesCount() + " </font> <font color=#F8971C> Reviews</font>"; //SET TEXT COLOR
+            String reviews = "<font color=#808080>  " + getString(R.string.based) + " "+industerial_service_detailsData.getRatesCount() + " </font> <font color=#F8971C> " + " " +
+                    getString(R.string.review) + "</font>"; //SET TEXT COLOR
             reviewNum.setText(Html.fromHtml(reviews, Html.FROM_HTML_MODE_LEGACY));
 
             Glide.with(this).load(industerial_service_detailsData.getImage()).into(industerialImg);

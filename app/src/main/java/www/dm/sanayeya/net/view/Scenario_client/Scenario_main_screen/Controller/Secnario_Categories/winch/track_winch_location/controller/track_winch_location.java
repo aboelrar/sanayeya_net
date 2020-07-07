@@ -97,7 +97,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
         //MOVE CAMERA
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(address_lat, address_lng)));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
 
     }

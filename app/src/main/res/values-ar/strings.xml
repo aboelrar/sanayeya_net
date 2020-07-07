@@ -6,11 +6,11 @@
     <string name="winch_owner">مالك الونش</string>
     <string name="username">الاسم</string>
     <string name="password">كلمة السر</string>
-    <string name="sign_up">تسجيل الدخول</string>
+    <string name="sign_up">تسجيل حساب </string>
     <string name="have_an_account">هل تملك حساب؟</string>
     <string name="login">دخول</string>
     <string name="forget_password">نسيت كلمة السر</string>
-    <string name="don_t_have_an_account">لا تملك حساب</string>
+    <string name="don_t_have_an_account">لا املك حساب؟</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -23,7 +23,7 @@
     <string name="locate_your_car_destination_on_the_map">حدد وجهة سيارتك على الخريطة</string>
     <string name="find">بحث</string>
     <string name="we_found_a_winch_in_your_area">لقد وجدنا ونشًا في منطقتك</string>
-    <string name="pick_up_amp_drop_off_location"><![CDATA[التقط واختر الموقع]]></string>
+    <string name="pick_up_amp_drop_off_location"><![CDATA[مكان الوصول]]></string>
     <string name="road_25_east_road45t">Road 25,East road45t</string>
     <string name="expected_time_of_arrival">الوقت المتوقع للوصول</string>
     <string name="total_cost">المبلغ الاجمالى</string>
@@ -54,7 +54,7 @@
     <string name="to">الى</string>
     <string name="reject">رفض</string>
     <string name="logout">تسجيل خروج</string>
-    <string name="myhome">ال</string>
+    <string name="myhome">الرئيسية</string>
     <string name="help">مساعدة</string>
     <string name="terms">الاحكام والشروط</string>
     <string name="winch_request">طلب ونش</string>
@@ -89,6 +89,8 @@
     <string name="call">اتصال</string>
     <string name="complete_all_info">من فضلك اكمل كل المعلومات</string>
     <string name="no_requests_found">لا يوجد طلبات</string>
+    <string name="in">خلال</string>
+    <string name="review">تقييم</string>
     <string name="whats_app">Whats App</string>
     <string name="user_location_permission_explanation">This app needs location permissions to show its functionality.</string>
     <string name="user_location_permission_not_granted">أنت لم تمنح أذونات الموقع</string>
@@ -98,6 +100,7 @@
     <string name="finish_request">انهاء الطلب</string>
     <string name="call_client">محادثة العميل</string>
     <string name="call_winch">محادثه الونش</string>
+    <string name="based">يوجد</string>
     <string name="winch_arrived_successfully">تم وصول الونش بنجاح</string>
     <string name="term_s">erms and conditions for the use of (industrial network) Welcome to (industrial), as well as carefully read the terms and conditions before using the website or application, browsing or adding any advertisement we have is an acknowledgment of you to read the terms and conditions and approval of them. The company and application (industrial network) ) It is a platform that provides space for advertisements for its users (for workshops, owners of winch and consumer), and the role of (Industrial Net) is limited to providing a meeting space (workshops, owners of winch and consumer) in an accessible way, and (Industrial Net) does not bear any responsibility and does not provide any guarantee The direction of employees in relation to the works resulting from the owners of the workshops and winches and they are not referred to to claim compensation for any losses. Instructions and rules for posting the advertisement. Ads are inserted after registration with the mobile phone number and e-mail. The advertiser must classify the advertisement and publish it under the correct section. The title of the workshop and the information of the winch must be written and the photos added correctly. Each workshop should be in its jurisdiction. The owner of the workshop and the owner of the winch must be the owner of it. It contains words or images that violate public morals or illegal, as well as prohibiting any advertisement aimed at defaming persons or institutions. It is prohibited to publish ads for selling weapons of all kinds, whether licensed or unlicensed. • It is prohibited to publish ads for lawyers that aim to announce the lawyer for himself or work to bring in clients. It is prohibited to publish advertisements that violate the laws in the country of the originator of the advertisement, as well as prohibits the publication of advertisements that violate the laws in the State of Kuwait, especially Law No. 63 of 2015 on combating electronic crime, and Law No. 38 of 2002 regarding the regulation of the declaration of articles related to health, and it is prohibited to publish advertisements for drugs and sexual stimulants. It is prohibited to publish smoking ads of all kinds, regular or electronic. It is prohibited to publish advertisements of domestic workers of all kinds, as well as the publication of advertisements of phantom employment or rental of homes in the hours. Also it is prohibited to publish all types of human trafficking. It is prohibited to publish any advertisement for gambling and betting or magic and sorcery ads. For wines or spirits of all kinds - It also prohibits the publication of any advertisement for narcotics and hashish of all kinds. It is prohibited to announce the counter for loans and installation, as well as the announcement of apartments furnished with hours or daily rent other than the companies authorized to do so, and all advertisements for investment and calls for investment and commercial participation are prohibited. The Industrial Net Department reserves the right to prohibit any phone number that uses the application for abuse or damage to others or if the application is used for unlawful purposes. The user respects the browsers and other users • It is prohibited to reserve ads or reserve installation for the purpose of selling them to another party. The user, the publisher of the advertisement, bears any legal accountability or any compensation without minimum liability on (Industrial Net ) • Administration (Industrial Net) the right to prevent any user who does not comply with the conditions of application.</string>
 </resources>

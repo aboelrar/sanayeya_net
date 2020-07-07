@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -63,10 +64,10 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
     TextView goRate;
     @BindView(R.id.call)
     LinearLayout call;
-    @BindView(R.id.whatsapp)
-    LinearLayout whatsapp;
     @BindView(R.id.sms)
     LinearLayout sms;
+    @BindView(R.id.loading)
+    ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,9 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
     @Override
     public void OnResponse(ResponseModel model) {
 
+        loading.setVisibility(View.GONE);
+
+
         Gson gson = new Gson();
         twenty_four_detailsRootClass = gson.fromJson("" + model.getJsonObject(), twenty_four_detailsRootClass.class);
 
@@ -130,7 +134,8 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
             desc.setText("" + twenty_four_detailsDatum.getDesc());
             ratings.setRating(twenty_four_detailsDatum.getRate());
 
-            String reviews = "<font color=#808080>Based on " + twenty_four_detailsDatum.getRatesCount() + " </font> <font color=#F8971C> Reviews</font>"; //SET TEXT COLOR
+            String reviews = "<font color=#808080> " + getString(R.string.based) + " " + twenty_four_detailsDatum.getRatesCount() + " </font> <font color=#F8971C> "
+                    + getString(R.string.review) + "</font>"; //SET TEXT COLOR
             reviewNum.setText(Html.fromHtml(reviews, Html.FROM_HTML_MODE_LEGACY));
 
             Glide.with(this).load(twenty_four_detailsDatum.getImage()).into(industerialImg);
@@ -164,7 +169,7 @@ public class workshop_details extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void OnError(VolleyError error) {
-
+        loading.setVisibility(View.GONE);
     }
 
     @Override

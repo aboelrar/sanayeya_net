@@ -65,8 +65,6 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
     TextView goRate;
     @BindView(R.id.call)
     LinearLayout call;
-    @BindView(R.id.whatsapp)
-    LinearLayout whatsapp;
     @BindView(R.id.sms)
     LinearLayout sms;
     @BindView(R.id.loading)
@@ -133,7 +131,8 @@ public class home_service_details extends AppCompatActivity implements View.OnCl
             desc.setText(data.getDesc());
             ratings.setRating(data.getRate());
 
-            String reviews = "<font color=#808080>Based on " + data.getRatesCount() + " </font> <font color=#F8971C> Reviews</font>"; //SET TEXT COLOR
+            String reviews = "<font color=#808080>" + getString(R.string.based) + " " + data.getRatesCount() + "</font> <font color=#F8971C> " + getString(R.string.review)
+                    + "/font>"; //SET TEXT COLOR
             reviewNum.setText(Html.fromHtml(reviews, Html.FROM_HTML_MODE_LEGACY));
 
             Glide.with(this).load(data.getImage()).into(com_image);

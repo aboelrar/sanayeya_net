@@ -18,13 +18,15 @@
             <ImageView
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_400sdp"
+                android:layout_alignParentLeft="true"
                 android:src="@drawable/auth_curve" />
 
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:rotation="180"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_26sdp"
                 android:src="@drawable/back" />
 
@@ -70,6 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="right|center"
                         android:hint="@string/username"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
@@ -90,6 +93,7 @@
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/email"
+                        android:gravity="right|center"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
 
@@ -110,6 +114,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/phone"
                         android:inputType="number"
+                        android:gravity="right|center"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
 
@@ -129,6 +134,7 @@
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/whats_app"
+                        android:gravity="right|center"
                         android:inputType="number"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
@@ -150,6 +156,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/password"
                         android:inputType="textPassword"
+                        android:gravity="right|center"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
 
@@ -168,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_marginTop="@dimen/_15sdp"
-                        android:layout_marginBottom="@dimen/_50sdp"
+                        android:layout_marginBottom="@dimen/_100sdp"
                         android:gravity="center"
                         android:orientation="horizontal">
 

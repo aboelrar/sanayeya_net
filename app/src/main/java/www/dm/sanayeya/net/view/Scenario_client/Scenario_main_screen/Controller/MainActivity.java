@@ -3,6 +3,7 @@ package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -11,8 +12,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import www.dm.sanayeya.net.NetworkLayer.Apicalls;
+import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
+import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
@@ -23,10 +31,11 @@ import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.categories;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location;
+import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_choose_language.controller.choose_language;
 import www.dm.sanayeya.net.view.Scenario_client.welcome_screens.Scenario_edit_profile.controller.edit_profile;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
 
     @BindView(R.id.menu)
     ImageView menu;
@@ -59,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(MainActivity.this);
+
+        new Apicalls(MainActivity.this, MainActivity.this)
+                .change_language(new saved_data().get_lan(MainActivity.this));
 
 
 
@@ -102,5 +114,20 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
             moveTaskToBack(true);
         }
 
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+        Log.e("conncetion","no Connextion");
     }
 }

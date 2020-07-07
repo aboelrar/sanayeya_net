@@ -8,19 +8,25 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.android.volley.VolleyError;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import www.dm.sanayeya.net.NetworkLayer.Apicalls;
+import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
+import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
 import www.dm.sanayeya.net.test_navigation;
 import www.dm.sanayeya.net.utils.utils;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_chnage_password.controller.change_pass;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_help.controller.help;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Scenario_terms.terms;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.Scenario_client_request.controller.clients_request;
 
-public class winch_main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener {
+public class winch_main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
 
     @BindView(R.id.menu)
     ImageView menu;
@@ -54,6 +60,9 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
 
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(winch_main_screen.this);
+
+        new Apicalls(winch_main_screen.this, winch_main_screen.this)
+                .change_language(new saved_data().get_lan(winch_main_screen.this));
     }
 
     @Override
@@ -91,6 +100,21 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
 
             moveTaskToBack(true);
         }
+
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
 
     }
 }

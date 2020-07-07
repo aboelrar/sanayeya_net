@@ -288,8 +288,6 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
             NavigationLauncher.startNavigation(test_navigation.this, options);
         } else if (view.getId() == R.id.finish) {
 
-            btn_status = true;
-
             new AlertDialog.Builder(test_navigation.this)
                     .setTitle("Finish Request")
                     .setMessage("Are you sure you want to finish request?")
@@ -298,6 +296,9 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
                     // The dialog is automatically dismissed when a dialog button is clicked.
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+
+
+                            btn_status = true;
 
                             send_data.request_id(test_navigation.this, "0");
 

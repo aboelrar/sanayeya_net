@@ -61,6 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="right|center"
                         android:hint="@string/username"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
@@ -81,6 +82,7 @@
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/email"
+                        android:gravity="right|center"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
 
@@ -101,6 +103,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:hint="@string/phone"
                         android:paddingLeft="@dimen/_5sdp"
+                        android:gravity="right|center"
                         android:paddingRight="@dimen/_5sdp" />
 
 

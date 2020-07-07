@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_details.controller.workshop_details">
+    tools:context=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_details.controller.industerial_details">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_50sdp"
-                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_18sdp"
                     android:textStyle="bold" />
@@ -83,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="@string/descripition"
+
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold" />
@@ -106,8 +107,8 @@
                     android:id="@+id/go_rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/add_your_feedback_and_rate"
                     android:textColor="@color/f_color"
                     android:textSize="@dimen/_15sdp"
@@ -124,8 +125,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/reviews"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_15sdp"
@@ -141,6 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:gravity="center"
                         android:text="@string/there_is_no_review"
                         android:textSize="@dimen/_13sdp"
                         android:visibility="gone" />
@@ -170,7 +172,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -202,6 +203,7 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_weight=".01"
                         android:src="@android:color/black" />
+
 
                     <ImageView
                         android:layout_width="0dp"
@@ -243,6 +245,7 @@
                 android:src="@drawable/back"
                 android:tint="@android:color/white" />
 
+
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -256,4 +259,5 @@
         android:indeterminateTint="@color/f_color" />
 
     <include layout="@layout/connection_txt" />
+
 </RelativeLayout>

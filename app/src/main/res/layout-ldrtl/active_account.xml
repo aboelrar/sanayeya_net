@@ -82,7 +82,7 @@
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:background="@drawable/verfication_code"
                 android:hint="@string/verfication_code"
-                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
                 android:textSize="@dimen/_11sdp" />
 
             <ImageView

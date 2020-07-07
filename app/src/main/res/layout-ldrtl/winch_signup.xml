@@ -18,14 +18,16 @@
             <ImageView
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_400sdp"
+                android:layout_alignParentLeft="true"
                 android:src="@drawable/auth_curve" />
 
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_26sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:rotation="180"
                 android:src="@drawable/back" />
 
             <LinearLayout
@@ -70,6 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center|right"
                         android:hint="@string/username"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
@@ -89,6 +92,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center|right"
                         android:hint="@string/email"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp" />
@@ -108,6 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center|right"
                         android:hint="@string/phone"
                         android:inputType="number"
                         android:paddingLeft="@dimen/_5sdp"
@@ -128,6 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center|right"
                         android:hint="@string/whats_app"
                         android:inputType="number"
                         android:paddingLeft="@dimen/_5sdp"
@@ -149,7 +155,7 @@
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:ellipsize="end"
-                        android:gravity="center|left"
+                        android:gravity="center|right"
                         android:hint="@string/address"
                         android:maxLines="1"
                         android:paddingLeft="@dimen/_5sdp"
@@ -177,6 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_45sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center|right"
                         android:hint="@string/password"
                         android:inputType="textPassword"
                         android:paddingLeft="@dimen/_5sdp"
@@ -197,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_marginTop="@dimen/_15sdp"
-                        android:layout_marginBottom="@dimen/_80sdp"
+                        android:layout_marginBottom="@dimen/_130sdp"
                         android:gravity="center"
                         android:orientation="horizontal">
 

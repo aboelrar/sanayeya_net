@@ -14,6 +14,7 @@
             android:layout_width="@dimen/_200sdp"
             android:layout_height="@dimen/_400sdp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginBottom="-230dp"
             android:src="@drawable/auth_curve" />
 
@@ -68,6 +69,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:hint="@string/username"
+                    android:gravity="right|center"
                     android:paddingLeft="@dimen/_5sdp"
                     android:paddingRight="@dimen/_5sdp" />
 
@@ -87,6 +89,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:hint="@string/password"
+                    android:gravity="center|right"
                     android:inputType="textPassword"
                     android:paddingLeft="@dimen/_5sdp"
                     android:paddingRight="@dimen/_5sdp" />
@@ -129,7 +132,7 @@
                         android:id="@+id/signup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
                         android:text="@string/sign_up"
                         android:textColor="@color/f_color"
                         android:textSize="@dimen/_13sdp" />

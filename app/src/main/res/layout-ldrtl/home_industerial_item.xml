@@ -63,7 +63,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:gravity="left|center"
+                android:gravity="right|center"
                 android:maxLines="2"
                 android:textSize="@dimen/_11sdp" />
 

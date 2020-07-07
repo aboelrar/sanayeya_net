@@ -25,11 +25,15 @@ public class splash_screen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //CHANGE LANGUAGE
+        new utils().set_language(new saved_data().get_lan(splash_screen.this),
+                splash_screen.this);
+
         if (new saved_data().get_login_status(splash_screen.this) == true) {
             if (new saved_data().get_user_type(this).equals("user")) {
-                startActivity(new Intent(this, MainActivity.class)); // GO TO USER
+                new utils().splash_screen(this, MainActivity.class); // GO TO USER
             } else {
-                startActivity(new Intent(this, winch_main_screen.class)); // GO TO WINCH
+                new utils().splash_screen(this, winch_main_screen.class); // GO TO WINCH
             }
         } else {
             new utils().splash_screen(this, choose_language.class); //GO TO CHOOSE LANGUAGE

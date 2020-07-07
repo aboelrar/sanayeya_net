@@ -97,7 +97,7 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight=".13"
                 android:backgroundTint="@color/line_color"
-                android:gravity="center|left"
+                android:gravity="center|right"
                 android:hint="@string/write_your_feedback"
                 android:paddingLeft="@dimen/_5sdp"
                 android:textColor="@android:color/black"

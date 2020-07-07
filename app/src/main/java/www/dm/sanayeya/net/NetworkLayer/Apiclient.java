@@ -42,7 +42,7 @@ public enum Apiclient {
     MY_ORDERS("wench/my_orders", null),
     CONFIRM_ORDER("wench/confirm_order", null),
     ACCEPT_REJECT_REQUEST("wench/change_status", Arrays.asList("status")),
-    CHECK_OUT("stripe-token", Arrays.asList("amount")),
+    LANGUAGE("Auth_private/change_lang", Arrays.asList("lang")),
     UPDATE_INVESTOR("update_investor?", Arrays.asList("id","Name","Email","Password","Age","Gender","Work","Mobile","Images")),
     UPLOAD_CONSULTATION_FILES("upload-consultation-files", Arrays.asList("consultation_id","images","files"));
 

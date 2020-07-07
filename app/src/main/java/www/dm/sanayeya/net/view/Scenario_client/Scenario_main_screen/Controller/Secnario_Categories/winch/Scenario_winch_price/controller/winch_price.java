@@ -126,7 +126,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
             //SET DATA
             address.setText(winch_detailsDatum.getLocationAddress());
             time.setText(winch_detailsDatum.getArrivedAt());
-            min.setText("in " + winch_detailsDatum.getEstiamteTime());
+            min.setText(getString(R.string.in) +" "+ winch_detailsDatum.getEstiamteTime());
             price.setText(winch_detailsDatum.getCost() + "$");
         }
     }

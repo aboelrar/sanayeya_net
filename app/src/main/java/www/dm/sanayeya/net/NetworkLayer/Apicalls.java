@@ -435,12 +435,16 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Get Offer Data
+     * @func Change Language
      */
 
 
-    public void get_balance() {
-
+    public void change_language(String language) {
+        try {
+            apiRouter.makeAdvancedRequest(Apiclient.LANGUAGE.getURL(), Request.Method.POST, Apiclient.LANGUAGE.getParams(), Arrays.asList(language), null);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
