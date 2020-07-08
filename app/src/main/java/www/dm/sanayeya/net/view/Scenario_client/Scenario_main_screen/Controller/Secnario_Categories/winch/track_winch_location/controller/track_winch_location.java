@@ -1,22 +1,18 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -27,23 +23,23 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import www.dm.sanayeya.net.R;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
-import www.dm.sanayeya.net.utils.directionhelpers.FetchURL;
+import www.dm.sanayeya.net.test_navigation;
 import www.dm.sanayeya.net.utils.directionhelpers.TaskLoadedCallback;
-import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_track_user_location.cotroller.track_user_location;
 
-public class track_winch_location extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
+public class track_winch_location extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback, View.OnClickListener {
+    @BindView(R.id.call)
+    Button call;
     private GoogleMap mMap;
     private MarkerOptions place1, place2;
     private Polyline currentPolyline;
@@ -59,6 +55,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.track_winch_location);
+        ButterKnife.bind(this);
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
@@ -76,6 +73,8 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(track_winch_location.this);
 
+        //CALL WINCH
+        call.setOnClickListener(this);
 
     }
 
@@ -97,7 +96,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
         //MOVE CAMERA
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(address_lat, address_lng)));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
 
     }
@@ -140,29 +139,34 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
                     return;
                 }
 
-                //CLEAR MAP
-                marker.remove();
+                if (snapshot.getData() != null) {
 
-                String winch_lat_f = (String) snapshot.get("lat");
-                winch_lat = Double.valueOf(winch_lat_f);
+                    Log.e("result", "" + snapshot.getData());
 
-                //LNG IS
-                String winch_lng_f = (String) snapshot.get("lng");
-                winch_lng = Double.valueOf(winch_lng_f);
+                    //CLEAR MAP
+                    marker.remove();
 
-                //ADD ROUTING DRAWING
-                place2 = new MarkerOptions().position(new LatLng(winch_lat, winch_lng)).title("Location 2");
+                    String winch_lat_f = (String) snapshot.get("lat");
+                    winch_lat = Double.valueOf(winch_lat_f);
 
-                //ADD CUSTOM MARKERS
-                marker = mMap.addMarker(place2);
-                marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.winch_location));
+                    //LNG IS
+                    String winch_lng_f = (String) snapshot.get("lng");
+                    winch_lng = Double.valueOf(winch_lng_f);
+
+                    //ADD ROUTING DRAWING
+                    place2 = new MarkerOptions().position(new LatLng(winch_lat, winch_lng)).title("Location 2");
+
+                    //ADD CUSTOM MARKERS
+                    marker = mMap.addMarker(place2);
+                    marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.winch_location));
 
 
-                //ADD DILAOG FINSIHED
-                String status = (String) snapshot.get("status");
-                if (status.equals("0")) {
-                    loading loading = new loading();
-                    loading.dialog(track_winch_location.this, R.layout.request_finished, .80);
+                    //ADD DILAOG FINSIHED
+                    String status = (String) snapshot.get("status");
+                    if (status.equals("0")) {
+                        loading loading = new loading();
+                        loading.dialog(track_winch_location.this, R.layout.request_finished, .80);
+                    }
                 }
             }
 
@@ -170,4 +174,15 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.call) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",
+                    new saved_data().get_winch_phone(track_winch_location.this), null)));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

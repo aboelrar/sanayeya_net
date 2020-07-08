@@ -25,6 +25,8 @@ public class winch_detailsDatum{
 	private int id;
 	@SerializedName("location_address")
 	private String locationAddress;
+	@SerializedName("winch_phone")
+	private String winch_phone;
 	@SerializedName("location_lat")
 	private double locationLat;
 	@SerializedName("location_lng")
@@ -131,6 +133,14 @@ public class winch_detailsDatum{
 		return this.winchLng;
 	}
 
+	public String getWinch_phone() {
+		return winch_phone;
+	}
+
+	public void setWinch_phone(String winch_phone) {
+		this.winch_phone = winch_phone;
+	}
+
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
 	 */
@@ -149,6 +159,7 @@ public class winch_detailsDatum{
 		winchLat = jsonObject.optDouble("winch_lat");
 		winchLng = jsonObject.optDouble("winch_lng");
 		cost = jsonObject.optString("cost");
+		winch_phone = jsonObject.optString("winch_phone");
 		id = jsonObject.optInt("id");
 		status = jsonObject.optInt("status");
 		userId = jsonObject.optInt("user_id");
@@ -170,6 +181,7 @@ public class winch_detailsDatum{
 			jsonObject.put("estiamte_time", estiamteTime);
 			jsonObject.put("id", id);
 			jsonObject.put("location_address", locationAddress);
+			jsonObject.put("winch_phone", winch_phone);
 			jsonObject.put("location_lat", locationLat);
 			jsonObject.put("location_lng", locationLng);
 			jsonObject.put("status", status);

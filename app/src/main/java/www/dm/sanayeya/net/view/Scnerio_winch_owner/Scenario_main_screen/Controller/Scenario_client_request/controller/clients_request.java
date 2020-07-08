@@ -88,7 +88,7 @@ public class clients_request extends Fragment implements NetworkInterface {
         for (int index = 0; index < my_ordersData.length; index++) {
             arrayList.add(new client_request_list("" + my_ordersData[index].getId(), "Request id : 51887876", my_ordersData[index].getLocationAddress(),
                     my_ordersData[index].getDestinationAddress(), my_ordersData[index].getLocationLat(), my_ordersData[index].getLocationLng(),
-                    my_ordersData[index].getWinchLat(),my_ordersData[index].getWinchLng()));
+                    my_ordersData[index].getWinchLat(),my_ordersData[index].getWinchLng(),my_ordersData[index].getUser_phone()));
 
         }
 

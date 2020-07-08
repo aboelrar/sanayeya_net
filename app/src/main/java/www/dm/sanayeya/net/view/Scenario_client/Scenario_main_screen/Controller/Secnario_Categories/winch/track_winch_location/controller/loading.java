@@ -35,7 +35,7 @@ public class loading {
         handler.postDelayed(new Runnable() {
             public void run() {
 
-                send_data.set_notifcation_status(context, "0"); //ADD ID
+                send_data.set_order_id(context, "0"); //ADD ID
 
                 context.startActivity(new Intent(context, MainActivity.class));
                 ((Activity) context).finish();

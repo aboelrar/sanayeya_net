@@ -85,6 +85,13 @@ public class saved_data {
         return Double.longBitsToDouble(type);
     }
 
+    //GET ORDER PHONE
+    public String get_winch_phone(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
+        String phone = sharedPreferences.getString("phone", "0");
+        return phone;
+    }
+
     //GET WINCH LAT
     public Double get_winch_owner_lat(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("winch", MODE_PRIVATE);
@@ -104,6 +111,13 @@ public class saved_data {
         SharedPreferences sharedPreferences = context.getSharedPreferences("winch", MODE_PRIVATE);
         String id = sharedPreferences.getString("request_id","0");
         return id;
+    }
+
+    //GET USER PHONE
+    public String get_user_phone(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("winch", MODE_PRIVATE);
+        String phone = sharedPreferences.getString("phone", "0");
+        return phone;
     }
 
 }

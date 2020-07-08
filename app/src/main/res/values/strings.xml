@@ -99,6 +99,9 @@
     <string name="access_token">sk.eyJ1IjoiYW1yZ2FibyIsImEiOiJja2Mycm0wOWcyNjVhMnJwN2V5czJ5MTJ4In0.d9Z5vcgN-ffnWpbOAjHSMw</string>
     <string name="the_activation_code_has_been_sent_to_your_n_whats_app_please_write_it_here">The activation code has been sent to your\n Whats App, Please write it here</string>
     <string name="finish_request">Finish Request</string>
+    <string name="sure">Are you sure you want to finish request?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="call_client">Call Client</string>
     <string name="call_winch">Call Winch</string>
     <string name="winch_arrived_successfully">Winch Arrived Successfully</string>

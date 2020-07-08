@@ -9,10 +9,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONException;
 
@@ -42,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
     @BindView(R.id.drawer)
     DrawerLayout drawer;
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +66,23 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         //SET ON CLICK LISTNER
         menu.setOnClickListener(this);
 
-        if(new saved_data().notifcation_status(MainActivity.this).equals("0"))
-        {
+        if (new saved_data().order_id(MainActivity.this).equals("0")) {
+
             //ADD ALL CATEGORIES
             new utils().Replace_Fragment(new categories(), R.id.frag, this);
-        }
-        else {
-            startActivity(new Intent(MainActivity.this,track_winch_location.class));
+        } else {
+            db.collection("winch").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(MainActivity.this, track_winch_location.class));
+                    } else {
+                        //ADD ALL CATEGORIES
+                        new utils().Replace_Fragment(new categories(), R.id.frag, MainActivity.this);
+                    }
+                }
+            });
+
         }
 
         //CALL BROADCAST RECIEVER METHOD
@@ -71,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
         new Apicalls(MainActivity.this, MainActivity.this)
                 .change_language(new saved_data().get_lan(MainActivity.this));
-
 
 
     }
@@ -128,6 +146,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
     @Override
     public void OnError(VolleyError error) {
-        Log.e("conncetion","no Connextion");
+        Log.e("conncetion", "no Connextion");
     }
 }

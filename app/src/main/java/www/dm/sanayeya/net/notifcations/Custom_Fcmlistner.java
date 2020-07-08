@@ -1,5 +1,6 @@
 package www.dm.sanayeya.net.notifcations;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -18,6 +19,7 @@ import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import com.android.volley.VolleyError;
@@ -40,11 +42,12 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
     private final String ADMIN_CHANNEL_ID = "admin_channel";
     private NotificationUtils notificationUtils;
-
+    String type;
 
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+
 //        if (saved_data.get_switch_checked(this) == true) {
 //
 //
@@ -52,25 +55,25 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 //
 //        }
 //        else {
-            // Check if message contains a notification payload.
-            if (remoteMessage.getNotification() != null) {
-                Log.e("Notification Body: ", remoteMessage.getNotification().getBody());
-                sendNotification(Objects.requireNonNull(remoteMessage.getNotification()).getTitle(), remoteMessage.getNotification().getBody());
-
-            }
-
-            // Check if message contains a data payload.
-            if (remoteMessage.getData().size() > 0) {
-                Log.e("Data Payload: ", remoteMessage.getData().toString());
-
-                try {
-                    handleDataMessage(remoteMessage);
-                } catch (Exception e) {
-                    Log.e("Exception: ", e.getMessage());
-                }
-            }
+        // Check if message contains a notification payload.
+        if (remoteMessage.getNotification() != null) {
+            Log.e("Notification Body: ", remoteMessage.getNotification().getBody());
+            sendNotification(Objects.requireNonNull(remoteMessage.getNotification()).getTitle(), remoteMessage.getNotification().getBody());
 
         }
+
+        // Check if message contains a data payload.
+        if (remoteMessage.getData().size() > 0) {
+            Log.e("Data Payload: ", remoteMessage.getData().toString());
+
+            try {
+                handleDataMessage(remoteMessage);
+            } catch (Exception e) {
+                Log.e("Exception: ", e.getMessage());
+            }
+        }
+
+    }
 //    }
 
 
@@ -99,7 +102,6 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
             broadcastIntent.putExtra("toastMessage", "message");
 
 
-
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -107,24 +109,17 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             Intent intent2 = null;
 
-            if(new saved_data().get_user_type(getBaseContext()).equals("user"))
-            {
-                send_data.set_notifcation_status(getBaseContext(),"1");
+            if (new saved_data().get_user_type(getApplicationContext()).equals("user")) {
                 intent2 = new Intent(this, track_winch_location.class);
-            }
-            else {
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(intent2);
+            } else {
                 intent2 = new Intent(this, winch_main_screen.class);
             }
 
 
             intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-
-
-
-
 
 
 
@@ -172,7 +167,7 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 //                Log.e("", "notificationStoped");
 //
 //            } else {
-                notificationManager.notify(notificationID, notificationBuilder.build());
+            notificationManager.notify(notificationID, notificationBuilder.build());
 //           }
 
         } else {
@@ -199,7 +194,6 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
             broadcastIntent.putExtra("toastMessage", "message");
 
 
-
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -207,11 +201,11 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             Intent intent2 = null;
 
-            if(new saved_data().get_user_type(getBaseContext()).equals("user"))
-            {
+            if (new saved_data().get_user_type(getApplicationContext()).equals("user")) {
                 intent2 = new Intent(this, track_winch_location.class);
-            }
-            else {
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
+            } else {
                 intent2 = new Intent(this, winch_main_screen.class);
             }
 
@@ -220,6 +214,7 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
             PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
+            startService(new Intent(getBaseContext(), notifcation_sevice.class));
 
 
 
@@ -276,9 +271,9 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 //
 //                notificationManager.notify();
 //            } else {
-                notificationManager.notify(notificationID, notificationBuilder.build());
-            }
+            notificationManager.notify(notificationID, notificationBuilder.build());
         }
+    }
 //    }
 
 
@@ -312,8 +307,8 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
         Config.content = data.get("content");
         Config.imageUrl = data.get("imageUrl");
         Config.gameUrl = data.get("gameUrl");
+        type = data.get("userType");
 
-        Log.e("myid_is",""+data.get("id"));
 
 //        Intent resultIntent = new Intent(getApplicationContext(), Notification.class);
 //        resultIntent.putExtra("title", Config.title);
@@ -338,7 +333,6 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         Log.e("Refreshed token:", token);
-
 
 
     }

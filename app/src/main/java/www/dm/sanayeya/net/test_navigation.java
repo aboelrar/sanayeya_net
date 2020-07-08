@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -56,6 +57,7 @@ import retrofit2.Response;
 import www.dm.sanayeya.net.local_data.saved_data;
 import www.dm.sanayeya.net.local_data.send_data;
 import www.dm.sanayeya.net.network_check_status.regist_network_broadcast;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen;
 
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
@@ -67,6 +69,8 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
     Button startButton;
     @BindView(R.id.finish)
     Button finish;
+    @BindView(R.id.call)
+    Button call;
     private MapView mapView;
     private MapboxMap mapboxMap;
     LocationComponent locationComponent;
@@ -106,6 +110,8 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(test_navigation.this);
 
+        //CALL USER
+        call.setOnClickListener(this);
     }
 
 
@@ -289,12 +295,12 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
         } else if (view.getId() == R.id.finish) {
 
             new AlertDialog.Builder(test_navigation.this)
-                    .setTitle("Finish Request")
-                    .setMessage("Are you sure you want to finish request?")
+                    .setTitle(getString(R.string.finish_request))
+                    .setMessage(getString(R.string.sure))
 
                     // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
 
@@ -303,16 +309,20 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
                             send_data.request_id(test_navigation.this, "0");
 
                             //FINISH ACTIVITY
-                            startActivity(new Intent(test_navigation.this,winch_main_screen.class));
+                            startActivity(new Intent(test_navigation.this, winch_main_screen.class));
                             finish();
                         }
                     })
 
                     // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton(android.R.string.no, null)
+                    .setNegativeButton(getString(R.string.no), null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
 
+
+        } else if (view.getId() == R.id.call) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",
+                    new saved_data().get_user_phone(test_navigation.this), null)));
 
         }
     }
@@ -453,4 +463,8 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
                 .update(data);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

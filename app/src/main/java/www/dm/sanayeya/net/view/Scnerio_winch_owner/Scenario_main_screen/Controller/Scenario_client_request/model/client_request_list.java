@@ -1,10 +1,10 @@
 package www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.Scenario_client_request.model;
 
 public class client_request_list {
-    String id, request_id, from, to;
+    String id, request_id, from, to, phone;
     double address_lat, address_lng, winch_lat, winch_lng;
 
-    public client_request_list(String id, String request_id, String from, String to, double address_lat, double address_lng, double winch_lat, double winch_lng) {
+    public client_request_list(String id, String request_id, String from, String to, double address_lat, double address_lng, double winch_lat, double winch_lng, String phone) {
         this.id = id;
         this.request_id = request_id;
         this.from = from;
@@ -13,6 +13,7 @@ public class client_request_list {
         this.address_lng = address_lng;
         this.winch_lat = winch_lat;
         this.winch_lng = winch_lng;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -77,5 +78,13 @@ public class client_request_list {
 
     public void setWinch_lng(double winch_lng) {
         this.winch_lng = winch_lng;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

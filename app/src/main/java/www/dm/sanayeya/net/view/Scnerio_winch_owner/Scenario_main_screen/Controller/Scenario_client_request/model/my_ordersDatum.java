@@ -28,6 +28,8 @@ public class my_ordersDatum {
     private int id;
     @SerializedName("location_address")
     private String locationAddress;
+    @SerializedName("user_phone")
+    private String user_phone;
     @SerializedName("location_lat")
     private Double locationLat;
     @SerializedName("location_lng")
@@ -163,6 +165,14 @@ public class my_ordersDatum {
         return this.winchLng;
     }
 
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
+    }
+
     /**
      * Instantiate the instance using the passed jsonObject to set the properties values
      */
@@ -174,6 +184,7 @@ public class my_ordersDatum {
         destinationAddress = jsonObject.optString("destination_address");
         destinationLat = jsonObject.optString("destination_lat");
         destinationLng = jsonObject.optString("destination_lng");
+        destinationLng = jsonObject.optString("user_phone");
         estiamteTime = jsonObject.optString("estiamte_time");
         locationAddress = jsonObject.optString("location_address");
         locationLat = jsonObject.optDouble("location_lat");
@@ -196,6 +207,7 @@ public class my_ordersDatum {
             jsonObject.put("arrived_at", arrivedAt);
             jsonObject.put("cost", cost);
             jsonObject.put("destination_address", destinationAddress);
+            jsonObject.put("user_phone", user_phone);
             jsonObject.put("destination_lat", destinationLat);
             jsonObject.put("destination_lng", destinationLng);
             jsonObject.put("estiamte_time", estiamteTime);

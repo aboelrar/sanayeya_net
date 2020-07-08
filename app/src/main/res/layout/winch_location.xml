@@ -7,6 +7,12 @@
 
     <include layout="@layout/connection_txt" />
 
+    <ImageView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_400sdp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/auth_curve" />
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,12 +28,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_400sdp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="-250dp"
-                android:src="@drawable/auth_curve" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

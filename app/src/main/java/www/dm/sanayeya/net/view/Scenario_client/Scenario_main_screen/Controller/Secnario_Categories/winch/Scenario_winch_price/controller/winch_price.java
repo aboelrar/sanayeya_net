@@ -1,6 +1,10 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_price.controller;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -51,8 +55,6 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.winch_price);
         ButterKnife.bind(this);
 
-        //SET ON CLICK LISTNERS
-        confirm.setOnClickListener(this);
 
         //GET DATA FROM PREVIOUS PAGE
         String location_lat = getIntent().getStringExtra("location_lat");
@@ -91,6 +93,10 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
             loading.setVisibility(View.GONE);
             get_request_data(model.getJsonObject());
             status = true;
+
+            //SET ON CLICK LISTNERS
+            confirm.setOnClickListener(this);
+
         } else {
             new utils().dismiss_dialog(winch_price.this);
             Toasty.success(winch_price.this, "order confirmation successfully", Toasty.LENGTH_LONG).show();
@@ -99,6 +105,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
             send_data.set_order_id(winch_price.this, "" + winch_detailsDatum.getId()); //ADD ID
             send_data.set_order_lat(winch_price.this, winch_detailsDatum.getLocationLat()); //ADD LAT
             send_data.set_order_lng(winch_price.this, winch_detailsDatum.getLocationLng()); //ADD LNG
+            send_data.set_winch_phone(winch_price.this, winch_detailsDatum.getWinch_phone()); //ADD WINCH PHONE
 
         }
 
@@ -130,5 +137,22 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
             price.setText(winch_detailsDatum.getCost() + "$");
         }
     }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    private BroadcastReceiver mReceiverLocation = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                Log.e("xxxxxqq","yes");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
 }

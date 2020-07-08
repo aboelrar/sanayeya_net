@@ -82,7 +82,7 @@ public class send_data {
     }
 
 
-   //SET ORDER ID
+    //SET ORDER ID
     public static void set_notifcation_status(Context context, String status) {
         //SAVE LANGUAGE STATUS
         SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
@@ -106,6 +106,15 @@ public class send_data {
         SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("order_lng", Double.doubleToRawLongBits(lng));
+        editor.commit();
+    }
+
+    //SET WINCH PHONE
+    public static void set_winch_phone(Context context, String phone) {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences = context.getSharedPreferences("order", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("phone", phone);
         editor.commit();
     }
 
@@ -145,4 +154,12 @@ public class send_data {
         editor.commit();
     }
 
+    //SET USER PHONE
+    public static void set_user_phone(Context context, String phone) {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences = context.getSharedPreferences("winch", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("phone", phone);
+        editor.commit();
+    }
 }

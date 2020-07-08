@@ -138,6 +138,8 @@ public class utils {
 
         pd = new ProgressDialog(context);
         pd.setMessage(loading);
+        pd.setCancelable(false);
+        pd.setCanceledOnTouchOutside(false);
         pd.show();
     }
 

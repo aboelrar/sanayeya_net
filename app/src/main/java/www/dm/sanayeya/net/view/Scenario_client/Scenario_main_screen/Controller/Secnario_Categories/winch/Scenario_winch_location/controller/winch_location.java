@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -33,6 +34,8 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
     String destination_lat, destination_lng;
     String first_result;
     String second_result;
+    @BindView(R.id.back)
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
         find.setOnClickListener(this);
         carLocation.setOnClickListener(this);
         carDestination.setOnClickListener(this);
+        back.setOnClickListener(this);
 
         //SET TITLE TEXT
         title.setText(getResources().getString(R.string.winch_request));
@@ -60,6 +64,8 @@ public class winch_location extends AppCompatActivity implements View.OnClickLis
             startActivityForResult(new Intent(this, choose_map_location.class), 1);
         } else if (view.getId() == R.id.car_destination) {
             startActivityForResult(new Intent(this, choose_map_location.class), 2);
+        } else if (view.getId() == R.id.back) {
+            finish();
         }
     }
 

@@ -97,6 +97,7 @@ public class client_request_adapter extends RecyclerView.Adapter<client_request_
                 send_data.winch_owner_lat(context,mylist.get(position).getAddress_lat()); //ADD WINCH LAT
                 send_data.winch_owner_lng(context,mylist.get(position).getAddress_lng()); //ADD WINCH LNG
                 send_data.request_id(context,mylist.get(position).getId()); //ADD WINCH ID
+                send_data.set_user_phone(context,mylist.get(position).getPhone()); //ADD WINCH PHONE
 
                 //CHECK IF LIST EQUAL ZERO
                 Intent intent = new Intent(context, test_navigation.class);
