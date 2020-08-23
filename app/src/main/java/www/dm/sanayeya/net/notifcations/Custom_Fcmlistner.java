@@ -14,6 +14,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -85,13 +86,14 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             expandedView.setTextViewText(R.id.content_title, messageTitle);
             expandedView.setTextViewText(R.id.content_text, messageBody);
-            //            expandedView.setTextViewText(R.id.timestamp, DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME));
+            expandedView.setTextViewText(R.id.timestamp, DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME));
 
 
             Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
             collapseView.setTextViewText(R.id.content_title, messageTitle);
             collapseView.setTextViewText(R.id.content_text, messageBody);
+            collapseView.setTextViewText(R.id.timestamp, DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME));
 
 
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -142,15 +144,16 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
             Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
                     .setSmallIcon(R.drawable.app_logo)
-                    .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+//                    .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                     .setCustomContentView(collapseView)
-                    .setCustomBigContentView(expandedView)
+//                    .setCustomBigContentView(expandedView)
                     .setContentTitle(messageTitle)
                     .setContentText(messageBody)
                     .setAutoCancel(true)
                     .setSound(notificationSoundUri)
                     .setContentIntent(contentIntent)
                     .setSound(defaultSound)
+                    .setWhen(System.currentTimeMillis())
                     .setPriority(Notification.PRIORITY_MAX)
                     .setColor(Color.parseColor("#F8971C"));
 
@@ -179,11 +182,14 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             expandedView.setTextViewText(R.id.content_title, messageTitle);
             expandedView.setTextViewText(R.id.content_text, messageBody);
+            expandedView.setTextViewText(R.id.timestamp, DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME));
+
 
             Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
             collapseView.setTextViewText(R.id.content_title, messageTitle);
             collapseView.setTextViewText(R.id.content_text, messageBody);
+            collapseView.setTextViewText(R.id.timestamp, DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME));
 
 
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -240,19 +246,20 @@ public class Custom_Fcmlistner extends FirebaseMessagingService {
 
             Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.app_logo)
 //                .setLargeIcon(largeIcon)
 //                .setStyle(new NotificationCompat.BigTextStyle()
 //                        .bigText(remoteMessage.getNotification().getBody())
 //                        .setBigContentTitle(remoteMessage.getNotification().getTitle()))
 //                    .setStyle(new androidx.media.app.NotificationCompat.DecoratedMediaCustomViewStyle())
 //                    .setDefaults(Notification.DEFAULT_ALL)
-                    .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+//                    .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                     .setCustomContentView(collapseView)
-                    .setCustomBigContentView(expandedView)
+//                    .setCustomBigContentView(expandedView)
                     .setContentTitle(messageTitle)
                     .setContentText(messageBody)
                     .setAutoCancel(true)
+                    .setWhen(System.currentTimeMillis())
                     .setSound(notificationSoundUri)
                     .setContentIntent(contentIntent)
                     .setSound(defaultSound)

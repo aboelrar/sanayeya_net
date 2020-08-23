@@ -1,22 +1,39 @@
 package www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
 
+import es.dmoral.toasty.Toasty;
 import www.dm.sanayeya.net.R;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.Industerial_services.Scenario_industerial_services.controller.industerial_services;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.home_services.Scenario_home_services.controller.home_services;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_map_repair_car.controller.map_repair_location;
+import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_map_location.controller.choose_map_location;
 import www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.Scenario_winch_location.controller.winch_location;
+
+import static www.dm.sanayeya.net.view.Scenario_client.Scenario_main_screen.Controller.MainActivity.check_location;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +45,7 @@ public class categories extends Fragment implements View.OnClickListener {
     ImageView twenty_four_img;
     ImageView home_service_img;
     ImageView industerial_service_img;
+    int num = 0;
 
 
     public categories() {
@@ -40,6 +58,7 @@ public class categories extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.categories, container, false);
+
 
         //SET WINCH IMAGE IN GLIDE
         winch_img = view.findViewById(R.id.winch_img);
@@ -58,7 +77,6 @@ public class categories extends Fragment implements View.OnClickListener {
         Glide.with(getContext()).load(R.drawable.industerial_service).into(industerial_service_img);
 
 
-
         //GO TO WINCH PAGE
         RelativeLayout winch = view.findViewById(R.id.winch);
         winch.setOnClickListener(this);
@@ -75,25 +93,26 @@ public class categories extends Fragment implements View.OnClickListener {
         RelativeLayout industerial_services = view.findViewById(R.id.industerial_services);
         industerial_services.setOnClickListener(this);
 
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.winch) {
-            startActivity(new Intent(getContext(), winch_location.class));
-        }
-        else if(view.getId() == R.id.twentyfour)
-        {
+            if (check_location != 1) {
+                startActivity(new Intent(getContext(), winch_location.class));
+            } else {
+                Toasty.error(getContext(), getString(R.string.cant_detect)).show();
+            }
+        } else if (view.getId() == R.id.twentyfour) {
             startActivity(new Intent(getContext(), map_repair_location.class));
-        }
-        else if(view.getId() == R.id.home_services)
-        {
+        } else if (view.getId() == R.id.home_services) {
             startActivity(new Intent(getContext(), home_services.class));
-        }
-        else if(view.getId() == R.id.industerial_services)
-        {
+        } else if (view.getId() == R.id.industerial_services) {
             startActivity(new Intent(getContext(), industerial_services.class));
         }
     }
+
+
 }

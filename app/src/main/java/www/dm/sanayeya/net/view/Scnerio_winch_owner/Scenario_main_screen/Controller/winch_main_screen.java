@@ -1,10 +1,15 @@
 package www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -12,6 +17,7 @@ import com.android.volley.VolleyError;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 import www.dm.sanayeya.net.NetworkLayer.Apicalls;
 import www.dm.sanayeya.net.NetworkLayer.NetworkInterface;
 import www.dm.sanayeya.net.NetworkLayer.ResponseModel;
@@ -33,6 +39,7 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
     @BindView(R.id.drawer)
     DrawerLayout drawer;
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    public static int check_winch_location = 0;
 
 
     @Override
@@ -41,6 +48,7 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
         setContentView(R.layout.winch_main_screen);
         ButterKnife.bind(this);
 
+        GpsCheck();
 
         //SET UP DRAWER
         mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
@@ -54,8 +62,8 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
             //ADD REQUEST FRAGMENT
             new utils().Replace_Fragment(new clients_request(), R.id.frag, this);
         } else {
-           //GO TO MAP
-             startActivity(new Intent(this, test_navigation.class));
+            //GO TO MAP
+            startActivity(new Intent(this, test_navigation.class));
         }
 
         //CALL BROADCAST RECIEVER METHOD
@@ -63,6 +71,7 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
 
         new Apicalls(winch_main_screen.this, winch_main_screen.this)
                 .change_language(new saved_data().get_lan(winch_main_screen.this));
+
     }
 
     @Override
@@ -117,4 +126,49 @@ public class winch_main_screen extends AppCompatActivity implements NavigationDr
     public void OnError(VolleyError error) {
 
     }
+
+    //GPS CHECK
+    public void GpsCheck() {
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+        }
+
+    }
+
+    //GPS
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.cant_detect))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.Accept), new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 1);
+                    }
+                })
+                .setNegativeButton(getString(R.string.reject), new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                        check_winch_location = 1;
+                        Toasty.error(winch_main_screen.this, getString(R.string.cant_detect)).show();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            check_winch_location = 0;
+        } else {
+            buildAlertMessageNoGps();
+        }
+    }
+
 }

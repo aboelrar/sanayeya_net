@@ -31,6 +31,8 @@ import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Control
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.Scenario_client_request.model.client_request_list;
 import www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_welcome_screen.Scenario_winch_signup.controller.winch_signup;
 
+import static www.dm.sanayeya.net.view.Scnerio_winch_owner.Scenario_main_screen.Controller.winch_main_screen.check_winch_location;
+
 public class client_request_adapter extends RecyclerView.Adapter<client_request_adapter.view_holder> implements NetworkInterface {
 
     Context context;
@@ -91,18 +93,23 @@ public class client_request_adapter extends RecyclerView.Adapter<client_request_
             @Override
             public void onClick(View view) {
 
-                new Apicalls(context, client_request_adapter.this).accept_reject_request(id, "2");
+                if (check_winch_location != 1) {
 
-                //ADD WINCH OWNER DATA
-                send_data.winch_owner_lat(context,mylist.get(position).getAddress_lat()); //ADD WINCH LAT
-                send_data.winch_owner_lng(context,mylist.get(position).getAddress_lng()); //ADD WINCH LNG
-                send_data.request_id(context,mylist.get(position).getId()); //ADD WINCH ID
-                send_data.set_user_phone(context,mylist.get(position).getPhone()); //ADD WINCH PHONE
+                    new Apicalls(context, client_request_adapter.this).accept_reject_request(id, "2");
 
-                //CHECK IF LIST EQUAL ZERO
-                Intent intent = new Intent(context, test_navigation.class);
-                context.startActivity(intent);
+                    //ADD WINCH OWNER DATA
+                    send_data.winch_owner_lat(context, mylist.get(position).getAddress_lat()); //ADD WINCH LAT
+                    send_data.winch_owner_lng(context, mylist.get(position).getAddress_lng()); //ADD WINCH LNG
+                    send_data.request_id(context, mylist.get(position).getId()); //ADD WINCH ID
+                    send_data.set_user_phone(context, mylist.get(position).getPhone()); //ADD WINCH PHONE
 
+                    //CHECK IF LIST EQUAL ZERO
+                    Intent intent = new Intent(context, test_navigation.class);
+                    context.startActivity(intent);
+
+                } else {
+                    Toasty.error(context, context.getString(R.string.cant_detect)).show();
+                }
 
 
             }

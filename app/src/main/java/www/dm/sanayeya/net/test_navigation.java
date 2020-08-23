@@ -251,6 +251,7 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
                 if (response.body() != null) {
+
                     currentRoute = response.body().routes().get(0);
 
                     if (navigationMapRoute != null) {
@@ -261,11 +262,14 @@ public class test_navigation extends AppCompatActivity implements OnMapReadyCall
                     }
                     navigationMapRoute.addRoute(currentRoute);
                 }
+                else {
+                    get_both_directions();
+                }
             }
 
             @Override
             public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-
+                get_both_directions();
             }
         });
     }

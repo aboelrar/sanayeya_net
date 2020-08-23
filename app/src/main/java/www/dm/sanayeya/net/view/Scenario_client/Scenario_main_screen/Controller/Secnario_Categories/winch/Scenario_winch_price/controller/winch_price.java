@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -133,7 +134,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
             //SET DATA
             address.setText(winch_detailsDatum.getLocationAddress());
             time.setText(winch_detailsDatum.getArrivedAt());
-            min.setText(getString(R.string.in) +" "+ winch_detailsDatum.getEstiamteTime());
+            min.setText(getString(R.string.in) + " " + winch_detailsDatum.getEstiamteTime());
             price.setText(winch_detailsDatum.getCost() + "$");
         }
     }
@@ -148,7 +149,7 @@ public class winch_price extends AppCompatActivity implements View.OnClickListen
         @Override
         public void onReceive(Context context, Intent intent) {
             try {
-                Log.e("xxxxxqq","yes");
+                Log.e("xxxxxqq", "yes");
             } catch (Exception e) {
                 e.printStackTrace();
             }

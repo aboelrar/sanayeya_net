@@ -2,109 +2,128 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="90dp"
+    android:background="@drawable/notifcation_bg"
     android:gravity="center_vertical"
     android:layoutDirection="rtl"
-    android:orientation="horizontal"
-    android:background="@color/f_color"
-    android:weightSum="1">
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/icon_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-
-
-        <ImageView
-            android:id="@+id/big_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingStart="4dp"
-            android:paddingEnd="6dp"
-            android:paddingBottom="1dp"
-        android:src="@drawable/app_logo" />
-
-    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="صناعية نت"
+            android:textColor="#0000FF"
+            android:paddingStart="3.5dp"
+            android:paddingEnd="3.5dp" />
+
+        <TextView
+            android:id="@+id/timestamp"
+            style="@style/TextAppearance.Compat.Notification.Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:paddingStart="3.5dp"
+            android:paddingEnd="3.5dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <RelativeLayout
-            android:id="@+id/notification_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/_1sdp"
-            android:paddingEnd="@dimen/_3sdp"
-            android:layoutDirection="rtl"
-            android:weightSum="1">
+            android:id="@+id/icon_container"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="center">
 
 
-            <TextView
-                android:id="@+id/content_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:text="صلوا علي الحبي "
-                android:textStyle="bold"
-                android:paddingStart="@dimen/_3sdp"
-                android:paddingEnd="@dimen/_3sdp"
-                style="@style/TextAppearance.Compat.Notification.Title"/>
-
-
-
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/timestamp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:paddingStart="3.5dp"-->
-<!--                android:paddingEnd="3.5dp"-->
-<!--                style="@style/TextAppearance.Compat.Notification.Time"/>-->
+            <ImageView
+                android:id="@+id/big_icon"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:paddingStart="4dp"
+                android:layout_centerInParent="true"
+                android:paddingEnd="6dp"
+                android:paddingBottom="1dp"
+                android:src="@drawable/app_logo" />
 
         </RelativeLayout>
 
-
-
         <LinearLayout
-            android:id="@+id/notification_main1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/_1sdp"
-            android:paddingEnd="@dimen/_3sdp">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="1">
 
 
-            <TextView
-                android:id="@+id/content_text"
+            <RelativeLayout
+                android:id="@+id/notification_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:paddingEnd="@dimen/_2sdp"
-                android:paddingTop="@dimen/_2sdp"
-                android:paddingStart="0dp"
-                android:singleLine="true"
-                android:text="اللهم صل صلاة كاملة وسلم سلاما علي سيدنا محمد الذي تنحل به العقد وتنفرج به الكرب "
-                style="@style/TextAppearance.Compat.Notification.Info"/>
+                android:layout_gravity="right|center"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_1sdp"
+                android:paddingEnd="@dimen/_3sdp"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:id="@+id/content_title"
+                    style="@style/TextAppearance.Compat.Notification.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:singleLine="true"
+                    android:text="صلوا علي الحبي "
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/notification_main1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_1sdp"
+                android:paddingEnd="@dimen/_3sdp">
+
+
+                <TextView
+                    android:id="@+id/content_text"
+                    style="@style/TextAppearance.Compat.Notification.Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:paddingStart="0dp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="اللهم صل صلاة كاملة وسلم سلاما علي سيدنا محمد الذي تنحل به العقد وتنفرج به الكرب " />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 
