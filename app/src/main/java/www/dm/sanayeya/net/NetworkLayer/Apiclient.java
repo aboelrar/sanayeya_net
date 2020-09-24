@@ -54,7 +54,7 @@ public enum Apiclient {
      * @BASE_URL
      */
 
-    String BASE_URL = "http://snayia.trumpetagency.com/api/";
+    String BASE_URL = "http://snayia.thesoftwaregeeks.com/api/";
 
     private final String URL;
     private final List<String> params;

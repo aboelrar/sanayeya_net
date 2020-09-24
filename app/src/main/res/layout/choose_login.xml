@@ -33,7 +33,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".45"
+                android:layout_weight=".35"
                 android:gravity="center">
 
                 <ImageView
@@ -46,7 +46,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".55"
+                android:layout_weight=".65"
                 android:gravity="top|center"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/_20sdp"
@@ -76,6 +76,23 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/button_2_bg"
                     android:text="@string/winch_owner"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:src="@color/line_color" />
+
+                <Button
+                    android:id="@+id/warsha"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/button_3_bgs"
+                    android:text="@string/warsha"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold" />

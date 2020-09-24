@@ -23,6 +23,8 @@ public class choose_login extends AppCompatActivity implements View.OnClickListe
     Button user;
     @BindView(R.id.winch_owner)
     Button winchOwner;
+    @BindView(R.id.warsha)
+    Button warsha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class choose_login extends AppCompatActivity implements View.OnClickListe
         back.setOnClickListener(this);
         user.setOnClickListener(this);
         winchOwner.setOnClickListener(this);
+        warsha.setOnClickListener(this);
 
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(choose_login.this);
@@ -41,17 +44,16 @@ public class choose_login extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.back)
-        {
+        if (view.getId() == R.id.back) {
             finish();
-        }
-        else if(view.getId()==R.id.user)
-        {
+        } else if (view.getId() == R.id.user) {
             startActivity(new Intent(choose_login.this, signup.class));
-        }
-        else if(view.getId() == R.id.winch_owner)
-        {
+        } else if (view.getId() == R.id.winch_owner) {
             startActivity(new Intent(choose_login.this, winch_signup.class));
+        } else if (view.getId() == R.id.warsha)
+        {
+            warsha_popup warsha_popup = new warsha_popup();
+            warsha_popup.dialog(choose_login.this,R.layout.warsha_popup,.80,"1");
         }
     }
 }

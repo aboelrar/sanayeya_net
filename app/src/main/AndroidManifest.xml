@@ -2,15 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="www.dm.sanayeya.net">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permision.CALL_PHONE"></uses-permission>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".test_navigation">
-
-        </activity>
+        <activity android:name=".view.Scenario_client.welcome_screens.add_warsha.controller.add_warsha"></activity>
+        <activity android:name=".warsha" />
+        <activity android:name=".test_navigation" />
         <activity android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.winch.track_winch_location.controller.track_winch_location" />
         <activity
             android:name=".view.Scenario_client.Scenario_main_screen.Controller.Secnario_Categories.twentyfour.Scenario_workshop_rate.controller.workshop_rate"
@@ -121,10 +112,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAO-t7QFPoXpT27RJPn-FMn1I6gRHHYYPM" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="default_notification_channel_id" />
 
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
+        <receiver android:name=".network_check_status.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".notifcations.NotificationReceiver" />
 
         <service
             android:name=".notifcations.Custom_Fcmlistner"
@@ -136,20 +133,20 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
+        <service android:name=".notifcations.notifcation_sevice" />
 
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="default_notification_channel_id" />
-
-        <receiver android:name=".network_check_status.NetworkChangeReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".notifcations.NotificationReceiver" />
-        <service android:name=".notifcations.notifcation_sevice"/>
-
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permision.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

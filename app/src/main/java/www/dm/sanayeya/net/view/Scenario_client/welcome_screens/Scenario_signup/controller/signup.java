@@ -133,7 +133,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
 
     @Override
     public void OnError(VolleyError error) {
-
+        Log.e("error_is", "" + error.networkResponse.statusCode);
     }
 
     //SIGN UP VAILDATION
@@ -159,13 +159,12 @@ public class signup extends AppCompatActivity implements View.OnClickListener, N
             String pass_val = getResources().getString(R.string.password_val);
             password.setError(pass_val);
             yoyo(R.id.password, password);
-        }  else if (whatsapp.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
+        } else if (whatsapp.getText().toString().length() < 6)  //VALIDATION ON PASSWORD
         {
             String whats_val = getResources().getString(R.string.whatsapp_val);
             whatsapp.setError(whats_val);
             yoyo(R.id.whatsapp, whatsapp);
-        }
-        else {
+        } else {
 
             //CALL PROGRESS DIALOG
             new utils().set_dialog(signup.this);

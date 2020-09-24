@@ -87,7 +87,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
         //SET WINCH LOCATION THAT IS COMING FROM SERVER
         MarkerOptions marker_winch = new MarkerOptions().position(new LatLng(0.0, 0.0)).title("Location 2");
         marker = mMap.addMarker(marker_winch);
-        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.winch_location));
+        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.loca_winch_one));
 
 
         //ADD MARKER FOR MY LOCATION
@@ -96,7 +96,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
         //MOVE CAMERA
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(address_lat, address_lng)));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(14.6f));
 
 
     }
@@ -158,7 +158,7 @@ public class track_winch_location extends AppCompatActivity implements OnMapRead
 
                     //ADD CUSTOM MARKERS
                     marker = mMap.addMarker(place2);
-                    marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.winch_location));
+                    marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.loca_winch_one));
 
 
                     //ADD DILAOG FINSIHED
